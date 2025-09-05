@@ -1,0 +1,3 @@
+export const environment = {
+  ServerUrl: 'https://154.41.228.234:3000/',
+};

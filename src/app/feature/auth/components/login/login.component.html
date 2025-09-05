@@ -1,0 +1,66 @@
+<div class=" grid grid-cols-1 md:grid-cols-2 h-screen overflow-hidden">
+    <div class=" ps-5 ">
+        <img src="./assets/images/logo.svg" class="ps-5 pt-6" alt="">
+        <div class="flex justify-center items-center flex-col">
+            <div class=" w-3/4 m-auto  my-10">
+                <h2 class="text-4xl my-5">Sign in</h2>
+                <p>If you don’t have an account register</p>
+                <p>You can <a routerLink="" class="text-[#152C5B] font-bold">Register here !</a></p>
+            </div>
+            <div class="w-3/4 m-auto ">
+                <form class="w-full" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div>
+                        <mat-label class="text-[#152C5B]">Email Address</mat-label>
+
+                        <mat-form-field class="w-full transparent-input mt-4">
+                            <input type="email" matInput placeholder="Enter your E-mail" formControlName="email" />
+                        </mat-form-field>
+                        <p *ngIf="(loginForm.get('email')?.errors?.['required'] || loginForm.get('email')?.errors?.['email']) && loginForm.get('email')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            E-mail is required or incorrect
+                        </p>
+                    </div>
+
+                    <div>
+                        <mat-label class="text-[#152C5B]">Password</mat-label>
+
+                        <mat-form-field class="w-full mt-4">
+                            <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'"
+                                formControlName="password" />
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon class="custom-icon">{{
+                                    hide ? "visibility_off" : "visibility"
+                                    }}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <p *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            Password is required
+                        </p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            Password must be at least 3 characters
+                        </p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['maxlength'] && loginForm.get('password')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            Password must be more 3 characters
+                        </p>
+                    </div>
+
+                    <a class="float-end " routerLink="/auth/forgetPassword">Forgot Password ?</a>
+
+
+
+                    <button class="btn my-20" color="primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="relative w-full h-full rounded-lg ">
+        <img src="./assets/images/bgLogin.svg" class="absolute inset-0 w-full h-full object-contain p-5" alt="">
+    </div>
+
+</div>
