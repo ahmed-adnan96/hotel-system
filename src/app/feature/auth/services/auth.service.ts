@@ -18,6 +18,6 @@ export class AuthService {
     localStorage.setItem('userName', decoded.userName);
   }
   login(data: any): Observable<any> {
-    return this._HttpClient.post(`Users/Login`, data);
+    return this._HttpClient.post(`admin/users/login`, data);
   }
 }
