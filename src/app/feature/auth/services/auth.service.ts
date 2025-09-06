@@ -17,10 +17,17 @@ export class AuthService {
     localStorage.setItem('role', decoded.userGroup);
     localStorage.setItem('userName', decoded.userName);
   }
+
   login(data: any): Observable<any> {
     return this._HttpClient.post(`admin/users/login`, data);
   }
+
+
   register(data: any): Observable<any> {
     return this._HttpClient.post(`admin/users`, data);
+  }
+
+  changePassword(data:any):Observable<any>{
+    return this._HttpClient.post('admin/users/change-password' , data)
   }
 }
