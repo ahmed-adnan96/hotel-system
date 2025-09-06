@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   constructor(private readonly _HttpClient: HttpClient) {
-    if (localStorage.getItem('userToken') !== null) this.getProfile();
+    // if (localStorage.getItem('userToken') !== null) this.getProfile();
   }
   public email: string | any = '';
   getProfile() {
