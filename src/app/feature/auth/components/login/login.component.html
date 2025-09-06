@@ -5,7 +5,7 @@
             <div class=" w-3/4 m-auto  my-10">
                 <h2 class="text-4xl my-5">Sign in</h2>
                 <p>If you don’t have an account register</p>
-                <p>You can <a routerLink="" class="text-[#152C5B] font-bold">Register here !</a></p>
+                <p>You can <a routerLink="/auth/createUser" class="text-[#152C5B] font-bold">Register here !</a></p>
             </div>
             <div class="w-3/4 m-auto ">
                 <form class="w-full" [formGroup]="loginForm" (ngSubmit)="login()">
@@ -27,7 +27,7 @@
                         <mat-form-field class="w-full mt-4">
                             <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'"
                                 formControlName="password" />
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                                 <mat-icon class="custom-icon">{{
                                     hide ? "visibility_off" : "visibility"
@@ -52,7 +52,7 @@
 
 
 
-                    <button class="btn my-20" color="primary">Login</button>
+                    <button type="submit" class="btn my-20" color="primary">Login</button>
                 </form>
             </div>
         </div>

@@ -27,19 +27,27 @@ body {
 }
 
 .btn {
-  @apply bg-[#3252DF]     
-    text-white       
-    py-3            
-    rounded-lg        
-    w-full            
-    border           
-    border-[#3252DF]   
-    transition        
-    duration-300     
+  @apply bg-[#3252DF]
+    text-white
+    py-3
+    rounded-lg
+    w-full
+    border
+    border-[#3252DF]
+    transition
+    duration-300
     ease-in-out;
 }
 
 .btn:hover {
-  @apply bg-white           
+  @apply bg-white
     text-[#3252DF];
 }
+
+  .mat-mdc-form-field-error-wrapper {
+    padding: 0 !important;
+    font-size: 16px;
+  }
+
+
+

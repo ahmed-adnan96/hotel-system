@@ -20,4 +20,7 @@ export class AuthService {
   login(data: any): Observable<any> {
     return this._HttpClient.post(`admin/users/login`, data);
   }
+  register(data: any): Observable<any> {
+    return this._HttpClient.post(`admin/users`, data);
+  }
 }
