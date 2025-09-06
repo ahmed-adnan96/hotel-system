@@ -1,0 +1,50 @@
+div {
+  .profile-image-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .delete-btn {
+    background: red;
+    position: absolute;
+    color: aliceblue;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  .upload-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    ngx-dropzone-label {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+}
+
+.btn-disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-color: #ccc;
+}
