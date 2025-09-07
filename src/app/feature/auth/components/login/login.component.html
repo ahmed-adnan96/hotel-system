@@ -27,8 +27,8 @@
                         <mat-form-field class="w-full mt-4">
                             <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'"
                                 formControlName="password" />
-                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon class="custom-icon">{{
                                     hide ? "visibility_off" : "visibility"
                                     }}</mat-icon>
@@ -52,7 +52,8 @@
 
 
 
-                    <button type="submit" class="btn my-20" color="primary">Login</button>
+                    <button [disabled]="loginForm.invalid" [class.btn-disabled]="loginForm.invalid" type="submit"
+                        class="btn my-20" color="primary">Login</button>
                 </form>
             </div>
         </div>
