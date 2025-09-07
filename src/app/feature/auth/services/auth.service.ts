@@ -1,8 +1,6 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
