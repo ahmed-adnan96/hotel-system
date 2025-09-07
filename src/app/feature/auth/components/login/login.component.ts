@@ -49,6 +49,10 @@ export class LoginComponent {
         this._ToastrService.success('you have been login successfully');
         localStorage.setItem('userToken', res.data.token);
         this._AuthService.getProfile();
+        localStorage.setItem('role', res.data.user.role);
+        localStorage.setItem('userName', res.data.user.userName);
+        localStorage.setItem('id', res.data.user._id);
+
         this._AuthService.email = this.loginForm.value.email;
       },
       complete:()=>{
