@@ -4,29 +4,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
 html {
-  @include mat.theme(
-    (
-      color: (
-        theme-type: light,
+  @include mat.theme((color: (theme-type: light,
         primary: mat.$blue-palette,
         tertiary: mat.$blue-palette,
       ),
       typography: Roboto,
       density: 0,
-    )
-  );
+    ));
 }
+
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Inter, sans-serif;
+  background-color: #ffffff
 }
 
 .btn {
+
   @apply bg-[#3252DF]     
     text-white       
     py-3            
@@ -43,3 +47,17 @@ body {
   @apply bg-white           
     text-[#3252DF];
 }
+
+  @apply bg-[#3252DF] text-white py-3 rounded-lg border border-[#3252DF] transition duration-300 ease-in-out;
+}
+
+.btn:hover {
+  @apply bg-white text-[#3252DF];
+}
+
+// mat error
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+  font-size: 16px;
+}
+

@@ -1,21 +1,26 @@
 <div class=" grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
-  <div class=" ps-5 ">
-    <img src="./assets/images/logo.svg" class="ps-5 pt-6" alt="">
+  <div class="ps-5 ">
+    <img src="assets/images/logo.svg" class="ps-5 pt-6" alt="">
     <div class="flex justify-center items-center flex-col">
       <div class=" w-3/4 m-auto  my-10">
-        <h2 class="text-4xl my-5">Sign in</h2>
+        <h2 class="text-4xl font-medium my-5">Sign Up</h2>
         <p>If you already have an account register</p>
-        <p>You can <a routerLink="/auth/login" class="text-[#152C5B] font-bold"> Login here !</a></p>
+        <p>You can <a routerLink="/auth/login" class="text-[#EB5148] font-bold"> Login here !</a></p>
       </div>
       <div class="w-3/4 m-auto ">
         <form class="w-full" [formGroup]="registerForm" (ngSubmit)="register()">
           <div>
-            <ngx-dropzone class="mx-auto w-28 h-28" (change)="onSelect($event)">
-              <ngx-dropzone-label>Drop it, profile image!</ngx-dropzone-label>
-              <ngx-dropzone-image-preview class="mx-auto w-100 text-center" ngProjectAs="ngx-dropzone-preview"
-                *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)" [file]="f">
-              </ngx-dropzone-image-preview>
-            </ngx-dropzone>
+            <div class="profile-image-wrapper mb-3">
+              <img [src]="previewImg" alt="Profile Image" class="rounded-circle border profile-img shadow-sm">
+              <button type="button" aria-label="Remove image" (click)="onRemove()" class="delete-btn">
+                <mat-icon>close</mat-icon>
+              </button>
+              <ngx-dropzone (change)="onSelect($event)" class="upload-btn border-0 shadow-sm">
+                <ngx-dropzone-label>
+                  <mat-icon>camera_alt</mat-icon>
+                </ngx-dropzone-label>
+              </ngx-dropzone>
+            </div>
           </div>
           <div>
             <mat-label class="text-[#152C5B]">User Name</mat-label>
@@ -27,7 +32,7 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="flex gap-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
               <mat-label class="text-[#152C5B]">Phone Number</mat-label>
               <mat-form-field class="w-full transparent-input mt-4">
@@ -36,8 +41,13 @@
                   *ngIf="registerForm.get('phoneNumber')?.errors?.['required'] && registerForm.get('phoneNumber')?.touched">
                   phone number is required
                 </mat-error>
+                <mat-error
+                  *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern'] && registerForm.get('phoneNumber')?.touched">
+                  11-digit number starting with 01
+                </mat-error>
               </mat-form-field>
             </div>
+
             <div>
               <mat-label class="text-[#152C5B]">Country</mat-label>
               <mat-form-field class="w-full transparent-input mt-4">
@@ -62,7 +72,7 @@
           <div>
             <mat-label class="text-[#152C5B]">Select a role</mat-label>
             <mat-form-field class="w-full transparent-input mt-4">
-              <mat-select formArrayName="role" [(value)]="selected" placeholder="Please select a role">
+              <mat-select formControlName="role" placeholder="Please select a role">
                 <mat-option value="user">User</mat-option>
                 <mat-option value="admin">Admin</mat-option>
               </mat-select>
@@ -116,12 +126,20 @@
               Confirm Password must match Password
             </mat-error>
           </div>
-          <button type="submit" class="btn my-20" color="primary">Sign up</button>
+          <button type="submit" [disabled]="registerForm.invalid" [class.btn-disabled]="registerForm.invalid"
+            class="btn my-5 w-full" color="primary">Sign up</button>
         </form>
       </div>
     </div>
   </div>
-  <div class="relative w-full h-full rounded-lg ">
-    <img src="./assets/images/bg sign up.svg" class="absolute inset-0 w-full h-full object-contain p-5" alt="">
+
+  <div class="w-full min-h-full p-2 ">
+    <div class="w-full h-full sideImg text-white relative">
+      <div class="absolute top-3/4  w-full ps-16">
+        <p class="text-5xl pb-3 w-full">Sign in to Roamhome</p>
+        <h3>Homes as unique as you.</h3>
+      </div>
+    </div>
   </div>
+
 </div>

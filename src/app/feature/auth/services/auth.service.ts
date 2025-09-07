@@ -1,28 +1,25 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private readonly _HttpClient: HttpClient) {
-    if (localStorage.getItem('userToken') !== null) this.getProfile();
   }
   public email: string | any = '';
-  getProfile() {
-    let encoded: any = localStorage.getItem('userToken');
-    let decoded: any = jwtDecode(encoded);
-    console.log(decoded);
-    localStorage.setItem('role', decoded.userGroup);
-    localStorage.setItem('userName', decoded.userName);
-  }
+
+
   login(data: any): Observable<any> {
     return this._HttpClient.post(`admin/users/login`, data);
   }
+
+
   register(data: any): Observable<any> {
     return this._HttpClient.post(`admin/users`, data);
   }
+
   onForgotPassword(data: any): Observable<any> {
     return this._HttpClient.post('portal/users/forgot-password', data);
   }
@@ -31,5 +28,12 @@ export class AuthService {
   }
   onResetPassword(data: any): Observable<any> {
     return this._HttpClient.post('admin/users/reset-password', data);
+
+
+  changePassword(data:any):Observable<any>{
+    return this._HttpClient.post('admin/users/change-password' , data)
+
   }
 }
+
+

@@ -1,0 +1,30 @@
+table {
+  background-color: transparent;
+
+  th {
+    background: #E2E5EB;
+    padding: 10px;
+    border-bottom-color: transparent;
+    text-align: center;
+
+    &:first-child {
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+  }
+
+  td {
+    padding: 10px;
+    text-align: center;
+    border-bottom-color: transparent;
+  }
+
+  tr:nth-child(even) {
+    background-color: #F8F9FB;
+  }
+}

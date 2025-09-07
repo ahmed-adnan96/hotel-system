@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="grid md:grid-cols-3 place-items-center">
+    <div
+      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
+    >
+      <div>
+        <p>{{ DashBoardData.rooms }}</p>
+        <p>Rooms</p>
+      </div>
+      <div>
+        <mat-icon class="home-icon text-blue-800">meeting_room</mat-icon>
+      </div>
+    </div>
+    <div
+      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
+    >
+      <div>
+        <p>100</p>
+        <p>Facilities</p>
+      </div>
+      <div>
+        <mat-icon class="home-icon text-blue-800 bg-blue-950"
+          >meeting_room</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
+    >
+      <div>
+        <p>100</p>
+        <p>Ads</p>
+      </div>
+      <div>
+        <mat-icon class="home-icon text-blue-800 bg-blue-950"
+          >meeting_room</mat-icon
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-20">
+  <div class="grid px-5 md:grid-cols-6">
+    <div>
+      <canvas
+        baseChart
+        [labels]="doughnutChartLabels"
+        [datasets]="doughnutChartDatasets"
+        [options]="doughnutChartOptions"
+        [legend]="true"
+        [type]="'doughnut'"
+      >
+      </canvas>
+    </div>
+  </div>
+</div>

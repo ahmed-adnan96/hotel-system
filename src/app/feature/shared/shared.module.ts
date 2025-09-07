@@ -19,9 +19,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [NavbarComponent, SidebarComponent, LayoutComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

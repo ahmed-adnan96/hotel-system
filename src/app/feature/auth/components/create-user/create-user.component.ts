@@ -22,15 +22,18 @@ export class CreateUserComponent {
     private _Router: Router
   ) {}
 
+
   //#region  declaration properties
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
-  srcImg: any;
+  srcImg!: File;
   files: File[] = [];
-  selected = 'option2';
+  defaultImg: string = 'assets/images/img-profile.jpg';
+  previewImg: string = this.defaultImg;
   //#endregion
 
   //#region declaration FormGroup
+
   registerForm = new FormGroup(
     {
       email: new FormControl(null, [Validators.required]),
@@ -56,6 +59,24 @@ export class CreateUserComponent {
       this.registerForm.markAllAsTouched();
       return;
     }
+
+  registerForm = new FormGroup({
+    email: new FormControl(null, Validators.required),
+    userName: new FormControl(null, Validators.required),
+    phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
+    country: new FormControl(null, Validators.required),
+    role: new FormControl(null, Validators.required),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(3),
+    ]),
+    confirmPassword: new FormControl(null, Validators.required),
+  }, { validators: this.confirmPassword });
+  //#endregion
+
+  register() {
+
     let myData = new FormData();
     let formValues: any = this.registerForm.getRawValue();
     for (let key in formValues) {
@@ -64,6 +85,7 @@ export class CreateUserComponent {
     if (this.srcImg) {
       myData.append('profileImage', this.srcImg);
     }
+
     this._AuthService.register(myData).subscribe({
       next: (res) => {
         console.log(res);
@@ -72,8 +94,11 @@ export class CreateUserComponent {
       complete: () => {
         this._ToastrService.success('you have been registered successfully');
       },
+        this._ToastrService.success('You have been registered successfully');
+      }
     });
   }
+
   //#endregion
 
   confirmPassword(group: AbstractControl) {
@@ -87,11 +112,17 @@ export class CreateUserComponent {
     const selectedFile = event.addedFiles[0];
     if (selectedFile) {
       this.files = [selectedFile];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewImg = reader.result as string;
+      };
+      reader.readAsDataURL(selectedFile);
     }
     this.srcImg = this.files[0];
   }
 
-  onRemove(event: any) {
-    this.files.splice(this.files.indexOf(event), 1);
+  onRemove(event?: any) {
+    this.files = [];
+    this.previewImg = this.defaultImg;
   }
 }
