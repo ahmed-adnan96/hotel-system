@@ -47,11 +47,13 @@ export class LoginComponent {
     this._AuthService.login(myData).subscribe({
       next: (res) => {
         this._ToastrService.success('you have been login successfully');
-        localStorage.setItem('userToken', res.token);
+        localStorage.setItem('userToken', res.data.token);
         this._AuthService.getProfile();
-        this._Router.navigate(['/dashboard']);
         this._AuthService.email = this.loginForm.value.email;
       },
+      complete:()=>{
+         this._Router.navigate(['/dashboard']);
+      }
     });
   }
   //#endregion

@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private readonly _HttpClient: HttpClient) {
-    // if (localStorage.getItem('userToken') !== null) this.getProfile();
-  }
+    if (localStorage.getItem('userToken') !== null) this.getProfile();
+     
+    }
+  
   public email: string | any = '';
   getProfile() {
     let encoded: any = localStorage.getItem('userToken');
@@ -31,3 +34,5 @@ export class AuthService {
     return this._HttpClient.post('admin/users/change-password' , data)
   }
 }
+
+
