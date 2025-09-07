@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
+
 @NgModule({
   declarations: [],
   imports: [
@@ -44,6 +45,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     MatSortModule,
     DragDropModule,
     NgxDropzoneModule,
+
   ],
   exports: [
     CommonModule,

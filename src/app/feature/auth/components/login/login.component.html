@@ -1,4 +1,4 @@
-<div class=" grid grid-cols-1 md:grid-cols-2 h-screen overflow-hidden">
+<div class=" grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
     <div class=" ps-5 ">
         <img src="./assets/images/logo.svg" class="ps-5 pt-6" alt="">
         <div class="flex justify-center items-center flex-col">
@@ -27,8 +27,8 @@
                         <mat-form-field class="w-full mt-4">
                             <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'"
                                 formControlName="password" />
-                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon class="custom-icon">{{
                                     hide ? "visibility_off" : "visibility"
                                     }}</mat-icon>
@@ -52,15 +52,24 @@
 
 
 
-                    <button type="submit" class="btn my-20" color="primary">Login</button>
+                    <button [disabled]="loginForm.invalid" [class.btn-disabled]="loginForm.invalid" type="submit"
+                        class="btn my-20" color="primary">Login</button>
                 </form>
             </div>
         </div>
 
 
     </div>
-    <div class="relative w-full h-full rounded-lg ">
+    <!-- <div class="relative w-full h-full rounded-lg ">
         <img src="./assets/images/bgLogin.svg" class="absolute inset-0 w-full h-full object-contain p-5" alt="">
+    </div> -->
+    <div class="w-full min-h-full p-2 ">
+        <div class="w-full h-full sideImg text-white relative">
+            <div class="absolute top-3/4  w-full ps-16">
+                <p class="text-5xl pb-3 w-full">Sign in to Roamhome</p>
+                <h3>Homes as unique as you.</h3>
+            </div>
+        </div>
     </div>
 
 </div>
