@@ -1,3 +1,10 @@
+
+.btn-disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-color: #ccc;
+}
+
 .sideImg {
   background-image: url(../../../../../assets/images/bgLogin.svg);
   background-position: center;
