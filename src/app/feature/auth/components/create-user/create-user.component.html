@@ -43,7 +43,7 @@
                 </mat-error>
                 <mat-error
                   *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern'] && registerForm.get('phoneNumber')?.touched">
-                  Phone number must start with 01 and be 11 digits in total
+                  11-digit number starting with 01
                 </mat-error>
               </mat-form-field>
             </div>
@@ -133,7 +133,7 @@
     </div>
   </div>
 
-  <div class="w-full h-full p-2">
+  <div class="w-full h-full p-5">
     <div class="w-full h-full sideImg">
     </div>
   </div>
