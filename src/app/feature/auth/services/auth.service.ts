@@ -1,15 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private readonly _HttpClient: HttpClient) {
-    if (localStorage.getItem('userToken') !== null){
-       this.getProfile();
-    }
- 
   }
   public email: string | any = '';
 
