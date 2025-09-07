@@ -11,8 +11,7 @@
         <form class="w-full" [formGroup]="registerForm" (ngSubmit)="register()">
           <div>
             <div class="profile-image-wrapper mb-3">
-              <img [src]="previewImg" alt="Profile Image"
-                class="rounded-circle border profile-img shadow-sm">
+              <img [src]="previewImg" alt="Profile Image" class="rounded-circle border profile-img shadow-sm">
               <button type="button" aria-label="Remove image" (click)="onRemove()" class="delete-btn">
                 <mat-icon>close</mat-icon>
               </button>
@@ -44,7 +43,7 @@
                 </mat-error>
                 <mat-error
                   *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern'] && registerForm.get('phoneNumber')?.touched">
-                  Phone number must start with 01 and be 11 digits in total
+                  11-digit number starting with 01
                 </mat-error>
               </mat-form-field>
             </div>
@@ -127,15 +126,16 @@
               Confirm Password must match Password
             </mat-error>
           </div>
-          <button type="submit"  [disabled]="registerForm.invalid"[class.btn-disabled]="registerForm.invalid" class="btn my-5" color="primary">Sign up</button>
+          <button type="submit" [disabled]="registerForm.invalid" [class.btn-disabled]="registerForm.invalid"
+            class="btn my-5" color="primary">Sign up</button>
         </form>
       </div>
     </div>
   </div>
-  <div class="w-full h-full hidden md:block">
-    <div class="w-full h-full">
-      <img src="assets/images/bgSignUp.png" class="w-full h-full rounded-[50px] object-cover  p-5"
-        alt="">
+
+  <div class="w-full h-full p-5">
+    <div class="w-full h-full sideImg">
     </div>
   </div>
+
 </div>
