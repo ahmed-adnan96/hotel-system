@@ -6,6 +6,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { OtpCodeComponent } from './components/otp-code/otp-code.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,
+    title: 'resetPassword',
+  },
+  {
+    path: 'otp',
+    component: OtpCodeComponent,
     title: 'resetPassword',
   },
   { path: '**', component: NotFoundComponent, title: 'notFound' },
