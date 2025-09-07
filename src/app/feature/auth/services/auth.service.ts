@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
@@ -7,6 +6,10 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   constructor(private readonly _HttpClient: HttpClient) {
+    if (localStorage.getItem('userToken') !== null){
+       this.getProfile();
+    }
+ 
   }
   public email: string | any = '';
 
@@ -24,3 +27,5 @@ export class AuthService {
     return this._HttpClient.post('admin/users/change-password' , data)
   }
 }
+
+
