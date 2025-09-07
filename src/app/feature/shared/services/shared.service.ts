@@ -3,16 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
+  constructor(private _HttpClient: HttpClient) {}
 
-  constructor(private _HttpClient:HttpClient) { }
-
-
-  getDashBoardDetails():Observable<any>{
-    return this._HttpClient.get('admin/dashboard')
+  getDashBoardDetails(): Observable<any> {
+    return this._HttpClient.get('admin/dashboard');
   }
-
-
+  getCurrentUser(): Observable<any> {
+    return this._HttpClient.get(`admin/users/${localStorage.getItem('id')}`);
+  }
 }

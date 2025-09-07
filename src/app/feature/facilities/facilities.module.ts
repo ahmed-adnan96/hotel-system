@@ -6,24 +6,18 @@ import { ViewFacilitiesComponent } from './components/view-facilities/view-facil
 import { AddEditFacilitiesComponent } from './components/add-edit-facilities/add-edit-facilities.component';
 import { FacilitiesListComponent } from './components/facilities-list/facilities-list.component';
 
-
 const routes: Routes = [
-  {path:'',redirectTo:'facilitiesList',pathMatch:'full'},
-  {path:'facilitiesList',component:FacilitiesListComponent},
-  {path:'add',component:AddEditFacilitiesComponent},
-  {path:'edit/:id',component:AddEditFacilitiesComponent},
-  {path:'view',component:ViewFacilitiesComponent},
-]
+  { path: '', redirectTo: 'facilitiesList', pathMatch: 'full' },
+  { path: 'facilitiesList', component: FacilitiesListComponent },
+  { path: 'addEdit', component: AddEditFacilitiesComponent },
+  { path: 'view', component: ViewFacilitiesComponent },
+];
 @NgModule({
   declarations: [
     FacilitiesListComponent,
     AddEditFacilitiesComponent,
-    ViewFacilitiesComponent
+    ViewFacilitiesComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
-export class FacilitiesModule { }
+export class FacilitiesModule {}
