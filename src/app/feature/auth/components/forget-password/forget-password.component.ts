@@ -12,29 +12,29 @@ import { SharedModule } from '../../../shared/shared.module';
   styleUrl: './forget-password.component.scss',
 })
 export class ForgetPasswordComponent {
-  constructor(
-    private _AuthService: AuthService,
-    private _Router: Router,
-    private _ToastrService: ToastrService
-  ) {}
+  // constructor(
+  //   private _AuthService: AuthService,
+  //   private _Router: Router,
+  //   private _ToastrService: ToastrService
+  // ) {}
 
-  forgotPasswordForm = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
-  });
+  // forgotPasswordForm = new FormGroup({
+  //   email: new FormControl(null, [Validators.required, Validators.email]),
+  // });
 
-  onSubmit(data: FormGroup) {
-    console.log(data);
-    this._AuthService.onForgotPassword(data.value).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        this._Router.navigateByUrl('/auth/resetPassword');
-        this._ToastrService.success('Email Reset Successfully', 'Success');
-      },
-    });
-  }
+  // onSubmit(data: FormGroup) {
+  //   console.log(data);
+  //   this._AuthService.onForgotPassword(data.value).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //     complete: () => {
+  //       this._Router.navigateByUrl('/auth/resetPassword');
+  //       this._ToastrService.success('Email Reset Successfully', 'Success');
+  //     },
+  //   });
+  // }
 }
