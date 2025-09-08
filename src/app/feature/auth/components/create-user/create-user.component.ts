@@ -1,5 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -14,8 +19,8 @@ export class CreateUserComponent {
   constructor(
     private _AuthService: AuthService,
     private _ToastrService: ToastrService,
-    private _Router: Router,
-  ) { }
+    private _Router: Router
+  ) {}
 
 
   //#region  declaration properties
@@ -28,6 +33,33 @@ export class CreateUserComponent {
   //#endregion
 
   //#region declaration FormGroup
+
+  registerForm = new FormGroup(
+    {
+      email: new FormControl(null, [Validators.required]),
+      userName: new FormControl(null, [Validators.required]),
+      phoneNumber: new FormControl(null, [Validators.required]),
+      country: new FormControl(null, [Validators.required]),
+      role: new FormControl('user', [Validators.required]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(3),
+      ]),
+      confirmPassword: new FormControl(null, [Validators.required]),
+    },
+    { validators: this.confirmPassword }
+  );
+  //#endregion
+
+  register() {
+    console.log(this.registerForm.value);
+
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
   registerForm = new FormGroup({
     email: new FormControl(null, Validators.required),
     userName: new FormControl(null, Validators.required),
@@ -44,6 +76,7 @@ export class CreateUserComponent {
   //#endregion
 
   register() {
+
     let myData = new FormData();
     let formValues: any = this.registerForm.getRawValue();
     for (let key in formValues) {
@@ -59,6 +92,8 @@ export class CreateUserComponent {
         this._Router.navigate(['/auth/login']);
       },
       complete: () => {
+        this._ToastrService.success('you have been registered successfully');
+      },
         this._ToastrService.success('You have been registered successfully');
       }
     });
@@ -71,7 +106,6 @@ export class CreateUserComponent {
     const confirmPassword = group.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { mismatch: true };
   }
-
 
   // dropZone
   onSelect(event: any) {
