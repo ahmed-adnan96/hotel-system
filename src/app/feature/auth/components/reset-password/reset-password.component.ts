@@ -18,48 +18,47 @@ import { SharedModule } from '../../../shared/shared.module';
   styleUrl: './reset-password.component.scss',
 })
 export class ResetPasswordComponent {
-  // hidePassword: boolean = true;
-  // hideConfirmPassword: boolean = true;
-  // constructor(
-  //   private _AuthService: AuthService,
-  //   private _Router: Router,
-  //   private _ToastrService: ToastrService
-  // ) {}
-  // confirmPassword(group: AbstractControl) {
-  //   const password = group.get('password')?.value;
-  //   const confirmPassword = group.get('confirmPassword')?.value;
-  //   return password === confirmPassword ? null : { mismatch: true };
-  // }
+  hidePassword: boolean = true;
+  hideConfirmPassword: boolean = true;
+  constructor(
+    private _AuthService: AuthService,
+    private _Router: Router,
+    private _ToastrService: ToastrService
+  ) {}
+  confirmPassword(group: AbstractControl) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
 
-  // resetPassForm = new FormGroup(
-  //   {
-  //     email: new FormControl(null, [Validators.required, Validators.email]),
-  //     password: new FormControl(null, [
-  //       Validators.required,
-  //       Validators.maxLength(20),
-  //       Validators.minLength(3),
-  //     ]),
-  //     confirmPassword: new FormControl(null, [Validators.required]),
-  //     seed: new FormControl(null, [Validators.required]),
-  //   },
-  //   { validators: this.confirmPassword }
-  // );
+  resetPassForm = new FormGroup(
+    {
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(3),
+      ]),
+      confirmPassword: new FormControl(null, [Validators.required]),
+      seed: new FormControl(null, [Validators.required]),
+    },
+    { validators: this.confirmPassword }
+  );
 
-  // onSubmit(data: FormGroup) {
-  //   console.log(data);
-  //   this._AuthService.onResetPassword(data.value).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this._ToastrService.success(res.massege);
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //       this._ToastrService.error(err.massege);
-  //     },
-  //     complete: () => {
-  //       this._Router.navigateByUrl('/auth/resetPassword');
-  //       this._ToastrService.success('Password Reset Successfully', 'Success');
-  //     },
-  //   });
-  // }
+  onSubmit(data: FormGroup) {
+    this._AuthService.onResetPassword(data.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        // this._ToastrService.success(res.massege);
+      },
+      error: (err) => {
+        console.log(err);
+        this._ToastrService.error(err.massege);
+      },
+      complete: () => {
+        this._Router.navigateByUrl('/auth/login');
+        this._ToastrService.success('Password Reset Successfully', 'Success');
+      },
+    });
+  }
 }
