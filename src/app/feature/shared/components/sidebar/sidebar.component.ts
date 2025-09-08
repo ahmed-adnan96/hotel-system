@@ -63,6 +63,13 @@ export class SidebarComponent {
       icon: 'group',
       menuLink: '/dashboard/facilities',
     },
+
+    {
+      title: 'Room',
+      icon: 'meeting_room',
+      menuLink: '/dashboard/room',
+    },
+
     //   {
     //   title:"Projects",
     //   icon:"dashboard",
