@@ -5,7 +5,7 @@ table {
     background: #E2E5EB;
     padding: 10px;
     border-bottom-color: transparent;
-    text-align: center;
+    text-align: start;
 
     &:first-child {
       border-top-left-radius: 15px;
@@ -15,13 +15,16 @@ table {
     &:last-child {
       border-top-right-radius: 15px;
       border-bottom-right-radius: 15px;
+      text-align: center;
     }
   }
 
   td {
     padding: 10px;
     border-bottom-color: transparent;
-    &:last-child{
+    text-align: start;
+
+    &:last-child {
       text-align: center;
     }
   }
