@@ -6,7 +6,7 @@
       <h2 mat-dialog-title *ngSwitchCase=="viewFacility" class="ps-0">view Facility</h2>
     </div>
     <mat-dialog-actions>
-      <button class="btn bg-light" (click)="closeDialog()">
+      <button aria-label="closeDialog" class="btn bg-light" (click)="closeDialog()">
         <i class="fa-solid fa-circle-xmark text-danger"></i>
       </button>
     </mat-dialog-actions>
@@ -30,8 +30,8 @@
 
     </div>
     <div [ngSwitch]="formName">
-      <button *ngSwitchCase==="addFacility" class="btn-main float-end rounded-2 px-5 my-3">Save</button>
-      <button *ngSwitchCase==="editFacility" class="btn-main float-end rounded-2 px-5 my-3">edit</button>
+      <button type="button" *ngSwitchCase==="addFacility" class="btn-main float-end rounded-2 px-5 my-3">Save</button>
+      <button type="button" *ngSwitchCase==="editFacility" class="btn-main float-end rounded-2 px-5 my-3">edit</button>
     </div>
 
   </form>
