@@ -33,7 +33,7 @@ export class CreateUserComponent {
     userName: new FormControl(null, Validators.required),
     phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
     country: new FormControl(null, Validators.required),
-    role: new FormControl(null, Validators.required),
+    role: new FormControl('user', Validators.required),
     password: new FormControl(null, [
       Validators.required,
       Validators.maxLength(20),
