@@ -1,56 +1,79 @@
-<div class="container mt-5">
-  <div class="grid md:grid-cols-3 place-items-center">
-    <div
-      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
-    >
-      <div>
-        <p>{{ DashBoardData.rooms }}</p>
-        <p>Rooms</p>
-      </div>
-      <div>
-        <mat-icon class="home-icon text-blue-800">meeting_room</mat-icon>
-      </div>
-    </div>
-    <div
-      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
-    >
-      <div>
-        <p>100</p>
-        <p>Facilities</p>
-      </div>
-      <div>
-        <mat-icon class="home-icon text-blue-800 bg-blue-950"
-          >meeting_room</mat-icon
-        >
-      </div>
-    </div>
-    <div
-      class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
-    >
-      <div>
-        <p>100</p>
-        <p>Ads</p>
-      </div>
-      <div>
-        <mat-icon class="home-icon text-blue-800 bg-blue-950"
-          >meeting_room</mat-icon
-        >
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container mt-20">
-  <div class="grid px-5 md:grid-cols-6">
-    <div>
-      <canvas
-        baseChart
-        [labels]="doughnutChartLabels"
-        [datasets]="doughnutChartDatasets"
-        [options]="doughnutChartOptions"
-        [legend]="true"
-        [type]="'doughnut'"
+<section>
+  <div class="container mt-5">
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-3 place-items-center">
+      <div
+        class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
       >
-      </canvas>
+        <div>
+          <p>{{ DashBoardData.rooms }}</p>
+          <p>Rooms</p>
+        </div>
+        <div>
+          <mat-icon class="home-icon text-blue-600 bg-blue-950"
+            >meeting_room</mat-icon
+          >
+        </div>
+      </div>
+      <div
+        class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
+      >
+        <div>
+          <p>{{ DashBoardData.facilities }}</p>
+          <p>Facilities</p>
+        </div>
+        <div>
+          <mat-icon class="home-icon text-blue-600 bg-blue-950"
+            >meeting_room</mat-icon
+          >
+        </div>
+      </div>
+      <div
+        class="home-details flex items-center justify-between bg-[#1A1B1E] text-white rounded-lg px-4"
+      >
+        <div>
+          <p>{{ DashBoardData.ads }}</p>
+          <p>Ads</p>
+        </div>
+        <div>
+          <mat-icon class="home-icon text-blue-600 bg-blue-950"
+            >meeting_room</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid sm:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 mt-20 items-center"
+    >
+      <div class="mx-auto">
+        <div class="flex justify-center complate-chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="mx-auto bg-blue-700">
+        <div class="user-wrapper bg-white w-[380px] h-[200px] p-4">
+          <div class="w-full">
+            <div class="w-[100px] h-[100px] mx-auto">
+              <canvas id="UserChart"></canvas>
+            </div>
+            <div class="flex justify-between mt-4 w-full">
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                  <span>User</span>
+                </div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="w-3 h-3 rounded-full bg-blue-400"></span>
+                  <span>Admin</span>
+                </div>
+              </div>
+              <div class="space-y-2 text-right">
+                <div>{{ DashBoardData.users.user }}</div>
+                <div>{{ DashBoardData.users.admin }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
