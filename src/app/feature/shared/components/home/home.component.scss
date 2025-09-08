@@ -1,15 +1,35 @@
-.home-details{
-    height: 120px;
-    width: 200px;
+.home-details {
+  height: 180px;
+  width: 300px;
+
+  p {
+    font-size: 26px;
+  }
 }
 
-.home-icon{
-    border-radius: 50%;
-  
+.home-icon {
+  padding: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container{
-    width:80% ;
-    margin: auto;
-    text-align: center;
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.user-wrapper {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.complate-chart {
+  width: 330px;
+  height: 330px;
 }
