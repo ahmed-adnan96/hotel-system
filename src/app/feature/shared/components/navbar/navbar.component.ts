@@ -16,13 +16,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.getCurrentUser();
   }
   username: string = localStorage.getItem('userName') ?? 'User';
-  imagePath: string = '';
+  imagePath!: string;
   private readonly _SharedService = inject(SharedService);
   private readonly Router = inject(Router);
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
       next: (res) => {
-        this.imagePath = res.data.user.profileImage;
+        // https://upskilling-egypt.com:3000/uploads/70235_2024-01-12T14:22:12.496Z_wallpaperflare.com_wallpaper%20(1).jpg
+        this.imagePath = encodeURI('https://upskilling-egypt.com:3000/' + res.data.user.profileImage)
+        console.log(this.imagePath);
+        console.log(res)
       },
     });
   }
@@ -31,6 +34,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.Router.navigate(['/auth/login']);
   }
   ngOnDestroy(): void {
-    this.currentUser.unsubscribe;
+    this.currentUser.unsubscribe();
   }
 }
