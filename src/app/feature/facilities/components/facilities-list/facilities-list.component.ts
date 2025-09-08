@@ -58,9 +58,7 @@ export class FacilitiesListComponent implements OnInit, AfterViewInit {
       data: { facility, formName }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
         this.getAllFacilities();
-      }
     });
   }
 
