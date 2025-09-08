@@ -1,1 +1,22 @@
-<p>sidebar works!</p>
+<nav class="sideNav " [ngClass]="SideBarOpened ? 'side-nav-Opened':''">
+    <div class="logo">
+        <button (click)="ToggleNav()" *ngIf="SideBarOpened" class="closeNav ">
+            <mat-icon class="navicon" style="color: #fff;">close</mat-icon>
+        </button>
+        <button (click)="ToggleNav()" *ngIf="!SideBarOpened" class="openNav">
+            <mat-icon class="navicon" style="color: #fff !important">check</mat-icon>
+        </button>
+    </div>
+    <div class="Nav-items">
+        <ul class="sidenav-nav p-0 mt-4">
+            <li class="sidenav-nav-item" *ngFor="let item of menu">
+                <a class="sidenav-nav-link" [ngClass]="SideBarOpened?'justify-content-start' : 'justify-content-center'"
+                    routerLink="{{item.menuLink}}" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <mat-icon class="sidenav-nav-icon ">{{item.icon}}</mat-icon>
+                    <span class="sidenav-nav-text" @fadeInOut *ngIf="SideBarOpened">{{item.title}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
