@@ -1,8 +1,15 @@
 export interface IFacilities {
+  success: boolean;
+  message: string;
+  data: Data;
+}
+
+export interface Data {
   facilities: Facility[];
   totalCount: number;
 }
-interface Facility {
+
+export interface Facility {
   _id: string;
   name: string;
   createdBy: CreatedBy;
@@ -10,7 +17,7 @@ interface Facility {
   updatedAt: string;
 }
 
-interface CreatedBy {
+export interface CreatedBy {
   _id: string;
   userName: string;
 }
