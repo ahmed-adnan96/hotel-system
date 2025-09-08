@@ -19,4 +19,7 @@ export class FacilitiesService {
   editFacility(id: number, data: INewFacility): Observable<INewFacility> {
     return this._http.put<INewFacility>(`admin/room-facilities/${id}`, data);
   }
+  deleteFacility(id:number){
+    return this._http.delete(`admin/room-facilities/${id}`)
+  }
 }

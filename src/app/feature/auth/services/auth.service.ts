@@ -28,7 +28,7 @@ export class AuthService {
   }
   onResetPassword(data: any): Observable<any> {
     return this._HttpClient.post('admin/users/reset-password', data);
-
+  }
 
   changePassword(data:any):Observable<any>{
     return this._HttpClient.post('admin/users/change-password' , data)
