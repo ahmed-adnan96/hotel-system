@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { FacilitiesService } from '../../services/facilities.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-add-edit-facilities',
@@ -15,16 +16,18 @@ export class AddEditFacilitiesComponent implements OnInit {
   //#region  constructor
   constructor(
     private dialogRef: MatDialogRef<AddEditFacilitiesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any | null,
     private readonly _FacilitiesService: FacilitiesService,
     private toastr: ToastrService
   ) {}
+
   //#endregion
   //#region  declaration properties
   private addFacilitySub!: Subscription;
-  formName: string = 'add'; //this.data.formName;
-  FacilityID: number = 1; // this.data.catID;
-  FacilityName: string = 'Mohamed'; // this.data.catName;
+  formName!: string;
+  FacilityID!: number;
+  FacilityName!: string;
+
   //#endregion
 
   //#region declaration FormGroup
@@ -38,12 +41,12 @@ export class AddEditFacilitiesComponent implements OnInit {
   //#endregion
 
   //#region declaration void
+
   addEditFacility(data: FormGroup) {
     if (this.FacilityForm.invalid) {
       this.FacilityForm.markAllAsTouched();
       return;
     }
-
     if (this.formName === 'addFacility') {
       this.addFacilitySub = this._FacilitiesService
         .addNewFacility(data.value)
@@ -53,6 +56,7 @@ export class AddEditFacilitiesComponent implements OnInit {
               `add ${res.name} success id:${res.id}`,
               'success!'
             );
+            this.closeDialog();
           },
         });
     } else if (this.formName === 'editFacility') {
@@ -64,8 +68,21 @@ export class AddEditFacilitiesComponent implements OnInit {
               `update ${res.name} success id:${res.id}`,
               'success!'
             );
+            this.closeDialog();
           },
         });
+    }
+  }
+  receiveData() {
+    if (this.data) {
+      this.formName = this.data.formName ?? '';
+      this.FacilityID = this.data.facility?._id ?? 0;
+      this.FacilityName = this.data.facility?.name ?? '';
+      if (this.formName === 'viewFacility') {
+        this.FacilityForm.get('name')?.disable();
+      } else {
+        this.FacilityForm.get('name')?.enable();
+      }
     }
   }
 
@@ -77,10 +94,11 @@ export class AddEditFacilitiesComponent implements OnInit {
 
   //#region Component Life Cycle
   ngOnInit(): void {
+    this.receiveData();
     this.FacilityForm.patchValue({
       name: this.FacilityName,
     });
   }
   //#endregion
 }
-// 
+//

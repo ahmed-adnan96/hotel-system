@@ -1,38 +1,39 @@
-<div class="container dilog ">
-  <div class="d-flex align-items-center justify-content-between">
-    <div [ngSwitch]="formName">
-      <h2 mat-dialog-title *ngSwitchCase=="addFacility" class="ps-0">Add Facility</h2>
-      <h2 mat-dialog-title *ngSwitchCase=="editFacility" class="ps-0">Edit Facility</h2>
-      <h2 mat-dialog-title *ngSwitchCase=="viewFacility" class="ps-0">view Facility</h2>
-    </div>
+<div class=" bg-white p-3 bg-transparent">
+  <div class="flex items-center justify-between text-red-700">
+    <h2 mat-dialog-title class="pl-0 text-xl ">{{formName}}</h2>
     <mat-dialog-actions>
-      <button class="btn bg-light" (click)="closeDialog()">
-        <i class="fa-solid fa-circle-xmark text-danger"></i>
+
+      <button type="button" (click)="closeDialog()">
+        <mat-icon>cancel</mat-icon>
       </button>
     </mat-dialog-actions>
   </div>
-
-  <form class="example-form" [formGroup]="FacilityForm" (ngSubmit)="addEditFacility(FacilityForm)">
-    <mat-form-field class="w-100">
+  <form class="mt-4 space-y-4" [formGroup]="FacilityForm" (ngSubmit)="addEditFacility(FacilityForm)">
+    <mat-form-field class="w-full">
       <mat-label>Facility Name</mat-label>
-      <input matInput #message maxlength="256" placeholder="insert Facility Name" formControlName='name'
-        [disabled]="formName === `viewFacility` ">
+      <input matInput #message maxlength="256" placeholder="Insert Facility Name" formControlName="name"
+        [disabled]="formName == 'viewFacility'">
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
     </mat-form-field>
+
     <div>
-      <mat-error *ngIf=" FacilityForm.get('name')?.errors?.['required'] && FacilityForm.get('name')?.touched">
+      <mat-error *ngIf="FacilityForm.get('name')?.errors?.['required'] && FacilityForm.get('name')?.touched">
         Facility Name is required
       </mat-error>
 
       <mat-error *ngIf="FacilityForm.get('name')?.errors?.['minlength'] && FacilityForm.get('name')?.touched">
         Facility Name must be more than 3 characters
       </mat-error>
-
     </div>
-    <div [ngSwitch]="formName">
-      <button *ngSwitchCase==="addFacility" class="btn-main float-end rounded-2 px-5 my-3">Save</button>
-      <button *ngSwitchCase==="editFacility" class="btn-main float-end rounded-2 px-5 my-3">edit</button>
+    <div [ngSwitch]="formName" class="flex justify-end">
+      <button *ngSwitchCase="'addFacility'"
+        class="bg-primary hover:bg-blue-700 text-white font-medium rounded-xl px-6 py-2 my-3">
+        Save
+      </button>
+      <button *ngSwitchCase="'editFacility'"
+        class="bg-primary hover:bg-blue-700 text-white font-medium rounded-xl px-6 py-2 my-3">
+        Edit
+      </button>
     </div>
-
   </form>
 </div>
