@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './feature/shared/components/layout/layout.component';
 import { HomeComponent } from './feature/shared/components/home/home.component';
 import { authGuard } from './core/guards/auth.guard';
+import { ProfileComponent } from './feature/shared/components/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -16,6 +17,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      { path: 'Profile', component: ProfileComponent },
+
       {
         path: 'facilities',
         loadChildren: () =>
