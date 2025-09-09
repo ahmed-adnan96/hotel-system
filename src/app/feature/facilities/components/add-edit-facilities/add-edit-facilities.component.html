@@ -1,14 +1,13 @@
-<div class=" bg-white p-3 bg-transparent">
-  <div class="flex items-center justify-between text-red-700">
-    <h2 mat-dialog-title class="pl-0 text-xl ">{{formName}}</h2>
-    <mat-dialog-actions>
-
+<div class="px-3">
+  <div class="flex items-center justify-between p-2">
+    <h2 class="text-xl text-primary ">{{formName}}</h2>
+    <mat-dialog-actions class="p-0 m-0">
       <button type="button" (click)="closeDialog()">
-        <mat-icon>cancel</mat-icon>
+        <mat-icon class=" text-red-700">cancel</mat-icon>
       </button>
     </mat-dialog-actions>
   </div>
-  <form class="mt-4 space-y-4" [formGroup]="FacilityForm" (ngSubmit)="addEditFacility(FacilityForm)">
+  <form class="my-4 space-y-4" [formGroup]="FacilityForm" (ngSubmit)="addEditFacility(FacilityForm)">
     <mat-form-field class="w-full">
       <mat-label>Facility Name</mat-label>
       <input matInput #message maxlength="256" placeholder="Insert Facility Name" formControlName="name"

@@ -22,6 +22,7 @@ export class AddEditFacilitiesComponent implements OnInit {
   ) {}
 
   //#endregion
+
   //#region  declaration properties
   private addFacilitySub!: Subscription;
   formName!: string;

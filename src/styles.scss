@@ -27,12 +27,12 @@ body {
 }
 
 .btn {
-  @apply bg-[#3252DF]
+  @apply bg-primary
     text-white
     py-3
     rounded-lg
     border
-    border-[#3252DF]
+    border-primary
     transition
     duration-300
     ease-in-out;
@@ -40,7 +40,10 @@ body {
 
 .btn:hover {
   @apply bg-white
-    text-[#3252DF];
+    text-primary;
+}
+.center {
+  @apply flex justify-center items-center;
 }
 // mat error
 .mat-mdc-form-field-error-wrapper {
@@ -49,7 +52,7 @@ body {
 }
 
 // disable button
-.btn-disabled{
+.btn-disabled {
   background-color: #ccc;
   cursor: not-allowed;
   border-color: #ccc;
