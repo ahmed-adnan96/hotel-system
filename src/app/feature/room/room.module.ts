@@ -20,7 +20,9 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListRoomComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

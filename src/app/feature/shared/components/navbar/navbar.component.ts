@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         // https://upskilling-egypt.com:3000/uploads/70235_2024-01-12T14:22:12.496Z_wallpaperflare.com_wallpaper%20(1).jpg
         this.imagePath = encodeURI('https://upskilling-egypt.com:3000/' + res.data.user.profileImage)
         console.log(this.imagePath);
-        console.log(res)
       },
     });
   }
