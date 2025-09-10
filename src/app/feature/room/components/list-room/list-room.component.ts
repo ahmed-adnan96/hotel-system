@@ -2,7 +2,7 @@ import { Data } from './../../../facilities/interfaces/ifacilities';
 import { RoomingService } from './../../services/rooming.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { IRootObject } from '../../interfaces/IRoom';
+import { IRootObject } from '../../interfaces/IRoomDetailes';
 import { ViewRoomComponent } from '../view-room/view-room.component';
 import { MatDialog } from '@angular/material/dialog';
 
