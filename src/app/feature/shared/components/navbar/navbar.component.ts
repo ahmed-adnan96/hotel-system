@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { SharedService } from '../../services/shared.service';
 import { environment } from '../../../../core/environment/environment';
 import { Router } from '@angular/router';
+import { IProfile } from '../../interfaces/IProfile';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private readonly Router = inject(Router);
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
-      next: (res) => {
+      next: (res: IProfile) => {
         this.imagePath = res.data.user.profileImage;
       },
     });
