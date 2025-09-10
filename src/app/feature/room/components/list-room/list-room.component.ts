@@ -29,9 +29,9 @@ export class ListRoomComponent implements OnInit {
   roomList: any;
   constructor(
     private _RoomingService: RoomingService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _ToastrService: ToastrService
   ) {}
-  constructor(private _RoomingService: RoomingService, private _ToastrService: ToastrService, private dialog: MatDialog) { }
   ngOnInit(): void {
     this.getAllRooms();
   }
