@@ -1,3 +1,4 @@
+import { IRoomRequest, IRoomResponse } from './../interfaces/iroom';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class RoomingService {
   constructor(private _HttpClient: HttpClient) {}
-  createRoom(roomDetails: any): Observable<any> {
-    return this._HttpClient.post('admin/rooms', roomDetails);
+  createRoom(roomDetails: FormData): Observable<IRoomResponse> {
+    return this._HttpClient.post<IRoomResponse>('admin/rooms', roomDetails);
   }
   editRoom(roomDetails: any, id: any): Observable<any> {
     return this._HttpClient.put(`admin/rooms/${id}`, roomDetails);
