@@ -42,6 +42,9 @@ export class ViewRoomComponent implements OnInit {
       },
     });
   }
+  closeDialog() {
+    this.dialogRef.close();
+  }
   //#endregion
 
   //#region carouselOptions
@@ -54,15 +57,15 @@ export class ViewRoomComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: false,
     navSpeed: 700,
-    navText: ['‹', '›'],
+    dots: true,
+    nav: false,
+    navText: ['<', '>'],
     responsive: {
       0: { items: 1 },
       600: { items: 1 },
       1000: { items: 1 },
     },
-    nav: true,
     animateOut: 'fadeOut',
     animateIn: 'fadeIn',
   };

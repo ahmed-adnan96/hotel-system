@@ -1,70 +1,79 @@
 <div *ngIf="room._id">
-    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-6 space-y-6">
-        <owl-carousel-o *ngIf="room.images.length" [options]="carouselOptions" class="rounded-xl overflow-hidden">
-            <ng-template carouselSlide *ngFor="let img of room.images">
-                <div class="flex justify-center items-center bg-gray-100">
-                    <img [src]="img" alt="Room Image" class="w-full h-80 object-contain rounded-lg" />
+    <div class=" shadow-lg rounded-2xl p-6 w-full">
+        <mat-dialog-actions class="p-0 m-0">
+            <button type="button" (click)="closeDialog()">
+                <mat-icon class="text-red-700">cancel</mat-icon>
+            </button>
+        </mat-dialog-actions>
+        <div class="grid grid-cols-12 gap-8 items-center">
+
+            <div class="w-full col-span-12 sm:col-span-6 flex justify-center items-center relative">
+                <owl-carousel-o *ngIf="room.images.length" [options]="carouselOptions"
+                    class="rounded-xl overflow-hidden w-full max-h-[400px] flex items-center relative ">
+                    <ng-template carouselSlide *ngFor="let img of room.images">
+                        <div class="flex justify-center items-center h-[380px]">
+                            <img [src]="img" alt="Room Image" class="max-h-full object-contain rounded-lg" />
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+
+            <div class="w-full col-span-12 sm:col-span-6">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                        <mat-icon class="text-black">meeting_room</mat-icon>
+                        {{ room.roomNumber || '-' }}
+                    </h2>
+
+                    <p class="flex items-center gap-2 text-gray-600">
+                        <mat-icon class="text-black">person</mat-icon>
+                        Created by: <span class="font-semibold">{{ room.createdBy.userName || 'Unknown' }}</span>
+                    </p>
+
+                    <p class="flex items-center gap-2 text-gray-600">
+                        <mat-icon class="text-black">groups</mat-icon>
+                        Capacity: <span class="font-semibold">{{ room.capacity || '-' }}</span> persons
+                    </p>
+
+                    <p class="flex items-center gap-2 text-gray-600">
+                        <mat-icon class="text-black">attach_money</mat-icon>
+                        Price: <span class="font-semibold text-primary">{{ room.price | currency }}</span>
+                    </p>
+
+                    <p class="flex items-center gap-2 text-gray-600">
+                        <mat-icon class="text-black">local_offer</mat-icon>
+                        Discount: <span class="font-semibold text-red-500">{{ room.discount || 0 }}%</span>
+                    </p>
                 </div>
-            </ng-template>
-        </owl-carousel-o>
 
-        <div class="space-y-3">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <mat-icon class="text-black">meeting_room</mat-icon>
-                Room: {{ room.roomNumber }}
-            </h2>
+                <hr class="my-4">
 
-            <p class="flex items-center gap-2 text-gray-600">
-                <mat-icon class="text-black">person</mat-icon>
-                Created by: <span class="font-semibold">{{ room.createdBy.userName }}</span>
-            </p>
+                <div *ngIf="room.facilities.length">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <mat-icon class="text-black">construction</mat-icon>
+                        Facilities
+                    </h3>
+                    <ul class="flex flex-wrap gap-4 text-gray-700">
+                        <li *ngFor="let facility of room.facilities" class="flex items-center gap-1">
+                            <mat-icon class="text-black text-sm">check_circle</mat-icon>
+                            {{ facility.name || '-' }}
+                        </li>
+                    </ul>
+                </div>
 
-            <p class="flex items-center gap-2 text-gray-600">
-                <mat-icon class="text-black">groups</mat-icon>
-                Capacity: <span class="font-semibold">{{ room.capacity }}</span> persons
-            </p>
+                <hr class="my-4">
 
-            <p class="flex items-center gap-2 text-gray-600">
-                <mat-icon class="text-black">attach_money</mat-icon>
-                Price: <span class="font-semibold text-primary">{{ room.price | currency }}</span>
-            </p>
-
-            <p class="flex items-center gap-2 text-gray-600">
-                <mat-icon class="text-black">local_offer</mat-icon>
-                Discount: <span class="font-semibold text-red-500">{{ room.discount }}%</span>
-            </p>
+                <div class="text-sm text-gray-500 space-y-1">
+                    <p class="flex items-center gap-2">
+                        <mat-icon class="text-black">event</mat-icon>
+                        Created At: {{ room.createdAt | date: 'dd-MM-yyyy' }}
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <mat-icon class="text-black">update</mat-icon>
+                        Updated At: {{ room.updatedAt | date: 'dd-MM-yyyy' }}
+                    </p>
+                </div>
+            </div>
         </div>
-
-        <hr>
-        <div *ngIf="room.facilities.length">
-            <h3 class="text-lg font-semibold text-gray-800 mb-2 flex items-center gap-4">
-                <mat-icon class="text-black">construction</mat-icon>
-                Facilities
-            </h3>
-
-            <ul class="flex flex-wrap gap-4 text-gray-700">
-                <li *ngFor="let facility of room.facilities" class="flex items-center ">
-                    <mat-icon class="text-black text-sm">check_circle</mat-icon>
-                    {{ facility.name }}
-                </li>
-            </ul>
-        </div>
-
-
-        <hr>
-
-        <div class="text-sm text-gray-500 space-y-1">
-            <p>
-                <mat-icon class="text-black">event</mat-icon>
-                Created At: {{ room.createdAt | date: 'dd-MM-yyyy' }}
-            </p>
-            <p>
-                <mat-icon class="text-black">update</mat-icon>
-                Updated At: {{ room.updatedAt | date: 'dd-MM-yyyy' }}
-            </p>
-
-
-        </div>
-
     </div>
 </div>

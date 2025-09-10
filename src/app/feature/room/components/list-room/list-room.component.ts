@@ -1,6 +1,6 @@
 import { Data } from './../../../facilities/interfaces/ifacilities';
 import { RoomingService } from './../../services/rooming.service';
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IRootObject } from '../../interfaces/IRoomDetailes';
@@ -42,11 +42,7 @@ export class ListRoomComponent implements OnInit {
   openDialog(roomId: String) {
     const dialogRef = this.dialog.open(ViewRoomComponent, {
       data: { roomId },
-
-      width: 'auto',
-      height: 'auto',
-      maxWidth: '90%',
-      // marginBlock:'20px'
+      width: '1000PX',
     });
   }
 
@@ -75,27 +71,25 @@ export class ListRoomComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '400px',
       minHeight: '300px',
-      data: {id: id },
+      data: { id: id },
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.DeleteRoom(id);
       }
-    })
+    });
   }
-
-
 
   //delete Room
   DeleteRoom(id: number) {
     this._RoomingService.deleteRoom(id).subscribe({
       next: (res) => {
-        console.log(res)
+        console.log(res);
       },
       complete: () => {
         this._ToastrService.success('Deleted room successfully');
-        this.getAllRooms()
-      }
+        this.getAllRooms();
+      },
     });
   }
 }
