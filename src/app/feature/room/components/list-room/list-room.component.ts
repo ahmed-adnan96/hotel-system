@@ -45,8 +45,8 @@ export class ListRoomComponent implements OnInit {
 
       width: 'auto',
       height: 'auto',
-      maxWidth: '90vw',
-      maxHeight: '90vh',
+      maxWidth: '90%',
+      // marginBlock:'20px'
     });
   }
 
@@ -75,7 +75,7 @@ export class ListRoomComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '400px',
       minHeight: '300px',
-      data: { name: name, id: id },
+      data: {id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
