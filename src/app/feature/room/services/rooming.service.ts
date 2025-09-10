@@ -2,6 +2,7 @@ import { IRoomRequest, IRoomResponse } from './../interfaces/iroom';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IRootObject } from '../interfaces/IRoom';
 
 @Injectable({
   providedIn: 'root',
@@ -14,15 +15,15 @@ export class RoomingService {
   editRoom(roomDetails: any, id: any): Observable<any> {
     return this._HttpClient.put(`admin/rooms/${id}`, roomDetails);
   }
-  getRoomDetails(id: any): Observable<any> {
-    return this._HttpClient.get(`admin/rooms/${id}`);
+  getRoomDetails(id: string): Observable<IRootObject> {
+    return this._HttpClient.get<IRootObject>(`admin/rooms/${id}`);
   }
   deleteRoom(id: any): Observable<any> {
     return this._HttpClient.delete(`admin/rooms/${id}`);
   }
-  getAllRoom(data:any): Observable<any> {
+  getAllRoom(data: any): Observable<any> {
     return this._HttpClient.get('admin/rooms', {
-      params: data
-    } );
+      params: data,
+    });
   }
 }

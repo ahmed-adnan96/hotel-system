@@ -21,10 +21,9 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [
-    ListRoomComponent,
-    AddRoomComponent
-  ],
+
+  declarations: [ListRoomComponent, ViewRoomComponent,AddRoomComponent],
+
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
