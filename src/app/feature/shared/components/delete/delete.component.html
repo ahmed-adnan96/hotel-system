@@ -1,13 +1,21 @@
 
   <div class="rounded">
     <!-- Header -->
-    <div class="flex justify-end p-2">
-      <button id="closeIcon" (click)="CloseModal()"
+    <!-- <div class="flex justify-end p-2"> -->
+      <!-- <button id="closeIcon" (click)="CloseModal()"
         class="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-200 transition-all">
         <mat-icon class="close-icon text-base">close</mat-icon>
-      </button>
-    </div>
+      </button> -->
+      <!-- <button type="button" (click)="CloseModal()">
+        <mat-icon class=" text-red-700">close</mat-icon>
+      </button> -->
+    <!-- </div> -->
 
+        <mat-dialog-actions class="p-0 m-0">
+      <button type="button" (click)="CloseModal()">
+        <mat-icon class=" text-red-700">close</mat-icon>
+      </button>
+    </mat-dialog-actions>
 
     <!-- Body -->
     <div class="delete-modal-body text-center my-4 p-3">

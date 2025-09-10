@@ -18,7 +18,7 @@ export class RoomingService {
   getRoomDetails(id: string): Observable<IRootObject> {
     return this._HttpClient.get<IRootObject>(`admin/rooms/${id}`);
   }
-  deletRoom(id: any): Observable<any> {
+  deleteRoom(id: any): Observable<any> {
     return this._HttpClient.delete(`admin/rooms/${id}`);
   }
   getAllRoom(data: any): Observable<any> {

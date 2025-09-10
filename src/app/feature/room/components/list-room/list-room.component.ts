@@ -1,9 +1,10 @@
 import { Data } from './../../../facilities/interfaces/ifacilities';
 import { RoomingService } from './../../services/rooming.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { IRootObject } from '../../interfaces/IRoom';
 import { ViewRoomComponent } from '../view-room/view-room.component';
+import { DeleteComponent } from '../../../shared/components/delete/delete.component';
+import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -28,7 +29,8 @@ export class ListRoomComponent implements OnInit {
   roomList: any;
   constructor(
     private _RoomingService: RoomingService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _ToastrService: ToastrService
   ) {}
   ngOnInit(): void {
     this.getAllRooms();
@@ -62,6 +64,35 @@ export class ListRoomComponent implements OnInit {
       next: (res) => {
         this.dataSource = new MatTableDataSource(res.data.rooms);
       },
+    });
+  }
+
+  // open Dialog
+  openDialogDelete(id: number) {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      width: '400px',
+      minHeight: '300px',
+      data: { name: name, id: id },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.DeleteRoom(id);
+      }
+    })
+  }
+
+
+
+  //delete Room
+  DeleteRoom(id: number) {
+    this._RoomingService.deleteRoom(id).subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+      complete: () => {
+        this._ToastrService.success('Deleted room successfully');
+        this.getAllRooms()
+      }
     });
   }
 }
