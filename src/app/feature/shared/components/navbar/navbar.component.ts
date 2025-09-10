@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { SharedService } from '../../services/shared.service';
 import { environment } from '../../../../core/environment/environment';
 import { Router } from '@angular/router';
+import { IProfile } from '../../interfaces/IProfile';
 
 @Component({
   selector: 'app-navbar',
@@ -21,10 +22,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private readonly Router = inject(Router);
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
-      next: (res) => {
-        // https://upskilling-egypt.com:3000/uploads/70235_2024-01-12T14:22:12.496Z_wallpaperflare.com_wallpaper%20(1).jpg
-        this.imagePath = encodeURI('https://upskilling-egypt.com:3000/' + res.data.user.profileImage)
-        console.log(this.imagePath);
+
+      next: (res: IProfile) => {
+        this.imagePath = res.data.user.profileImage;
       },
     });
   }

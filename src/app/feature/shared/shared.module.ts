@@ -22,9 +22,15 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [NavbarComponent, SidebarComponent, LayoutComponent],
+  declarations: [
+    NavbarComponent,
+    SidebarComponent,
+    LayoutComponent,
+    ProfileComponent,
+  ],
   imports: [
     CommonModule,
     SharedRoutingModule,
