@@ -21,6 +21,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
+    ListRoomComponent,
     AddRoomComponent
   ],
   imports: [

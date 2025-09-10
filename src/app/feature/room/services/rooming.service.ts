@@ -20,7 +20,9 @@ export class RoomingService {
   deletRoom(id: any): Observable<any> {
     return this._HttpClient.delete(`admin/rooms/${id}`);
   }
-  getAllRoom(page: number, size: number): Observable<any> {
-    return this._HttpClient.get(`admin/rooms?page=${page}&size=${size}`);
+  getAllRoom(data:any): Observable<any> {
+    return this._HttpClient.get('admin/rooms', {
+      params: data
+    } );
   }
 }
