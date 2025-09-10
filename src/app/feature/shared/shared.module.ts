@@ -23,6 +23,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatSortModule,
     DragDropModule,
     NgxDropzoneModule,
+    CarouselModule,
   ],
   exports: [
     CommonModule,
@@ -75,6 +77,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatSortModule,
     DragDropModule,
     NgxDropzoneModule,
+    CarouselModule,
   ],
 })
 export class SharedModule {}
