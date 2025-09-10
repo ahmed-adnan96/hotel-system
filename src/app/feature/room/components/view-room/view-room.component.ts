@@ -1,8 +1,15 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  inject,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RoomingService } from '../../services/rooming.service';
 import { IRoom, IRootObject } from '../../interfaces/IRoom';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-view-room',
   templateUrl: './view-room.component.html',
@@ -10,8 +17,14 @@ import { IRoom, IRootObject } from '../../interfaces/IRoom';
   standalone: false,
 })
 export class ViewRoomComponent implements OnInit {
+  constructor(
+    public dialogRef: MatDialogRef<ViewRoomComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { roomId: string }
+  ) {}
+
   //#region inject services
   private readonly _RoomingService = inject(RoomingService);
+
   //#endregion
 
   //#region declaration properties
@@ -20,10 +33,9 @@ export class ViewRoomComponent implements OnInit {
 
   //#region declaration Void
   gatRoomDetails() {
-    this._RoomingService.getRoomDetails('68bfcfbf7ccfcdd45ee8f662').subscribe({
+    this._RoomingService.getRoomDetails(this.data.roomId).subscribe({
       next: (res: IRootObject) => {
         {
-          console.log(res);
           this.room = res.data.room;
         }
       },
@@ -32,13 +44,15 @@ export class ViewRoomComponent implements OnInit {
   //#endregion
 
   //#region carouselOptions
-  carouselOptions = {
+
+  carouselOptions: OwlOptions = {
     loop: true,
     autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     mouseDrag: true,
     touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 700,
     navText: ['‹', '›'],
@@ -48,7 +62,10 @@ export class ViewRoomComponent implements OnInit {
       1000: { items: 1 },
     },
     nav: true,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
   };
+
   //#endregion
 
   //#region component life cycle.
