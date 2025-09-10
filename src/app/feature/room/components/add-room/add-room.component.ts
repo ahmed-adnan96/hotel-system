@@ -1,9 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RoomingService } from '../../services/rooming.service';
 import { FacilitiesService } from '../../../facilities/services/facilities.service';
 import { Facility } from '../../../facilities/interfaces/ifacilities';
-import { IRoomRequest, IRoomResponse } from '../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddRoomComponent implements OnInit {
   srcImg?: string
   selectedFiles: File[] = [];
   facilitiesList: Facility[] = []
-  constructor(private _roomService: RoomingService, private _facilitiesService: FacilitiesService , private _toastrService: ToastrService) { }
+  constructor(private _roomService: RoomingService, private _facilitiesService: FacilitiesService, private _toastrService: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllFacilities()
@@ -53,10 +53,10 @@ export class AddRoomComponent implements OnInit {
 
     this._roomService.createRoom(myData).subscribe({
       next: (res) => {
-        console.log(res);
+        this.router.navigate(['/dashboard/room/listRoom']);
       },
-      complete:()=>{
-        this._toastrService.success('Room Created Successfully')
+      complete: () => {
+        this._toastrService.success('Room Created Successfully');
       }
     });
   }

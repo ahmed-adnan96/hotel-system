@@ -7,6 +7,7 @@ import { AddRoomComponent } from './components/add-room/add-room.component';
 import { EditRoomComponent } from './components/edit-room/edit-room.component';
 import { ListRoomComponent } from './components/list-room/list-room.component';
 import { SharedModule } from '../shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   { path: '', redirectTo: 'listRoom', pathMatch: 'full' },
