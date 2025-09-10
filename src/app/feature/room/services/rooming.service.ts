@@ -2,7 +2,7 @@ import { IRoomRequest, IRoomResponse } from './../interfaces/iroom';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IRootObject } from '../interfaces/IRoom';
+import { IRootObject } from '../interfaces/IRoomDetailes';
 
 @Injectable({
   providedIn: 'root',
