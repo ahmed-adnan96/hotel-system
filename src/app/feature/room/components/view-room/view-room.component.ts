@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RoomingService } from '../../services/rooming.service';
+import { IRoom, IRootObject } from '../../interfaces/IRoomDetailes';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IRoom, IRootObject } from '../../interfaces/IRoom';
+
 @Component({
   selector: 'app-view-room',
   templateUrl: './view-room.component.html',
