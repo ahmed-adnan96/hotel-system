@@ -1,1 +1,73 @@
-<p>add-room works!</p>
+<section class="p-6 ">
+  <form [formGroup]="roomForm" (ngSubmit)="createRoom()">
+    <div class="flex flex-col gap-2">
+      <div>
+        <mat-form-field class="w-full transparent-input border-none mt-4">
+          <mat-label class="text-[#152C5B]">Room Number</mat-label>
+          <input type="text" matInput placeholder="Please type here ..." formControlName="roomNumber" />
+          <mat-error *ngIf="roomForm.get('roomNumber')?.errors?.['required'] && roomForm.get('roomNumber')?.touched">
+            roomNumber is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1">
+          <mat-form-field appearance="fill" class="w-full transparent-input mt-4">
+            <mat-label class="text-[#152C5B]">Price</mat-label>
+            <input type="number" matInput placeholder="Please type here ..." formControlName="price" />
+            <mat-error *ngIf="roomForm.get('price')?.errors?.['required'] && roomForm.get('price')?.touched">
+              price is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="flex-1">
+          <mat-form-field class="w-full transparent-input mt-4">
+            <mat-label class="text-[#152C5B]">Capacity</mat-label>
+            <input type="number" matInput placeholder="Please type here ..." formControlName="capacity" />
+            <mat-error *ngIf="roomForm.get('capacity')?.errors?.['required'] && roomForm.get('capacity')?.touched">
+              capacity is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1">
+          <mat-form-field class="w-full transparent-input mt-4">
+            <mat-label class="text-[#152C5B]">Discount</mat-label>
+            <input type="number" matInput placeholder="Please type here ..." formControlName="discount" />
+            <mat-error *ngIf="roomForm.get('discount')?.errors?.['required'] && roomForm.get('discount')?.touched">
+              discount is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="flex-1">
+          <mat-form-field class="w-full transparent-input mt-4">
+            <mat-label class="text-[#152C5B]">Select a facilities</mat-label>
+            <mat-select formControlName="facilities" multiple placeholder="Please select a facilities">
+              @for (facility of facilitiesList; track facility) {
+              <mat-option [value]="facility._id">{{facility.name}}</mat-option>
+              }
+            </mat-select>
+            <mat-error *ngIf="roomForm.get('facilities')?.errors?.['required'] && roomForm.get('facilities')?.touched">
+              facilities is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <ngx-dropzone class="border-green-500" (change)="onSelect($event)">
+        @if (selectedFiles.length === 0) {
+        <div class="flex flex-col items-center justify-center h-full w-full bg-[#F1FFF0] mx-auto p-6">
+          <mat-icon>cloud_upload</mat-icon>
+          <ngx-dropzone-label>Drag & Drop or <span class="text-green-500">Choose a Room Images</span> to
+            Upload</ngx-dropzone-label>
+        </div>
+        }
+        <ngx-dropzone-image-preview class="mx-auto" ngProjectAs="ngx-dropzone-preview" [file]="f"
+          *ngFor="let f of selectedFiles" [removable]="true" (removed)="onRemove(f)">
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+      <button type="submit" [disabled]="roomForm.invalid" [class.btn-disabled]="roomForm.invalid"
+        class="btn my-5 w-full" color="primary">Create Room</button>
+    </div>
+  </form>
+</section>
