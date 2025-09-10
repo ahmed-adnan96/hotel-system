@@ -31,6 +31,21 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./feature/room/room.module').then((m) => m.RoomModule),
       },
+      {
+        path: 'ads',
+        loadChildren: () =>
+          import('./feature/ads/ads.module').then((m) => m.AdsModule),
+      },
+      {
+        path: 'booking',
+        loadComponent: () =>
+          import('./feature/stanaloneComponents/booking/booking.component').then((m) => m.BookingComponent),
+      },
+      {
+        path: 'userList',
+        loadComponent: () =>
+          import('./feature/stanaloneComponents/user-list/user-list.component').then((m) => m.UserListComponent),
+      },
     ],
     canActivate: [authGuard],
   },
@@ -42,3 +57,4 @@ export const routes: Routes = [
       ),
   },
 ];
+

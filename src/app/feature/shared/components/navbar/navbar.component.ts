@@ -1,7 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../../services/shared.service';
-import { environment } from '../../../../core/environment/environment';
 import { Router } from '@angular/router';
 import { IProfile } from '../../interfaces/IProfile';
 
