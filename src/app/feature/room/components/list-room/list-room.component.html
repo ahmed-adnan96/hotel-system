@@ -31,14 +31,14 @@
         <th mat-header-cell *matHeaderCellDef>Images</th>
         <td mat-cell *matCellDef="let element">
           <div class="flex justify-start gap-2 flex-wrap">
-            <div class="flex justify-start gap-2 flex-wrap">
+            <div class="flex justify-start gap-2 flex-wrap rounded-sm">
               @if (element.images.length > 0 ) {
               <img *ngFor="let img of element.images" [src]="img" alt="Image" width="100" height="100"
                 class="rounded border table-img" />
               }
               @else {
               <img src="/assets/images/Hotel Booking.gif" alt="Image" width="100" height="100"
-                class="rounded border table-img" />
+                class="rounded border table-img rounded-sm" />
               }
             </div>
 

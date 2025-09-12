@@ -17,3 +17,23 @@
     }
 }
 
+.body{
+    width: calc(100% - 5rem);
+    transition: all .6s ease;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    min-height: 100vh;
+    margin-left: 4rem;
+}
+
+.when_side_open{
+    width: calc(100% - 9rem);
+    margin-left: 9rem;
+}
+
+.when_side_close{
+    width: calc(100% - 4rem);
+    margin-left: 4rem;   
+}
+
