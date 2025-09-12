@@ -24,7 +24,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { TableFilterPipe } from '../../core/Pipes/table-filter.pipe';
+
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,7 @@ import { TableFilterPipe } from '../../core/Pipes/table-filter.pipe';
     DragDropModule,
     NgxDropzoneModule,
     CarouselModule,
-    TableFilterPipe
+    MatSort,
   ],
   exports: [
     CommonModule,
@@ -80,7 +82,7 @@ import { TableFilterPipe } from '../../core/Pipes/table-filter.pipe';
     DragDropModule,
     NgxDropzoneModule,
     CarouselModule,
-    TableFilterPipe
+    MatSort,
   ],
 })
 export class SharedModule {}
