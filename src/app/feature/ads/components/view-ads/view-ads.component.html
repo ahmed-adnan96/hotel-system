@@ -1,1 +1,65 @@
-<p>view-ads works!</p>
+<mat-dialog-actions align="end" class="py-0">
+  <button type="button" (click)="CloseModal()">
+    <mat-icon class="bg-red-500 rounded-full text-white">cancel</mat-icon>
+  </button>
+</mat-dialog-actions>
+
+<mat-dialog-content class="grid grid-cols-2 gap-4 pb-4 pt-0 mb-3">
+  <!-- Room Image -->
+  <div class="col-span-2 flex justify-center">
+    <img
+      [src]="data.room.images || 'assets/images/img-profile.jpg'"
+      alt="Room Image"
+      class="w-40 h-32 object-cover rounded-lg shadow-md border" />
+  </div>
+
+  <!-- Room Number -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Room Number:</span>
+    <span class="font-medium text-center">{{data.room.roomNumber}}</span>
+  </div>
+
+  <!-- Capacity -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Capacity</span>
+    <span class="font-medium text-center">{{data.room.capacity}} persons</span>
+  </div>
+
+  <!-- Status -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Status:</span>
+    <span [class.text-green-600]="data.isActive" [class.text-red-600]="!data.isActive">
+      {{data.isActive ? 'Active' : 'Inactive'}}
+    </span>
+  </div>
+
+  <!-- Price -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Price:</span>
+    <span class="font-medium text-center">{{data.room.price}} EGP</span>
+  </div>
+
+  <!-- Discount -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center" *ngIf="data.room?.discount">
+    <span class="block text-gray-500 text-sm text-left">Discount:</span>
+    <span class="font-medium text-center ">{{data.room.discount}}%</span>
+  </div>
+
+  <!-- Created By -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Created By:</span>
+    <span class="font-medium text-center">{{data.createdBy.userName}}</span>
+  </div>
+
+  <!-- Created At -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Created At:</span>
+    <span class="font-medium text-center">{{ data.createdAt | date:'dd-mm-yyyy' }}</span>
+  </div>
+
+  <!-- Updated At -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Updated At:</span>
+    <span class="font-medium text-center">{{ data.updatedAt |date:'dd-mm-yyyy'  }}</span>
+  </div>
+</mat-dialog-content>
