@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddEditAdsComponent } from '../add-edit-ads/add-edit-ads.component';
-import { AdsService } from '../../services/IAds.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { IAd } from '../../interfaces/IAds';
@@ -9,6 +8,7 @@ import { DeleteComponent } from '../../../shared/components/delete/delete.compon
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ViewAdsComponent } from '../view-ads/view-ads.component';
+import { AdsService } from '../../services/ads.service';
 
 @Component({
   selector: 'app-list-ads',
@@ -16,7 +16,7 @@ import { ViewAdsComponent } from '../view-ads/view-ads.component';
   styleUrl: './list-ads.component.scss',
   standalone: false
 })
-export class ListAdsComponent implements OnInit, AfterViewInit {
+export class ListAdsComponent implements OnInit{
   AdsList: IAd[] = [];
   searchText: string = ''
   displayedColumns: string[] = ['roomNumber', 'price', 'discount', 'capacity', 'isActive', 'Action'];
@@ -36,11 +36,6 @@ export class ListAdsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAllAds();
-  }
-
-  ngAfterViewInit(): void {
-    // this.dataSource.sort = this.Sort;
-    // this.dataSource.paginator = this.paginator;
   }
 
   getAllAds() {
@@ -97,22 +92,22 @@ export class ListAdsComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.DeleteFacility(id);
+        this.DeleteAds(id);
       }
     })
   }
 
-  //delete Facility
-  DeleteFacility(id: number) {
-    // this._FacilitiesService.deleteFacility(id).subscribe({
-    //   next: (res) => {
-    //     console.log(res)
-    //   },
-    //   complete: () => {
-    //     this._ToastrService.success('Deleted Facility successfully');
-    //     this.getAllFacilities()
-    //   }
-    // });
+  //delete Ads
+  DeleteAds(id: number) {
+    this._adsService.deleteAds(id).subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+      complete: () => {
+        this._ToastrService.success('Deleted Ad successfully');
+        this.getAllAds()
+      }
+    });
   }
 
 
@@ -130,7 +125,6 @@ export class ListAdsComponent implements OnInit, AfterViewInit {
   }
 
 
-    dialog = inject(MatDialog);
 
   openDialog() {
     this.dialog.open(AddEditAdsComponent, {
@@ -142,12 +136,17 @@ export class ListAdsComponent implements OnInit, AfterViewInit {
   }
 
   openEditDialog(id:any) {
-    this.dialog.open(AddEditAdsComponent, {
+    const dialogRef =  this.dialog.open(AddEditAdsComponent, {
       data: {
         _id : id,
         height : '80vh',
         width : '70vh'
       },
     });
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result){
+        this.getAllAds()
+      }
+    })
   }
 }

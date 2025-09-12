@@ -122,4 +122,17 @@ export class BookingComponent implements AfterViewInit, OnInit {
     this.getAllBooking();
   }
   //#endregion
+
+    // openDialogView(data: any) {
+    //   const dialogRef = this.dialog.open(ViewAdsComponent, {
+    //     width: '400px',
+    //     minHeight: '300px',
+    //     data: data,
+    //   });
+    //   dialogRef.afterClosed().subscribe(result => {
+    //     if (result) {
+    //       console.log(result)
+    //     }
+    //   })
+    // }
 }
