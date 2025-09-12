@@ -58,7 +58,7 @@
                 <div>Action</div>
             </th>
             <td mat-cell *matCellDef="let element">
-                <button class="center gap-2">
+                <button type="button" (click)="openDialogView(element)" class="center gap-2">
                     <mat-icon class="text-primary">visibility</mat-icon> <span>View</span>
                 </button>
             </td>

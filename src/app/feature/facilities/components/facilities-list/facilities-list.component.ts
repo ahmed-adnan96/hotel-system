@@ -8,6 +8,7 @@ import { DeleteComponent } from '../../../shared/components/delete/delete.compon
 import { ToastrService } from 'ngx-toastr';
 import { MatSort, Sort, } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -16,29 +17,32 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   styleUrls: ['./facilities-list.component.scss'],
   standalone: false
 })
-export class FacilitiesListComponent implements OnInit, AfterViewInit {
+export class FacilitiesListComponent implements OnInit {
   facilitiesList: Facility[] = [];
   displayedColumns: string[] = ['name', 'createdBy', 'createdAt', 'action'];
   dataSource: any
-  constructor(private _FacilitiesService: FacilitiesService, private dialog: MatDialog, private _ToastrService: ToastrService, private _liveAnnouncer: LiveAnnouncer) { }
+  totalCount = 0;
+  pageSize = 5;
+  pageIndex = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) Sort!: MatSort
+
+  constructor(private _FacilitiesService: FacilitiesService, private dialog: MatDialog, private _ToastrService: ToastrService) { }
   ngOnInit(): void {
     this.getAllFacilities();
   }
 
-  @ViewChild(MatSort) Sort!: MatSort
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.Sort;
-  }
 
   getAllFacilities() {
     console.log('done')
     this._FacilitiesService.getAllFacilities().subscribe({
       next: (res) => {
-        console.log(res.data.facilities)
+        this.totalCount = res.data.totalCount;
         this.facilitiesList = res.data.facilities
         this.dataSource = new MatTableDataSource(this.facilitiesList);
         this.dataSource.sort = this.Sort;
+        this.dataSource.paginator = this.paginator;
       },
       error: (err) => {
         console.log(err)
@@ -58,7 +62,7 @@ export class FacilitiesListComponent implements OnInit, AfterViewInit {
       data: { facility, formName }
     });
     dialogRef.afterClosed().subscribe((result) => {
-        this.getAllFacilities();
+      this.getAllFacilities();
     });
   }
 
@@ -88,17 +92,6 @@ export class FacilitiesListComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
 }
 
 
