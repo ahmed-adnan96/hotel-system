@@ -8,7 +8,7 @@ import { DeleteComponent } from '../../../shared/components/delete/delete.compon
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ViewAdsComponent } from '../view-ads/view-ads.component';
-import { AdsService } from '../../services/ads.service';
+import { AdsService } from '../../Services/ads.service';
 
 @Component({
   selector: 'app-list-ads',
@@ -41,7 +41,6 @@ export class ListAdsComponent implements OnInit{
   getAllAds() {
     this._adsService.getAllAds().subscribe({
       next: (res) => {
-        console.log(res.data.ads)
         this.AdsList = res.data.ads
         this.totalCount = res.data.totalCount;
         this.dataSource = new MatTableDataSource<IAd>(this.AdsList);
@@ -81,8 +80,6 @@ export class ListAdsComponent implements OnInit{
   }
 
 
-
-
   // open Dialog Delete
   openDialogDelete(id: number, name: string) {
     const dialogRef = this.dialog.open(DeleteComponent, {
@@ -101,7 +98,6 @@ export class ListAdsComponent implements OnInit{
   DeleteAds(id: number) {
     this._adsService.deleteAds(id).subscribe({
       next: (res) => {
-        console.log(res)
       },
       complete: () => {
         this._ToastrService.success('Deleted Ad successfully');
@@ -117,11 +113,6 @@ export class ListAdsComponent implements OnInit{
       minHeight: '300px',
       data: data,
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result)
-      }
-    })
   }
 
 
