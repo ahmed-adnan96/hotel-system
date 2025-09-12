@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IAd } from '../../interfaces/IAds';
 
 @Component({
   selector: 'app-view-ads',
@@ -7,5 +9,11 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class ViewAdsComponent {
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: IAd, public dialogRef: MatDialogRef<ViewAdsComponent>) { }
+  CloseModal(): void {
+    this.dialogRef.close(false);
+  }
+  SubmitModal() {
+    this.dialogRef.close(true);
+  }
 }

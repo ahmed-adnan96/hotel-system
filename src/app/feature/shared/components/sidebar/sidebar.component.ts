@@ -21,7 +21,7 @@ interface IMenu {
 export class SidebarComponent {
   SideBarOpened: boolean = true;
   screenWidth = 0;
-  constructor(private _SideNavService: SidebarService) {}
+  constructor(private _SideNavService: SidebarService) { }
   ngOnInit(): void {
     this._SideNavService.setWidth(window.innerWidth);
     this._SideNavService.isOpened$.subscribe((value) => {
@@ -69,13 +69,11 @@ export class SidebarComponent {
       icon: 'meeting_room',
       menuLink: '/dashboard/room',
     },
-
-    //   {
-    //   title:"Projects",
-    //   icon:"dashboard",
-    //   menuLink:"/dashboard/manager/projects/projectsList",
-    //   isActive:this.isManager(),
-    // },
+    {
+      title: "Ads",
+      icon: "ads_click",
+      menuLink: "/dashboard/ads",
+    },
     // {
     //   title:"Tasks",
     //   icon:"checklist",

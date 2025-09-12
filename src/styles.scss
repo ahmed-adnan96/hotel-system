@@ -4,47 +4,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html {
-  @include mat.theme(
-    (
-      color: (
-        theme-type: light,
+  @include mat.theme((color: (theme-type: light,
         primary: mat.$blue-palette,
         tertiary: mat.$blue-palette,
       ),
       typography: Roboto,
       density: 0,
-    )
-  );
+    ));
 }
+// border-radios Dialog
+:root {
+  @include mat.dialog-overrides((
+    container-shape:10px));
+}
+
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .btn {
-  @apply bg-primary
-    text-white
-    py-3
-    rounded-lg
-    border
-    border-primary
-    transition
-    duration-300
-    ease-in-out;
+  @apply bg-primary text-white py-3 rounded-lg border border-primary transition duration-300 ease-in-out;
 }
 
 .btn:hover {
-  @apply bg-white
-    text-primary;
+  @apply bg-white text-primary;
 }
+
 .center {
   @apply flex justify-center items-center;
 }
+
 // mat error
 .mat-mdc-form-field-error-wrapper {
   padding: 0 !important;
@@ -56,4 +53,9 @@ body {
   background-color: #ccc;
   cursor: not-allowed;
   border-color: #ccc;
+}
+
+// pagination
+.mat-mdc-paginator-page-size-label {
+  display: none !important;
 }
