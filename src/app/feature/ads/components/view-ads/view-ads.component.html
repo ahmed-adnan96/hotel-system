@@ -1,10 +1,10 @@
-<mat-dialog-actions align="end">
-  <button type="button" (click)="CloseModal()" class="p-0">
-    <mat-icon class="bg-red-500 hover:bg-red-600 rounded-full text-white transition-colors">cancel</mat-icon>
+<mat-dialog-actions align="end" class="py-0">
+  <button type="button" (click)="CloseModal()">
+    <mat-icon class="bg-red-500 rounded-full text-white">cancel</mat-icon>
   </button>
 </mat-dialog-actions>
 
-<mat-dialog-content class="grid grid-cols-2 gap-4 p-4">
+<mat-dialog-content class="grid grid-cols-2 gap-4 pb-4 pt-0 mb-3">
   <!-- Room Image -->
   <div class="col-span-2 flex justify-center">
     <img
@@ -36,13 +36,13 @@
   <!-- Price -->
   <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
     <span class="block text-gray-500 text-sm text-left">Price:</span>
-    <span class="font-medium text-center text-green-600">{{data.room.price}} EGP</span>
+    <span class="font-medium text-center">{{data.room.price}} EGP</span>
   </div>
 
   <!-- Discount -->
   <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center" *ngIf="data.room?.discount">
     <span class="block text-gray-500 text-sm text-left">Discount:</span>
-    <span class="font-medium text-center text-blue-600">{{data.room.discount}}%</span>
+    <span class="font-medium text-center ">{{data.room.discount}}%</span>
   </div>
 
   <!-- Created By -->
@@ -63,11 +63,3 @@
     <span class="font-medium text-center">{{ data.updatedAt |date:'dd-mm-yyyy'  }}</span>
   </div>
 </mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button
-    class="bg-red-500 hover:bg-red-600 text-white font-medium text-center py-2 px-6 rounded-full transition-colors"
-    (click)="SubmitModal()">
-    Close
-  </button>
-</mat-dialog-actions>

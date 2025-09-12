@@ -13,7 +13,4 @@ export class ViewAdsComponent {
   CloseModal(): void {
     this.dialogRef.close(false);
   }
-  SubmitModal() {
-    this.dialogRef.close(true);
-  }
 }
