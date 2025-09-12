@@ -5,7 +5,7 @@
         <h2 class="text-2xl font-medium">ADS Table Details</h2>
         <p class="font-reguler">You can check all details</p>
       </div>
-      <button type="button" class="btn px-10 font-bold" color="primary">Add New Ads</button>
+      <button type="button" (click)="openDialog()" class="btn px-10 font-bold" color="primary">Add New Ads</button>
     </div>
     <mat-form-field class="w-full">
       <mat-label>Filter</mat-label>
@@ -53,8 +53,7 @@
                 <mat-icon class="text-primary" fontIcon="visibility"></mat-icon>
                 <span>View</span>
               </button>
-              <!-- (click)="openFacilityDialog(element, 'editFacility')" -->
-              <button mat-menu-item>
+              <button mat-menu-item (click)="openEditDialog(element._id)">
                 <mat-icon class="text-primary" fontIcon="edit_square"></mat-icon>
                 <span>Edit</span>
               </button>

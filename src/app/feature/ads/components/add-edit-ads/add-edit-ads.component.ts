@@ -1,10 +1,11 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AdsService } from '../../Services/ads.service';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { RoomingService } from '../../../room/services/rooming.service';
 import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { AdsService } from '../../services/ads.service';
+
 
 @Component({
   selector: 'app-add-edit-ads',
@@ -74,24 +75,27 @@ export class AddEditAdsComponent implements OnInit {
         })
         this.AddAdsForm.updateValueAndValidity();
       },
-     
-    })  
+
+    })
   }
 
   UpdateAds(){
   const formValue = this.AddAdsForm.value;
   let payload = {
-    discount: formValue.discount,  
-    isActive: formValue.isActive, 
+    discount: formValue.discount,
+    isActive: formValue.isActive,
   };
   console.log(payload)
     this._AdsService.EditADs(this.data._id, payload).subscribe({
       next:(res)=>{
         this._ToastrService.success(res.message)
+        this.SubmitModal()
       },
-    
     })
   }
 
-  
+    SubmitModal() {
+    this.dialogRef.close(true);
+  }
+
 }
