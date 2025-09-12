@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { AddEditAdsComponent } from '../add-edit-ads/add-edit-ads.component';
 import { AdsService } from '../../services/IAds.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -126,5 +127,27 @@ export class ListAdsComponent implements OnInit, AfterViewInit {
         console.log(result)
       }
     })
+  }
+
+
+    dialog = inject(MatDialog);
+
+  openDialog() {
+    this.dialog.open(AddEditAdsComponent, {
+      data: {
+        height : '80vh',
+        width : '70vh'
+      },
+    });
+  }
+
+  openEditDialog(id:any) {
+    this.dialog.open(AddEditAdsComponent, {
+      data: {
+        _id : id,
+        height : '80vh',
+        width : '70vh'
+      },
+    });
   }
 }
