@@ -1,1 +1,62 @@
-<p>add-edit-ads works!</p>
+<section class="py-5 px-5">
+  <div class="gird">
+    <div class="flex justify-between">
+      <div>
+        <p class="text-2xl font-medium">Ads</p>
+      </div>
+      <div>
+        <button (click)="onNoClick()">
+          <mat-icon
+            class="border-2 text-red-500 border-red-500 rounded-full flex justify-center items-center p-1 text-sm"
+            >close</mat-icon
+          >
+        </button>
+      </div>
+    </div>
+    <div class="mt-4">
+      <form
+        [formGroup]="AddAdsForm"
+        (ngSubmit)="this.data._id ? UpdateAds() : AddNewAds()"
+      >
+        <mat-form-field class="w-full">
+          <mat-label>Room</mat-label>
+          <mat-select formControlName="room">
+            <mat-option [value]="room._id" *ngFor="let room of roomList">{{
+              room.roomNumber
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="AddAdsForm.get('room')?.hasError('required')">
+            Room is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Discount</mat-label>
+          <input matInput formControlName="discount" />
+        <mat-error *ngIf="AddAdsForm.get('discount')?.hasError('required')">
+          Discount is required
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Active</mat-label>
+          <mat-select formControlName="isActive">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+          <mat-error *ngIf="AddAdsForm.get('isActive')?.hasError('required')">
+            isActive is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="border-t-2 border-e-gray-300 mt-3 p-3 text-end">
+          <button
+            class="btn px-6 py-2"
+            type="submit"
+            [disabled]="AddAdsForm.invalid"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
