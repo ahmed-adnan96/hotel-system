@@ -11,6 +11,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { BookingService } from '../../../core/Services/booking.service';
 import { IBooking } from '../../../core/interfaces/IBooking';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewBookingComponent } from '../components/view-booking/view-booking.component';
 @Component({
   selector: 'app-booking',
   imports: [SharedModule],
@@ -20,6 +22,7 @@ import { IBooking } from '../../../core/interfaces/IBooking';
 export class BookingComponent implements AfterViewInit, OnInit {
   //#region inject Services
   private readonly _BookingService = inject(BookingService);
+  constructor(private dialog: MatDialog) { }
   //#endregion
 
   //#region declaration properties
@@ -123,16 +126,12 @@ export class BookingComponent implements AfterViewInit, OnInit {
   }
   //#endregion
 
-    // openDialogView(data: any) {
-    //   const dialogRef = this.dialog.open(ViewAdsComponent, {
-    //     width: '400px',
-    //     minHeight: '300px',
-    //     data: data,
-    //   });
-    //   dialogRef.afterClosed().subscribe(result => {
-    //     if (result) {
-    //       console.log(result)
-    //     }
-    //   })
-    // }
+  openDialogView(data: any) {
+    console.log('openDialogView clicked:', data);
+    this.dialog.open(ViewBookingComponent, {
+      width: '400px',
+      minHeight: '300px',
+      data: data,
+    });
+  }
 }

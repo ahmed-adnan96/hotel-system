@@ -74,24 +74,16 @@ export class SidebarComponent {
       icon: "ads_click",
       menuLink: "/dashboard/ads",
     },
-    // {
-    //   title:"Tasks",
-    //   icon:"checklist",
-    //   menuLink:"/dashboard/manager/tasks",
-    //   isActive:this.isManager(),
-    // }
-    // ,
-    // {
-    //   title:"Projects",
-    //   icon:"dashboard",
-    //   menuLink:"/dashboard/employee/projects",
-    //   isActive:this.isEmployee(),
-    // },
-    // {
-    //   title:"Tasks",
-    //   icon:"checklist",
-    //   menuLink:"/dashboard/employee/tasks",
-    //   isActive:this.isEmployee(),
-    // },
+    {
+      title:"Booking",
+      icon:"checklist",
+      menuLink:"/dashboard/booking",
+    }
+    ,
+    {
+      title:"Users",
+      icon:"person",
+      menuLink:"/dashboard/userList",
+    },
   ];
 }

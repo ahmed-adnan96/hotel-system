@@ -11,6 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BookingService } from '../../../core/Services/booking.service';
 import { SharedModule } from '../../shared/shared.module';
 import { IUserDetails, IUserRootObject } from '../../../core/interfaces/IUser';
+import { ViewUserListComponent } from '../components/view-user-list/view-user-list.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -21,6 +23,7 @@ import { IUserDetails, IUserRootObject } from '../../../core/interfaces/IUser';
 export class UserListComponent implements AfterViewInit, OnInit {
   //#region inject Services
   private readonly _BookingService = inject(BookingService);
+  constructor(private dialog: MatDialog) { }
   //#endregion
 
   //#region declaration properties
@@ -117,4 +120,14 @@ export class UserListComponent implements AfterViewInit, OnInit {
     this.getAllUsers();
   }
   //#endregion
+
+
+    openDialogView(data: any) {
+      console.log('openDialogView clicked:', data);
+      this.dialog.open(ViewUserListComponent, {
+        width: '400px',
+        minHeight: '300px',
+        data: data,
+      });
+    }
 }

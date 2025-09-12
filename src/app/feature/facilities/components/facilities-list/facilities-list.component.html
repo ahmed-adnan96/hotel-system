@@ -13,7 +13,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <div class="overflow-x-auto w-full">
-      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="w-full">
+      <table mat-table [dataSource]="dataSource" matSort class="w-full">
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </th>
@@ -63,4 +63,6 @@
       </table>
     </div>
   </div>
+  <mat-paginator class="bg-transparent" [length]="totalCount" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
 </section>

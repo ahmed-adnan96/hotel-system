@@ -1,1 +1,88 @@
-<p>view-user-list works!</p>
+<mat-dialog-actions align="end" class="py-0">
+  <button type="button" (click)="CloseModal()">
+    <mat-icon class="bg-red-500 rounded-full text-white">cancel</mat-icon>
+  </button>
+</mat-dialog-actions>
+
+<mat-dialog-content class="grid grid-cols-2 gap-4 pb-4 pt-0 mb-3">
+    <!-- Room Image -->
+  <div class="col-span-2 flex justify-center">
+    @if(data.profileImage){
+    <img [src]="data.profileImage" alt="Room Image" class="w-30 h-20 object-cover rounded-lg shadow-md border" />
+    }@else {
+    <img src="assets/images/img-profile.jpg" class="w-30 h-20 object-cover rounded-lg shadow-md border"  alt="Room Image">
+    }
+  </div>
+  <!--User Name -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">User Name:</span>
+    <span class="font-medium text-center">{{data.userName}}</span>
+  </div>
+
+  <!-- Country -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Country:</span>
+    <span class="font-medium text-center">{{data.country}}</span>
+  </div>
+
+  <!-- Status -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">verified:</span>
+    <span [class.text-green-600]="data.verified" [class.text-red-600]="!data.verified">
+      {{data.verified ? 'Yes' : 'No'}}
+    </span>
+  </div>
+
+  <!-- Price -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Price:</span>
+    <span class="font-medium text-center">{{data.totalPrice}} EGP</span>
+  </div>
+  <!-- Created At -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Created At:</span>
+    <span class="font-medium text-center">{{ data.createdAt | date:'dd-mm-yyyy' }}</span>
+  </div>
+
+  <!-- Updated At -->
+  <div class="bg-gray-50 py-2 px-4 rounded-lg shadow-sm text-center">
+    <span class="block text-gray-500 text-sm text-left">Updated At:</span>
+    <span class="font-medium text-center">{{ data.updatedAt |date:'dd-mm-yyyy' }}</span>
+  </div>
+</mat-dialog-content>
+<!--
+
+country
+:
+"Canada"
+createdAt
+:
+"2025-09-08T18:55:07.968Z"
+email
+:
+"sayer132000@gmail.com"
+phoneNumber
+:
+1124880493
+profileImage
+:
+"http://res.cloudinary.com/dpa4yqvdv/image/upload/v1757357707/users/rcnyloy4r5bcgye6wilj.jpg"
+role
+:
+"admin"
+updatedAt
+:
+"2025-09-08T18:55:07.968Z"
+userName
+:
+"Ace"
+verified
+:
+false
+_id
+:
+"68bf268b7ccfcdd45ee8f23a"
+
+
+
+-->
