@@ -1,9 +1,9 @@
-<div class=" min-h-screen grid grid-cols-12">
+<div class=" min-h-screen">
   <div>
     <app-sidebar></app-sidebar>
   </div>
-  <div class="col-span-12">
-    <div class="body px-8" [ngClass]="getBodyClass()"> 
+  <div>
+    <div class="body px-8" [ngClass]="getBodyClass()">
       <app-navbar></app-navbar>
       <router-outlet></router-outlet>
     </div>
