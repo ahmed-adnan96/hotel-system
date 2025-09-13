@@ -1,3 +1,4 @@
+import { LandPageHomeComponent } from './feature/landpage/components/land-page-home/land-page-home.component';
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './feature/shared/components/layout/layout.component';
 import { HomeComponent } from './feature/shared/components/home/home.component';
@@ -5,7 +6,14 @@ import { authGuard } from './core/guards/auth.guard';
 import { ProfileComponent } from './feature/shared/components/profile/profile.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', redirectTo: 'landPage', pathMatch: 'full' },
+  {
+    path: 'landPage',
+    loadChildren: () =>
+      import('./feature/landpage/landpage.module').then(
+        (m) => m.LandpageModule
+      ),
+  },
   {
     path: 'auth',
     loadChildren: () =>
@@ -39,12 +47,16 @@ export const routes: Routes = [
       {
         path: 'booking',
         loadComponent: () =>
-          import('./feature/stanaloneComponents/booking/booking.component').then((m) => m.BookingComponent),
+          import(
+            './feature/stanaloneComponents/booking/booking.component'
+          ).then((m) => m.BookingComponent),
       },
       {
         path: 'userList',
         loadComponent: () =>
-          import('./feature/stanaloneComponents/user-list/user-list.component').then((m) => m.UserListComponent),
+          import(
+            './feature/stanaloneComponents/user-list/user-list.component'
+          ).then((m) => m.UserListComponent),
       },
     ],
     canActivate: [authGuard],
@@ -57,4 +69,3 @@ export const routes: Routes = [
       ),
   },
 ];
-
