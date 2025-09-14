@@ -10,9 +10,9 @@
             <div class="w-3/4 m-auto ">
                 <form class="w-full" [formGroup]="loginForm" (ngSubmit)="login()">
                     <div>
-                        <mat-label class="text-primary">Email Address</mat-label>
+                        <mat-label class="text-[#152C5B]">Email Address</mat-label>
 
-                        <mat-form-field class="w-full transparent-input mt-4">
+                        <mat-form-field  appearance="outline" class="w-full mt-4">
                             <input type="email" matInput placeholder="Enter your E-mail" formControlName="email" />
                         </mat-form-field>
                         <mat-error
@@ -22,9 +22,9 @@
                     </div>
 
                     <div>
-                        <mat-label class="text-primary">Password</mat-label>
+                        <mat-label  class="text-[#152C5B]">Password</mat-label>
 
-                        <mat-form-field class="w-full mt-4">
+                        <mat-form-field appearance="outline" class="w-full mt-4">
                             <input matInput placeholder="Enter your Password" [type]="hide ? 'password' : 'text'"
                                 formControlName="password" />
                             <button type="button" mat-icon-button matSuffix (click)="hide = !hide"

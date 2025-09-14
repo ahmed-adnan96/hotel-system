@@ -14,11 +14,21 @@ html {
       density: 0,
     ));
 }
+
 // border-radios Dialog
 :root {
-  @include mat.dialog-overrides((
-    container-shape:10px));
+  @include mat.dialog-overrides((container-shape:10px));
+  @include mat.form-field-overrides((outlined-container-shape: 4px,
+      outlined-outline-width: 1px,
+      outlined-outline-color: #F5F6F8,
+      outlined-focus-outline-color: #F5F6F8,
+      outlined-hover-outline-color: #F5F6F8,
+      outlined-error-outline-color: red,
+      ));
+
 }
+
+
 
 html,
 body {
@@ -59,3 +69,17 @@ body {
 .mat-mdc-paginator-page-size-label {
   display: none !important;
 }
+// input
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+  background-color: #F5F6F8 !important;
+  border-radius: 4px !important;
+}
+::ng-deep .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170%;
+  letter-spacing: 0;
+  color: #0b47af;
+}
+
