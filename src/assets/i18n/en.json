@@ -7,5 +7,24 @@
     "Register": "Register",
     "Login Now": "Login Now",
     "Lang": "Lang"
+  },
+  "footer": {
+    "description": "We kaboom your beauty holiday instantly and memorable.",
+    "forBeginners": {
+      "title": "For Beginners",
+      "newAccount": "New Account",
+      "booking": "Start Booking a Room",
+      "payments": "Use Payments"
+    },
+    "explore": {
+      "title": "Explore Us",
+      "careers": "Our Careers",
+      "privacy": "Privacy",
+      "terms": "Terms & Conditions"
+    },
+    "connect": {
+      "title": "Connect Us"
+    },
+    "copy": "All rights reserved • Staycation"
   }
 }

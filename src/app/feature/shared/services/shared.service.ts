@@ -9,6 +9,7 @@ import { IProfile } from '../interfaces/IProfile';
 })
 export class SharedService {
   constructor(private _HttpClient: HttpClient) {}
+  imagePath: string = '';
 
   getDashBoardDetails(): Observable<any> {
     return this._HttpClient.get('admin/dashboard');
