@@ -12,15 +12,10 @@ export const globalInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   const token = localStorage.getItem('userToken');
-  const headers: any = {};
-
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
 
   const myReq = req.clone({
     url: environment.ServerUrl + req.url,
-    setHeaders: headers,
+    setHeaders: token ? { Authorization: ` ${token}` } : {},
   });
 
   return next(myReq).pipe(
