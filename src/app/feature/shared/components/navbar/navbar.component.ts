@@ -21,9 +21,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private readonly Router = inject(Router);
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
-
       next: (res: IProfile) => {
         this.imagePath = res.data.user.profileImage;
+        this._SharedService.imagePath = res.data.user.profileImage;
       },
     });
   }
