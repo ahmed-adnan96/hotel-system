@@ -27,6 +27,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MatTableDataSource } from '@angular/material/table';
     NgxDropzoneModule,
     CarouselModule,
     MatSort,
+    TranslateModule,
   ],
   exports: [
     CommonModule,
@@ -83,6 +85,7 @@ import { MatTableDataSource } from '@angular/material/table';
     NgxDropzoneModule,
     CarouselModule,
     MatSort,
+    TranslateModule,
   ],
 })
 export class SharedModule {}

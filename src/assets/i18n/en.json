@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "Home": "Home",
+    "Explore": "Explore",
+    "Reviews": "Reviews",
+    "Favorites": "Favorites",
+    "Register": "Register",
+    "Login Now": "Login Now",
+    "Lang": "Lang"
+  }
+}
