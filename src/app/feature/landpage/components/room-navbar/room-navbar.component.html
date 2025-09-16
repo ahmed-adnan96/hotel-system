@@ -63,13 +63,14 @@
             }
             @if (isLoggedIn()) {
             <div>
-                <div class="flex items-center justify-center gap-2 user-profile">
-                    <img [src]="imagePath" alt="{{username}}" />
-
-                    <span class="mx-2">{{username}}</span>
+                <div class="center">
+                    <div class="flex items-center justify-center gap-2 user-profile">
+                        <img [src]="imagePath" alt="{{username}}" />
+                        <span class="mx-2">{{username}}</span>
+                    </div>
+                    <mat-icon [matMenuTriggerFor]="menu">arrow_drop_down
+                    </mat-icon>
                 </div>
-                <mat-icon [matMenuTriggerFor]="menu">arrow_drop_down
-                </mat-icon>
 
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item routerLink="/dashboard/Profile">
