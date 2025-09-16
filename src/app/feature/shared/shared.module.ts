@@ -29,6 +29,8 @@ import { ChunkPipe } from '../landpage/pipes/chunk.pipe';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableDataSource } from '@angular/material/table';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ChunkPipe,
     MatTimepickerModule,
     MatDatepickerModule,
+    TranslateModule,
   ],
   exports: [
     CommonModule,
@@ -93,6 +96,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ChunkPipe,
     MatTimepickerModule,
     MatDatepickerModule,
+    TranslateModule,
   ],
 })
 export class SharedModule { }

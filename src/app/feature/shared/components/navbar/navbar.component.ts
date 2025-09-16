@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
       next: (res: IProfile) => {
         this.imagePath = res.data.user.profileImage;
-        console.log(res)
+        this._SharedService.imagePath = res.data.user.profileImage;
       },
     });
   }
