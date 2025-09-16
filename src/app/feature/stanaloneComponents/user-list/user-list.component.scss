@@ -51,39 +51,3 @@
     background-color: #e9f5ff;
   }
 }
-
-.filter-input {
-  width: 100%;
-  margin: 8px auto 4px auto;
-  padding: 8px 12px;
-  border: 1px solid #d1d9e6;
-  border-radius: 6px;
-  font-size: 14px;
-  text-align: left !important;
-  display: block;
-  background-color: white;
-  transition: all 0.3s;
-
-  &:focus {
-    outline: none;
-    border-color: #4285f4;
-    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
-  }
-}
-
-.mat-sort-header-container {
-  justify-content: center;
-}
-
-.improved-table tr:last-child td:first-child {
-  border-bottom-right-radius: 10px;
-}
-
-.improved-table tr:last-child td:last-child {
-  border-bottom-left-radius: 10px;
-}
-
-th.mat-header-cell {
-  vertical-align: top;
-  padding: 8px;
-}

@@ -18,23 +18,25 @@
     </div>
 
     <div class="menu w-full lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
-
-        <div class="text-md font-bold text-blue-700 ">
-            <a routerLink="" routerLinkActive="text-primary"
+        <div class="font-bold">
+            @for (item of navMenu; track $index) {
+            @if (item.isActive) {
+            <a [routerLink]="item.menuLink" routerLinkActive="text-primary"
                 class="block mt-4 lg:inline-block lg:mt-0 px-4 py-2 rounded mr-2">
-                Menu 1
+                {{ item.title | translate }}
             </a>
-
+            }
+            }
         </div>
 
-        <div class="flex ">
+
+
+        <div class="flex">
             <div class="text-md font-bold text-wh-700 text-blue-950 mx-3 center px-3">
                 <a class="block mt-4 lg:inline-block lg:mt-0  px-1 py-2 rounded mr-2">
                     {{"navbar.Lang"|translate}}
                 </a>
                 <mat-icon [matMenuTriggerFor]="menu">language</mat-icon>
-
-
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="change('ar')"
                         [ngClass]="{ 'bg-primary text-white': _TranslateService.currentLang === 'ar' }">
@@ -47,16 +49,45 @@
                 </mat-menu>
 
             </div>
-            <a routerLink="#" class="block text-md px-4 py-2 rounded text-white bg-primary ml-2 font-bold mt-4 lg:mt-0
-          hover:bg-white hover:text-primary hover:border hover:border-primary">
-                {{"navbar.Register"|translate}}
-            </a>
+            @if (!isLoggedIn()) {
 
 
-            <a routerLink="#" class="block text-md px-4 py-2 rounded text-white bg-primary ml-2 font-bold mt-4 lg:mt-0
-          hover:bg-white hover:text-primary hover:border hover:border-primary">
-                {{"navbar.Login Now"|translate}}
-            </a>
+            <div class="center gap-3">
+                <a routerLink="/auth/createUser" class="btn py-2 px-4">
+                    {{"navbar.Register"|translate}}
+                </a>
+                <a routerLink="/auth/login" class=" btn py-2 px-4">
+                    {{"navbar.Login Now"|translate}}
+                </a>
+            </div>
+            }
+            @if (isLoggedIn()) {
+            <div>
+                <div class="center">
+                    <div class="flex items-center justify-center gap-2 user-profile">
+                        <img [src]="imagePath" alt="{{username}}" />
+                        <span class="mx-2">{{username}}</span>
+                    </div>
+                    <mat-icon [matMenuTriggerFor]="menu">arrow_drop_down
+                    </mat-icon>
+                </div>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="/dashboard/Profile">
+                        <mat-icon class="custom-Icon">person</mat-icon>
+                        <span>Show My profile</span>
+                    </button>
+                    <button mat-menu-item routerLink="/auth/changePassword">
+                        <mat-icon class="custom-Icon">lock_reset</mat-icon>
+                        <span>Change Password</span>
+                    </button>
+                    <button mat-menu-item (click)="logOut()">
+                        <mat-icon class="custom-Icon">logout</mat-icon>
+                        <span>Log out</span>
+                    </button>
+                </mat-menu>
+            </div>
+            }
 
         </div>
     </div>

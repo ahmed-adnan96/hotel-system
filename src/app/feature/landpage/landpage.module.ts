@@ -1,4 +1,3 @@
-import { RoomDetailesComponent } from './components/room-detailes/room-detailes.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandPageHomeComponent } from './components/land-page-home/land-page-home.component';
@@ -8,6 +7,8 @@ import { LayoutRoomComponent } from './components/layout-room/layout-room.compon
 import { RoomFooterComponent } from './components/room-footer/room-footer.component';
 import { RoomNavbarComponent } from './components/room-navbar/room-navbar.component';
 import { Routes, RouterModule } from '@angular/router';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'layoutRoom', pathMatch: 'full' },
@@ -17,8 +18,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'landPageHome', pathMatch: 'full' },
       { path: 'landPageHome', component: LandPageHomeComponent },
-      { path: 'RoomDetails', component: RoomDetailesComponent },
+      { path: 'RoomDetails', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
+      { path: '**', component: NotFoundComponent },
     ],
   },
 ];
@@ -27,11 +29,11 @@ const routes: Routes = [
   declarations: [
     LandPageHomeComponent,
     LayoutRoomComponent,
-    RoomDetailesComponent,
     RoomFooterComponent,
+    RoomDetailsComponent,
     RoomNavbarComponent,
     ViewAllRoomsComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
-export class LandpageModule {}
+export class LandpageModule { }

@@ -7,5 +7,24 @@
     "Register": "تسجيل",
     "Login Now": "تسجيل الدخول",
     "Lang": "اللغة"
+  },
+  "footer": {
+    "description": "نمنحك عطلة جميلة ومميزة فوراً ولا تُنسى.",
+    "forBeginners": {
+      "title": "للمبتدئين",
+      "newAccount": "حساب جديد",
+      "booking": "ابدأ حجز غرفة",
+      "payments": "استخدام المدفوعات"
+    },
+    "explore": {
+      "title": "اكتشفنا",
+      "careers": "وظائفنا",
+      "privacy": "الخصوصية",
+      "terms": "الشروط والأحكام"
+    },
+    "connect": {
+      "title": "تواصل معنا"
+    },
+    "copy": "جميع الحقوق محفوظة • Staycation"
   }
 }

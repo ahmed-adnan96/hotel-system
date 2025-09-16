@@ -10,8 +10,7 @@
         <ng-container matColumnDef="roomNumber">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>roomNumber</div>
-                <input placeholder="Filter room number" class="filter-input"
-                    (input)="applyFilter($event, 'roomNumber')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.room.roomNumber}} </td>
         </ng-container>
@@ -20,7 +19,7 @@
         <ng-container matColumnDef="totalPrice">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>totalPrice</div>
-                <input placeholder="Filter price" class="filter-input" (input)="applyFilter($event, 'totalPrice')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
         </ng-container>
@@ -29,8 +28,6 @@
         <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>startDate</div>
-                <input type="date" placeholder="Filter start date" class="filter-input"
-                    (input)="applyFilter($event, 'startDate')">
             </th>
             <td mat-cell *matCellDef="let element"> {{element.startDate | date:'dd-MM-yyyy'}} </td>
         </ng-container>
@@ -39,8 +36,6 @@
         <ng-container matColumnDef="endDate">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>endDate</div>
-                <input type="date" placeholder="Filter end date" class="filter-input"
-                    (input)="applyFilter($event, 'endDate')">
             </th>
             <td mat-cell *matCellDef="let element"> {{element.endDate | date:'dd-MM-yyyy'}} </td>
         </ng-container>
@@ -49,7 +44,6 @@
         <ng-container matColumnDef="userName">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>userName</div>
-                <input placeholder="Filter user name" class="filter-input" (input)="applyFilter($event, 'userName')">
             </th>
             <td mat-cell *matCellDef="let element"> {{element.user.userName}} </td>
         </ng-container>

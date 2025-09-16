@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastr = inject(ToastrService);
   const router = inject(Router);
-
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       toastr.error(

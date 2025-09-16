@@ -22,7 +22,7 @@ import { ViewBookingComponent } from '../components/view-booking/view-booking.co
 export class BookingComponent implements AfterViewInit, OnInit {
   //#region inject Services
   private readonly _BookingService = inject(BookingService);
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
   //#endregion
 
   //#region declaration properties
@@ -49,41 +49,6 @@ export class BookingComponent implements AfterViewInit, OnInit {
       },
     });
   }
-
-  applyFilter(event: Event, column: string) {
-    const filterValue = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
-
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      switch (column) {
-        case 'roomNumber':
-          return data.room.roomNumber.toString().toLowerCase().includes(filter);
-
-        case 'totalPrice':
-          return data.totalPrice.toString().toLowerCase().includes(filter);
-
-        case 'startDate':
-          const startDate = new Date(data.startDate).toLocaleDateString(
-            'en-GB'
-          ); // شكل: dd/MM/yyyy
-          return startDate.toLowerCase().includes(filter);
-
-        case 'endDate':
-          const endDate = new Date(data.endDate).toLocaleDateString('en-GB');
-          return endDate.toLowerCase().includes(filter);
-
-        case 'userName':
-          return data.user.userName.toLowerCase().includes(filter);
-
-        default:
-          return true;
-      }
-    };
-
-    this.dataSource.filter = filterValue;
-  }
-
   //#endregion
 
   //#region Table
