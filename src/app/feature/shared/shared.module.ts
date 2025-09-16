@@ -24,9 +24,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { ChunkPipe } from '../landpage/pipes/chunk.pipe';
+import { MatTimepickerModule } from '@angular/material/timepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MatTableDataSource } from '@angular/material/table';
     LayoutComponent,
     ProfileComponent,
   ],
+  providers: [provideNativeDateAdapter()],
+
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -59,6 +63,9 @@ import { MatTableDataSource } from '@angular/material/table';
     NgxDropzoneModule,
     CarouselModule,
     MatSort,
+    ChunkPipe,
+    MatTimepickerModule,
+    MatDatepickerModule,
   ],
   exports: [
     CommonModule,
@@ -83,6 +90,9 @@ import { MatTableDataSource } from '@angular/material/table';
     NgxDropzoneModule,
     CarouselModule,
     MatSort,
+    ChunkPipe,
+    MatTimepickerModule,
+    MatDatepickerModule,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }
