@@ -8,6 +8,7 @@ import { RoomFooterComponent } from './components/room-footer/room-footer.compon
 import { RoomNavbarComponent } from './components/room-navbar/room-navbar.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'layoutRoom', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'landPageHome', component: LandPageHomeComponent },
       { path: 'RoomDetails', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
+      { path: '**', component: NotFoundComponent },
     ],
   },
 ];
@@ -34,4 +36,4 @@ const routes: Routes = [
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
-export class LandpageModule {}
+export class LandpageModule { }
