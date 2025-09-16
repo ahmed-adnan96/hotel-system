@@ -1,6 +1,6 @@
-<div class=" grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
+<div class=" grid grid-cols-1 md:grid-cols-2 min-h-screen">
   <div class="ps-5 ">
-    <img src="assets/images/logo.svg" class="ps-5 pt-6" alt="">
+    <img src="assets/images/logo.svg" class="ps-5 pt-6" alt="logo">
     <div class="flex justify-center items-center flex-col">
       <div class=" w-3/4 m-auto  my-10">
         <h2 class="text-4xl font-medium my-5">Sign Up</h2>
@@ -24,7 +24,7 @@
           </div>
           <div>
             <mat-label class="text-[#152C5B]">User Name</mat-label>
-            <mat-form-field class="w-full transparent-input mt-4">
+            <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
               <input type="text" matInput placeholder="Please type here ..." formControlName="userName" />
               <mat-error
                 *ngIf="registerForm.get('userName')?.errors?.['required'] && registerForm.get('userName')?.touched">
@@ -35,7 +35,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
               <mat-label class="text-[#152C5B]">Phone Number</mat-label>
-              <mat-form-field class="w-full transparent-input mt-4">
+              <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
                 <input type="text" matInput placeholder="Please type here ..." formControlName="phoneNumber" />
                 <mat-error
                   *ngIf="registerForm.get('phoneNumber')?.errors?.['required'] && registerForm.get('phoneNumber')?.touched">
@@ -50,7 +50,7 @@
 
             <div>
               <mat-label class="text-[#152C5B]">Country</mat-label>
-              <mat-form-field class="w-full transparent-input mt-4">
+              <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
                 <input type="text" matInput placeholder="Please type here ..." formControlName="country" />
                 <mat-error
                   *ngIf="registerForm.get('country')?.hasError('required') && registerForm.get('country')?.touched">
@@ -61,7 +61,7 @@
           </div>
           <div>
             <mat-label class="text-[#152C5B]">Email Address</mat-label>
-            <mat-form-field class="w-full transparent-input mt-4">
+            <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
               <input type="email" matInput placeholder="Enter your E-mail" formControlName="email" />
               <mat-error
                 *ngIf="(registerForm.get('email')?.errors?.['required'] || registerForm.get('email')?.errors?.['email']) && registerForm.get('email')?.touched">
@@ -69,21 +69,9 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <!-- <div>
-            <mat-label class="text-[#152C5B]">Select a role</mat-label>
-            <mat-form-field class="w-full transparent-input mt-4">
-              <mat-select formControlName="role" placeholder="Please select a role">
-                <mat-option value="user">User</mat-option>
-                <mat-option value="admin">Admin</mat-option>
-              </mat-select>
-              <mat-error *ngIf="registerForm.get('role')?.errors?.['required'] && registerForm.get('role')?.touched">
-                Role is required
-              </mat-error>
-            </mat-form-field>
-          </div> -->
           <div>
             <mat-label class="text-[#152C5B]">Password</mat-label>
-            <mat-form-field class="w-full mt-4">
+            <mat-form-field  appearance="outline" class="w-full mt-4">
               <input matInput placeholder="Enter your Password" [type]="hidePassword ? 'password' : 'text'"
                 formControlName="password" />
               <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
@@ -108,7 +96,7 @@
           </div>
           <div>
             <mat-label class="text-[#152C5B]">Confirm Password</mat-label>
-            <mat-form-field class="w-full mt-4">
+            <mat-form-field  appearance="outline" class="w-full mt-4">
               <input matInput placeholder="Enter Confirm Password" [type]="hideConfirmPassword ? 'password' : 'text'"
                 formControlName="confirmPassword" />
               <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"

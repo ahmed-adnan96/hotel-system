@@ -22,7 +22,7 @@ export class SidebarService {
   screenWidth$ = this.ScreenWidth.asObservable();
 
   setWidth(value: number) {
-    console.log('value', value);
+    // console.log('value', value);
     this.ScreenWidth.next(value);
   }
 

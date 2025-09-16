@@ -1,0 +1,197 @@
+<section>
+  <nav class="flex  items-center py-7">
+    <div class="text-xl  font-medium">
+      <ol class="flex items-center space-x-2">
+        <li>
+          <a class="text-gray-400 hover:text-[#B0B0B0]">Home</a>
+        </li>
+        <li>
+          <span class="text-gray-400">/</span>
+        </li>
+        <li>
+          <span class="text-[#152c5B]">Room Details</span>
+        </li>
+      </ol>
+    </div>
+    <div class="flex flex-col items-center mx-auto">
+      <h1 class="text-[#152C5B] font-semibold  text-4xl">Village Angga</h1>
+      <p class="text-[#B0B0B0] text-lg font-light ">Bogor, Indonesia</p>
+    </div>
+  </nav>
+
+
+  <!-- image grid -->
+  <ng-container *ngIf="roomDetails && roomDetails.images">
+    <ng-container *ngFor="let imageGroup of roomDetails.images | Chunk:3">
+      <div class="grid grid-cols-2 grid-rows-2 gap-3 h-[600px] pt-5">
+        <div *ngIf="imageGroup[0]" class="col-start-1 row-start-1 row-end-3">
+          <img [src]="imageGroup[0]" class="w-full h-full object-cover rounded-2xl" alt="Room image">
+        </div>
+        <div *ngIf="imageGroup[1]" class="col-start-2 row-start-1 row-end-2">
+          <img [src]="imageGroup[1]" class="w-full h-full object-cover rounded-2xl" alt="Room image">
+        </div>
+        <div *ngIf="imageGroup[2]" class="col-start-2 row-start-2 row-end-3">
+          <img [src]="imageGroup[2]" class="w-full h-full object-cover rounded-2xl" alt="Room image">
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- details and booking -->
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-10 mt-10">
+    <!-- description -->
+    <div class="col-span-1 col-start-1 col-end-2 py-10">
+      <p class="text-[#B0B0B0] leading-relaxed">
+        Minimal techno is a minimalist subgenre of techno music. It is characterized by a stripped-down aesthetic that
+        exploits the use of repetition and understated development. Minimal techno is thought to have been originally
+        developed in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
+      </p>
+      <br>
+      <p class="text-[#B0B0B0] leading-relaxed">
+        Such trends saw the demise of the soul-infused techno that typified the original Detroit sound. Robert Hood has
+        noted that he and Daniel Bell both realized something was missing from techno in the post-rave era.
+      </p>
+      <br>
+      <p class="text-[#B0B0B0] leading-relaxed">
+        Design is a plan or specification for the construction of an object or system or for the implementation of an
+        activity or process, or the result of that plan or specification in the form of a prototype, product or process.
+        The national agency for design: enabling Singapore to use design for economic growth and to make lives better.
+      </p>
+      <br class="my-4">
+      <!-- facilities -->
+      <div class="grid grid-cols-4 gap-6 text-center mt-8 text-gray-500">
+        <div>
+          <img src="../../../../../assets/images/ic_bedroom (1).svg" alt="bedroom" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">5</strong> Bedroom</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_livingroom.svg" alt="living room" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">1</strong> Living Room</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_bedroom.svg" alt="bathroom" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">3</strong> Bathroom</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_diningroom 1.png" alt="dining room" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">1</strong> Dining Room</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_wifi 1.svg" alt="wifi" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">10</strong> Mbps</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_ac 1.svg" alt="unit ready" class="mx-auto mb-2">
+          <span><strong class="text-[#152C5B]">7</strong> Unit Ready</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_kulkas.svg" alt="refrigerator" class="mx-auto mb-2">
+          <span><strong>2</strong> Refrigerator</span>
+        </div>
+        <div>
+          <img src="assets/images/ic_tv.svg" alt="television" class="mx-auto mb-2">
+          <span><strong>4</strong> Television</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- card continue Book -->
+    <div class="max-w-[470px] mx-auto" *ngIf="roomDetails">
+      <div class="border border-gray-200 rounded-2xl  py-10 px-20 shadow-lg">
+        <div class="flex flex-col justify-between gap-4 items-start mb-20">
+          <h3 class="text-[#152C5B] font-medium text-xl">Start Booking</h3>
+          <h4 class="text-[#1ABC9C] font-medium text-4xl">${{roomDetails.price}} <span class=" text-gray-500">per
+              night</span></h4>
+          <p class=" text-[#FF1612] font-normal">Discount {{roomDetails.discount}}% Off </p>
+        </div>
+        <br class="my-4">
+        <div class="flex flex-col items-start w-full">
+          <h5 class="text-[#152C5B] font-medium text-xl mb-3">Pick a Date</h5>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-date-range-input [rangePicker]="picker" class="w-full flex justify-center">
+              <input matStartDate placeholder="20 Jan"
+                class="text-center text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full"
+                [(ngModel)]="startDate">
+              <input matEndDate placeholder="22 Jan"
+                class="text-center text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="endDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <p class=" font-normal text-gray-500">You will pay <span class="text-[#152C5B]">$480 USD</span> per <span
+              class="text-[#152C5B]">2 Person</span></p>
+        </div>
+        <div class="text-center">
+          <br class="my-4">
+          <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Continue Book </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- rate and comment -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+    <!-- rate -->
+    <div class="col-span-1 col-start-1 col-end-2 py-10 md:border-e-2 md:border-e-primary">
+      <div>
+        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">Rate</h3>
+        <owl-carousel-o *ngIf="roomReview.length >0 " [options]="carouselOptions"
+          class="rounded-xl overflow-hidden w-full flex items-center relative ">
+          <ng-template carouselSlide *ngFor="let room of roomReview">
+            <div class="md:mx-10 ">
+              <div
+                class="flex items-start gap-2 px-3 py-2 border border-gray-200  bg-[#ffffff] rounded-2xl shadow-sm mb-3">
+                <!-- User Avatar -->
+                <img [src]="room.user.profileImage" class="w-14 h-14 rounded-full border shadow-sm" alt="user">
+                <!-- User Info -->
+                <div class="flex-1">
+                  <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-800">{{room.user.userName}}</h3>
+                    <span class="text-sm text-gray-500">{{room.rating}}</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="flex items-baseline gap-1 mb-3">
+                      @for (num of [1,2,3,4,5].slice(0 , room.rating); track $index) {
+                      <span>
+                        <mat-icon class="text-yellow-500">star</mat-icon>
+                      </span>
+                      }
+                      @if(room.rating% 1!==0){
+                      <mat-icon class="text-yellow-500">star_half</mat-icon>
+                      }
+                    </div>
+                  </div>
+                  <p class="mt-3 text-gray-600 text-sm italic leading-relaxed">
+                    “ {{room.review}} ”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <!-- message -->
+      <div>
+        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">Message</h3>
+        <mat-form-field appearance="outline" class="w-full message-input  md:pe-20">
+          <textarea type="text" rows="4" matInput placeholder="Type your message"
+            class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="message"></textarea>
+        </mat-form-field>
+        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Rate</button>
+      </div>
+    </div>
+    <!-- comment -->
+    <div class="py-10">
+      <h3 class="text-[#152C5B] font-semibold text-2xl mb-10">Comment</h3>
+      <mat-form-field appearance="outline" class="w-full message-input  xl:pe-20">
+        <textarea type="text" rows="10" matInput placeholder="Type your message"
+          class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="comment"></textarea>
+      </mat-form-field>
+      <div class="text-center">
+        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Send</button>
+      </div>
+    </div>
+  </div>
+</section>

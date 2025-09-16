@@ -51,7 +51,7 @@ export class LoginComponent {
         localStorage.setItem('role', res.data.user.role);
         localStorage.setItem('userName', res.data.user.userName);
         localStorage.setItem('id', res.data.user._id);
-        this._Router.navigate(['/dashboard']);
+        this._Router.navigate(['/landPage']);
         this._AuthService.email = this.loginForm.value.email;
       },
     });

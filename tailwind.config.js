@@ -11,6 +11,11 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
       },
+
+      container: {
+        padding: "2rem",
+        center: true,
+      },
     },
   },
   plugins: [],
