@@ -1,0 +1,100 @@
+.container {
+  width: 80%;
+  margin: auto;
+  .welcome-section-img {
+    position: relative;
+    img {
+      border-radius: 100px 20px 20px 20px;
+    }
+    .layer {
+      position: absolute;
+      height: 100%;
+      width: 90%;
+      right: -25px;
+      top: 25px;
+      border: 2px solid rgb(228, 228, 228);
+      border-radius: 20px;
+      z-index: -1;
+    }
+  }
+  .Most-popular-ads {
+    .Most-popular-ads-content {
+      position: relative;
+      z-index: 99999;
+      height: 350px;
+      img {
+        height: 380px;
+        width: 100%;
+        border-radius: 20px
+      }
+    }
+    .Most-popular-ads-content::after {
+      content: " ";
+      background-color: #d0d7f3;
+      position: absolute;
+      height: 100%;
+      width: 92%;
+      bottom: 10px;
+      left: 30px;
+      z-index: -1;
+      border-radius: 20px;
+    }
+  }
+}
+.ad-card-badge {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  border-radius: 0 10px 0 10px;
+  background-color: #ff498b;
+  text-align: center;
+  color: white;
+  padding: 3px 0;
+}
+
+.icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+
+.icons:hover{
+  color: #ff498b;
+}
+
+.room-content {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: white;
+}
+
+.ad-card {
+  height: 180px;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
+.owl-theme {
+  position: relative !important;
+}
+
+ .owl-nav {
+  position: relative;
+  top: auto;
+  transform: none;
+  justify-content: center; 
+  margin-top: 10px;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+} 
+
+

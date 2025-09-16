@@ -7,5 +7,15 @@
     "Register": "Register",
     "Login Now": "Login Now",
     "Lang": "Lang"
+  },
+  "Home-welcome-section": {
+      "Header" : "Forget Busy Work , Start Next Vacation",
+      "paragraph": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments."
+  },
+  "home_Most_popular_ads":{
+         "title": "Most popular ads"
   }
+
 }
+    
+
