@@ -1,8 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { User } from './../../../../core/interfaces/IBooking';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../shared/services/shared.service';
+import { IProfile } from '../../../shared/interfaces/IProfile';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +17,8 @@ export class LoginComponent {
   //#region Inject services
   private readonly _AuthService = inject(AuthService);
   private readonly _ToastrService = inject(ToastrService);
+  private readonly _SharedService = inject(SharedService);
+
   private readonly _Router = inject(Router);
   //#endregion
 
@@ -56,5 +61,6 @@ export class LoginComponent {
       },
     });
   }
+
   //#endregion
 }
