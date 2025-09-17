@@ -3,7 +3,7 @@
     <div class="text-xl  font-medium">
       <ol class="flex items-center space-x-2">
         <li>
-          <a class="text-gray-400 hover:text-[#B0B0B0]">Home</a>
+          <a routerLink="/landPage/layoutRoom/landPageHome" class="text-gray-400 hover:text-[#B0B0B0]">Home</a>
         </li>
         <li>
           <span class="text-gray-400">/</span>
@@ -13,8 +13,8 @@
         </li>
       </ol>
     </div>
-    <div class="flex flex-col items-center mx-auto">
-      <h1 class="text-[#152C5B] font-semibold  text-4xl">Village Angga</h1>
+    <div class="flex flex-col items-center mx-auto pe-44">
+      <h1 class="text-[#152C5B] font-semibold  text-4xl">{{roomDetails.roomNumber}}</h1>
       <p class="text-[#B0B0B0] text-lg font-light ">Bogor, Indonesia</p>
     </div>
   </nav>
@@ -23,7 +23,7 @@
   <!-- image grid -->
   <ng-container *ngIf="roomDetails && roomDetails.images">
     <ng-container *ngFor="let imageGroup of roomDetails.images | Chunk:3">
-      <div class="grid grid-cols-2 grid-rows-2 gap-3 h-[600px] pt-5">
+      <div class="grid grid-cols-2 grid-rows-2 gap-3 h-[400px] pt-5">
         <div *ngIf="imageGroup[0]" class="col-start-1 row-start-1 row-end-3">
           <img [src]="imageGroup[0]" class="w-full h-full object-cover rounded-2xl" alt="Room image">
         </div>
@@ -136,8 +136,16 @@
     <!-- rate -->
     <div class="col-span-1 col-start-1 col-end-2 py-10 md:border-e-2 md:border-e-primary">
       <div>
-        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">Rate</h3>
-        <owl-carousel-o *ngIf="roomReview.length >0 " [options]="carouselOptions"
+        <div class="flex items-center mb-10">
+          <h3 class="text-[#152C5B] font-semibold text-2xl me-3">Rate</h3>
+
+          <span *ngFor="let star of stars" class="cursor-pointer">
+            <mat-icon (click)="setRating(star)" [ngClass]="star <= rating ? 'text-yellow-400' : 'text-gray-400'">
+              star
+            </mat-icon>
+          </span>
+        </div>
+        <owl-carousel-o  *ngIf="roomReview.length >0  && languageLoaded" [options]="autoplayCarouselOptions "
           class="rounded-xl overflow-hidden w-full flex items-center relative ">
           <ng-template carouselSlide *ngFor="let room of roomReview">
             <div class="md:mx-10 ">
@@ -179,18 +187,56 @@
           <textarea type="text" rows="4" matInput placeholder="Type your message"
             class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="message"></textarea>
         </mat-form-field>
-        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Rate</button>
+        <button type="button" (click)="addReview()" class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Rate</button>
       </div>
     </div>
     <!-- comment -->
-    <div class="py-10">
+    <div class="py-10 mx-10">
       <h3 class="text-[#152C5B] font-semibold text-2xl mb-10">Comment</h3>
-      <mat-form-field appearance="outline" class="w-full message-input  xl:pe-20">
+      <div class="mb-10">
+        <owl-carousel-o *ngIf="roomComments.length >0 && languageLoaded " [options]="manualCarouselOptions"
+          class="flex justify-start items-start relative ">
+          <ng-template carouselSlide *ngFor="let room of roomComments">
+            <div class="md:mx-10 ">
+              <div
+                class="flex items-start gap-2 px-3 py-2 border border-gray-200  bg-[#ffffff] rounded-2xl shadow-sm mb-3">
+                <!-- User Avatar -->
+                <img [src]="room.user.profileImage" class="w-14 h-14 rounded-full border shadow-sm" alt="user">
+                <!-- User Info -->
+                <div class="flex-1">
+                  <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-800">{{room.user.userName}}</h3>
+                    <button type="button" matIconButton class="bg-transparent border-0 p-0 shadow-none"
+                      [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" class="px-2 mx-auto">
+                      <button mat-menu-item type="button" (click)="startEdit(room._id,room.comment)"
+                        class="text-green-500 hover:text-green-700 bg-transparent border-0 p-0 shadow-none">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                      </button>
+                      <button mat-menu-item type="button" (click)="deleteComment(room._id)"
+                        class="text-red-500 hover:text-red-700 bg-transparent border-0 p-0 shadow-none">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <p class="text-sm text-gray-500 overflow-y-auto max-h-16 break-words">“ {{room.comment}} ”</p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <mat-form-field appearance="outline" class="w-full message-input">
         <textarea type="text" rows="10" matInput placeholder="Type your message"
           class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="comment"></textarea>
       </mat-form-field>
       <div class="text-center">
-        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Send</button>
+        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg" type="button"
+          (click)="editId?updateComment(editId):addComment()">{{editId?'Update':'Send'}}</button>
       </div>
     </div>
   </div>
