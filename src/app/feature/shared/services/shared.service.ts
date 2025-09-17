@@ -9,11 +9,12 @@ import { IProfile } from '../interfaces/IProfile';
 })
 export class SharedService {
   constructor(private _HttpClient: HttpClient) {}
-
   getDashBoardDetails(): Observable<any> {
     return this._HttpClient.get('admin/dashboard');
   }
   getCurrentUser(): Observable<IProfile> {
-    return this._HttpClient.get<IProfile>(`admin/users/${environment.userId}`);
+    return this._HttpClient.get<IProfile>(
+      `admin/users/${localStorage.getItem('id')}`
+    );
   }
 }

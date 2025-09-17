@@ -11,7 +11,7 @@ export class MyTranslateService {
   constructor() {
     if (isPlatformBrowser(this._PLATFORM_ID)) {
       //1-Get Language From localStorage
-      const SavedLanguage = localStorage.getItem('lang');
+      const SavedLanguage = localStorage.getItem('lang') || 'en';
       //2- Set Default Language
       this._TranslateService.setFallbackLang('en');
       //3-use Language From localStorage

@@ -8,7 +8,7 @@
         <ng-container matColumnDef="userName">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>userName</div>
-                <input placeholder="Filter userName" class="filter-input" (input)="applyFilter($event, 'userName')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
         </ng-container>
@@ -16,24 +16,21 @@
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>email</div>
-                <input type="email" placeholder="Filter email" class="filter-input"
-                    (input)="applyFilter($event, 'email')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
         <ng-container matColumnDef="phoneNumber">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>phoneNumber</div>
-                <input type="tel" placeholder="Filter phoneNumber" class="filter-input"
-                    (input)="applyFilter($event, 'phoneNumber')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
         </ng-container>
         <ng-container matColumnDef="country">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>country</div>
-                <input type="text" placeholder="Filter country " class="filter-input"
-                    (input)="applyFilter($event, 'country')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.country}} </td>
         </ng-container>
@@ -41,7 +38,7 @@
         <ng-container matColumnDef="createdAt">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>createdAt</div>
-                <input placeholder="Filter createdAt" class="filter-input" (input)="applyFilter($event, 'createdAt')">
+
             </th>
             <td mat-cell *matCellDef="let element"> {{element.createdAt|date:"dd-MM-yyyy"}} </td>
         </ng-container>
@@ -49,7 +46,6 @@
         <ng-container matColumnDef="updatedAt">
             <th mat-header-cell *matHeaderCellDef>
                 <div mat-sort-header>updatedAt</div>
-                <input placeholder="Filter updatedAt" class="filter-input" (input)="applyFilter($event, 'updatedAt')">
             </th>
             <td mat-cell *matCellDef="let element"> {{element.updatedAt|date:"dd-MM-yyyy"}} </td>
         </ng-container>

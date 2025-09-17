@@ -8,6 +8,7 @@
     "Login Now": "Login Now",
     "Lang": "Lang"
   },
+
   "Home-welcome-section": {
       "Header" : "Forget Busy Work ,",
       "Header_Two" : "Start Next Vacation",
@@ -16,13 +17,26 @@
   },
   "home_Most_popular_ads":{
          "title": "Most popular ads"
-  },
-    "Houses with beauty backyard":{
-         "title": "Houses with beauty backyard"
-  }
-  ,
-    "Ads":{
-         "title": "Ads"
+
+  "footer": {
+    "description": "We kaboom your beauty holiday instantly and memorable.",
+    "forBeginners": {
+      "title": "For Beginners",
+      "newAccount": "New Account",
+      "booking": "Start Booking a Room",
+      "payments": "Use Payments"
+    },
+    "explore": {
+      "title": "Explore Us",
+      "careers": "Our Careers",
+      "privacy": "Privacy",
+      "terms": "Terms & Conditions"
+    },
+    "connect": {
+      "title": "Connect Us"
+    },
+    "copy": "All rights reserved • Staycation"
+
   }
 
 }

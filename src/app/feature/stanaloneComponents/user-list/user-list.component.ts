@@ -23,7 +23,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class UserListComponent implements AfterViewInit, OnInit {
   //#region inject Services
   private readonly _BookingService = inject(BookingService);
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
   //#endregion
 
   //#region declaration properties
@@ -50,32 +50,13 @@ export class UserListComponent implements AfterViewInit, OnInit {
       },
     });
   }
-
-  applyFilter(event: Event, column: string) {
-    const filterValue = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
-
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      switch (column) {
-        case 'userName':
-          return data.userName.toString().toLowerCase().includes(filter);
-        case 'email':
-          return data.email.toString().toLowerCase().includes(filter);
-        case 'phoneNumber':
-          return data.phoneNumber.toString().toLowerCase().includes(filter);
-        case 'country':
-          return data.country.toString().toLowerCase().includes(filter);
-        case 'createdAt':
-          return data.createdAt.toString().toLowerCase().includes(filter);
-        case 'updatedAt':
-          return data.updatedAt.toString().toLowerCase().includes(filter);
-        default:
-          return true;
-      }
-    };
-
-    this.dataSource.filter = filterValue;
+  openDialogView(data: any) {
+    console.log('openDialogView clicked:', data);
+    this.dialog.open(ViewUserListComponent, {
+      width: '400px',
+      minHeight: '300px',
+      data: data,
+    });
   }
 
   //#endregion
@@ -120,14 +101,4 @@ export class UserListComponent implements AfterViewInit, OnInit {
     this.getAllUsers();
   }
   //#endregion
-
-
-    openDialogView(data: any) {
-      console.log('openDialogView clicked:', data);
-      this.dialog.open(ViewUserListComponent, {
-        width: '400px',
-        minHeight: '300px',
-        data: data,
-      });
-    }
 }
