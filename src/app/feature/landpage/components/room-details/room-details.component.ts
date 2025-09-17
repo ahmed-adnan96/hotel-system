@@ -14,7 +14,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 })
 export class RoomDetailsComponent implements OnInit {
 
-  roomId: string = '68a07fc9ccc448ef85a1d4bb'
+  roomId: string = ''
   roomDetails!: IRoom
   roomReview: IRoomReview[] = [];
   stars: number[] = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ export class RoomDetailsComponent implements OnInit {
 
   token = localStorage.getItem('userToken')
   ngOnInit(): void {
-    // this.roomId=this._route.snapshot.paramMap.get('id')as string;
+    this.roomId=this._route.snapshot.paramMap.get('id')as string;
 
     this.getRoomDetails(this.roomId)
     this.getRoomReview(this.roomId)
