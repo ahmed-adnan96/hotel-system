@@ -10,11 +10,20 @@
   },
 
   "Home-welcome-section": {
-      "Header" : "Forget Busy Work , Start Next Vacation",
-      "paragraph": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments."
+    "Header": "Forget Busy Work ,",
+    "Header_Two": "Start Next Vacation",
+    "paragraph_one": "We provide what you need to enjoy your holiday with family.",
+    "paragraph_Two": "Time to make another memorable moments.",
+    "booking": "Start Booking"
   },
-  "home_Most_popular_ads":{
-        "title": "Most popular ads"
+  "home_Most_popular_ads": {
+    "title": "Most popular ads"
+  },
+  "Houses with beauty backyard": {
+    "title": "Houses with beauty backyard"
+  },
+  "Ads": {
+    "title": "Ads"
   },
   "footer": {
     "description": "We kaboom your beauty holiday instantly and memorable.",
@@ -34,22 +43,21 @@
       "title": "Connect Us"
     },
     "copy": "All rights reserved • Staycation"
-
   },
 
-  "roomDetails":{
-    "Home":"Home",
-    "Room Details":"Room Details",
-    "Rate":"Rate",
-    "Send":"Send",
-    "Message":"Message",
-    "Comment":"Comment",
-    "Update":"Update",
-    "Edit":"Edit",
-    "Delete":"Delete",
+  "roomDetails": {
+    "Home": "Home",
+    "Room Details": "Room Details",
+    "Rate": "Rate",
+    "Send": "Send",
+    "Message": "Message",
+    "Comment": "Comment",
+    "Update": "Update",
+    "Edit": "Edit",
+    "Delete": "Delete",
     "placeholder-message": "Type your message",
-    "Continue Book":"Continue Book",
-    "Pick a Date":"Pick a Date",
-    "Start Booking":"Start Booking"
+    "Continue Book": "Continue Book",
+    "Pick a Date": "Pick a Date",
+    "Start Booking": "Start Booking"
   }
 }

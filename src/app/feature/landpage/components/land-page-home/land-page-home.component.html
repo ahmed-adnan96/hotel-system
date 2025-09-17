@@ -1,9 +1,54 @@
 <section>
   <div class="container my-10 py-5">
-    <div class="welcome-section flex justify-between flex-wrap">
-      <div>
-        <h1 class="text-5xl fw-bolder">helooo</h1>
-        <p class="text-gray-300 text-sm">hiii</p>
+    <div class="welcome-section flex justify-between flex-wrap mt-5">
+      <div class="mt-2">
+        <h1 class="text-4xl font-extrabold text-blue-900">
+          {{ "Home-welcome-section.Header" | translate }}
+        </h1>
+        <h2 class="text-4xl font-extrabold text-blue-900 my-2">
+          {{ "Home-welcome-section.Header_Two" | translate }}
+        </h2>
+        <p class="text-gray-400 text-lg mt-6">
+          {{ "Home-welcome-section.paragraph_one" | translate }}
+        </p>
+        <p class="text-gray-400 text-lg">
+          {{ "Home-welcome-section.paragraph_Two" | translate }}
+        </p>
+        <div class="form-wrapper mt-4 w-96">
+          <p class="text-blue-900 font-medium">Start Booking</p>
+          <form [formGroup]="range">
+            <mat-form-field class="w-full">
+              <mat-label>Pick a Date</mat-label>
+              <mat-date-range-input [rangePicker]="picker" >
+                <input
+                  matStartDate
+                  formControlName="start"
+                  placeholder="Start date"
+                />
+                <input
+                  matEndDate
+                  formControlName="end"
+                  placeholder="End date"
+                />
+              </mat-date-range-input>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+          </form>
+
+        </div>
+        <label for="Capacity" class="block my-3 text-blue-900 font-medium">Capacity</label>
+        <div class="input-wrapper bg-blue-400 w-96">
+          <button class="bg-red-700 px-4 py-1 rounded-s minus"> - </button>
+          <input type="text" class="bg-gray-200 text-center w-full py-1 " value="person" id="Capacity">
+          <button class="bg-green-700 px-4 py-1 rounded-e plus">+</button>
+        </div>
+        <div class="w-96">
+          <button class="bg-blue-600 w-64 py-2 rounded-md my-10" (click)="explore(range)">Explor</button>
+        </div>
       </div>
       <div class="welcome-section-img">
         <img src="/assets/images/image 3.png" alt="" />
@@ -11,23 +56,25 @@
       </div>
     </div>
     <!-- start second section -->
-    <div class="Most-popular-ads mt-10">
-      <h3 class="my-5 text-2xl font-medium">Most popular ads</h3>
+    <div class="Most-popular-ads mt-6">
+      <h3 class="my-5 text-2xl font-medium">
+        {{ "home_Most_popular_ads.title" | translate }}
+      </h3>
       <div class="grid grid-cols-12 gap-5">
         <div class="col-span-12 lg:col-span-3">
           <div *ngIf="roomList.length > 0" class="Most-popular-ads-content">
-            <div class="room-description relative">
+            <div class="room-description relative card">
               <img [src]="roomList[0].images[0]" alt="" />
               <span class="ad-card-badge"
                 >{{ roomList[0].discount | currency
-                }}<span class="text-xs font-thin">per night</span></span
+                }}<span class="text-xs font-thin"> per night </span></span
               >
               <div class="icons">
                 <span [routerLink]="['/landPage/layoutRoom/RoomDetails',roomList[0]._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
                 ><span><mat-icon>favorite</mat-icon></span>
               </div>
               <div class="room-content">
-                <h1>{{ roomList[0].roomNumber }}</h1>
+                <h1>{{ roomList[0].roomNumber}}</h1>
                 <h1>Lorem ipsum mollitia</h1>
               </div>
             </div>
@@ -39,15 +86,15 @@
               *ngFor="let room of roomList | slice : 0 : 4"
               class="col-span-6"
             >
-              <div class="room-description relative ad-card">
+              <div class="room-description relative ad-card card">
                 <img
                   *ngIf="room.images.length > 0"
                   [src]="room.images[0]"
                   alt="Room image"
                 />
-                <span class="ad-card-badge"
+                <span class="ad-card-badge "
                   >{{ room?.discount | currency
-                  }}<span class="text-xs font-thin">per night</span></span
+                  }}<span class="text-xs font-thin"> per night </span></span
                 >
                 <div class="icons">
                   <span [routerLink]="['/landPage/layoutRoom/RoomDetails',room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
@@ -65,14 +112,14 @@
     </div>
     <!-- end second section -->
     <!-- start section Houses with beauty backyard -->
-    <div class="Houses with beauty backyard my-12">
-      <h1 class="text-2xl font-medium">Houses with beauty backyard</h1>
+    <div class="Houses with beauty backyard my-20">
+      <h1 class="text-2xl font-medium">{{"Houses with beauty backyard.title" | translate}}</h1>
       <div class="grid grid-cols-12 gap-5">
         <div
           *ngFor="let room of roomList | slice : 2 : 6"
           class="col-span-3 mt-5"
         >
-          <div class="room-description relative ad-card">
+          <div class="room-description relative ad-card card">
             <img
               *ngIf="room.images.length > 0"
               [src]="room.images[0]"
@@ -80,15 +127,15 @@
             />
             <span class="ad-card-badge"
               >{{ room?.discount | currency
-              }}<span class="text-xs font-thin">per night</span></span
+              }}<span class="text-xs font-thin"> per night </span></span
             >
             <div class="icons">
               <span [routerLink]="['/landPage/layoutRoom/RoomDetails',room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
               ><span><mat-icon>favorite</mat-icon></span>
             </div>
-            <div class="room-content">
-              <h1>{{ room?.roomNumber }}</h1>
-              <h1>Lorem ipsum mollitia</h1>
+              <div class="section-content mt-2">
+              <h6 class="font-medium text-blue-950" >{{ room?.roomNumber }}</h6>
+              <p class="font-light text-sm text-gray-500">Lorem ipsum mollitia</p>
             </div>
           </div>
         </div>
@@ -96,15 +143,15 @@
     </div>
     <!-- end Houses with beauty backyard Section -->
 
-     <!-- start ads -->
-       <div class="AdsWrapper my-12">
-      <h1 class="text-2xl font-medium">Ads</h1>
+    <!-- start ads -->
+    <div class="AdsWrapper my-20">
+      <h1 class="text-2xl font-medium">{{"Ads.title" | translate}}</h1>
       <div class="grid grid-cols-12 gap-5">
         <div
           *ngFor="let ads of AdsList | slice : 4 : 8"
           class="col-span-3 mt-5"
         >
-          <div class="room-description relative ad-card">
+          <div class="room-description relative ad-card card">
             <img
               *ngIf="ads.room.images.length > 0"
               [src]="ads.room.images[0]"
@@ -112,30 +159,34 @@
             />
             <span class="ad-card-badge"
               >{{ ads?.room.discount | currency
-              }}<span class="text-xs font-thin">per night</span></span
+              }}<span class="text-xs font-thin"> Off </span></span
             >
             <div class="icons">
               <span [routerLink]="['/landPage/layoutRoom/RoomDetails',ads.room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
               ><span><mat-icon>favorite</mat-icon></span>
             </div>
-            <div class="room-content">
-              <h1>{{ ads?.room.roomNumber }}</h1>
-              <h1>Lorem ipsum mollitia</h1>
+            <div class="section-content mt-2">
+              <h6 class="font-medium text-blue-950" >{{ ads?.room.roomNumber }}</h6>
+              <p class="font-light text-sm text-gray-500">Lorem ipsum mollitia</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-      <!-- end ads -->
+    <!-- end ads -->
 
     <!-- start carousal -->
-    <div class="home-carousal">
+    <div class="home-carousal my-24">
       <owl-carousel-o [options]="customOptions">
         <ng-template carouselSlide>
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-4">
               <div class="img-wrapper">
-                <img src="/assets/images/foto_keluarga.png" alt="" class="w-full h-full"/>
+                <img
+                  src="/assets/images/foto_keluarga.png"
+                  alt=""
+                  class="w-full h-full"
+                />
               </div>
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
@@ -149,15 +200,26 @@
                 <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
                   I should try again next time soon ...</p>
                 <span class="text-sm text-gray-400">Angga, Product Designer</span>
+                <p class="my-4 text-3xl font-light">
+                  What a great trip with my family and <br />
+                  I should try again next time soon ...
+                </p>
+                <span class="text-sm text-gray-400"
+                  >Angga, Product Designer</span
+                >
               </div>
             </div>
           </div>
         </ng-template>
-           <ng-template carouselSlide>
+        <ng-template carouselSlide>
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-4">
               <div class="img-wrapper">
-                <img src="/assets/images/foto_keluarga.png" alt="" class="w-full h-full"/>
+                <img
+                  src="/assets/images/foto_keluarga.png"
+                  alt=""
+                  class="w-full h-full"
+                />
               </div>
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
@@ -171,15 +233,26 @@
                 <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
                   I should try again next time soon ...</p>
                 <span class="text-sm text-gray-400">Angga, Product Designer</span>
+                <p class="my-4 text-3xl font-light">
+                  What a great trip with my family and <br />
+                  I should try again next time soon ...
+                </p>
+                <span class="text-sm text-gray-400"
+                  >Angga, Product Designer</span
+                >
               </div>
             </div>
           </div>
         </ng-template>
-           <ng-template carouselSlide>
+        <ng-template carouselSlide>
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-4">
               <div class="img-wrapper">
-                <img src="/assets/images/foto_keluarga.png" alt="" class="w-full h-full"/>
+                <img
+                  src="/assets/images/foto_keluarga.png"
+                  alt=""
+                  class="w-full h-full"
+                />
               </div>
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
@@ -193,6 +266,13 @@
                 <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
                   I should try again next time soon ...</p>
                 <span class="text-sm text-gray-400">Angga, Product Designer</span>
+                <p class="my-4 text-3xl font-light">
+                  What a great trip with my family and <br />
+                  I should try again next time soon ...
+                </p>
+                <span class="text-sm text-gray-400"
+                  >Angga, Product Designer</span
+                >
               </div>
             </div>
           </div>

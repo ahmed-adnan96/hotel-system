@@ -1,10 +1,9 @@
-import { Data } from './../../../room/interfaces/iroom';
 import { Component, inject, OnInit } from '@angular/core';
-import { MyTranslateService } from '../../../../core/Services/my-translate.service';
-import { TranslateService } from '@ngx-translate/core';
 import { HomeService } from '../../services/home.service';
 import { Iroom } from '../../interfaces/iroom';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-land-page-home',
@@ -15,18 +14,17 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class LandPageHomeComponent implements OnInit {
   roomList: Iroom[] = [];
   AdsList:any[] = []
-  constructor(private _HomeService: HomeService) {}
+  constructor(private _HomeService: HomeService , private _Router:Router) {}
 
   ngOnInit(): void {
     this.getAllRooms();
     this.getAllAds();
   }
 
-  private readonly _MyTranslateService = inject(MyTranslateService);
-  readonly _TranslateService = inject(TranslateService);
-  change(lang: string): void {
-    this._MyTranslateService.changeLanguage(lang);
-  }
+ readonly range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   getAllRooms() {
     let params = {
@@ -55,6 +53,7 @@ export class LandPageHomeComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
+    rtl: this.isArabic(),
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -78,5 +77,18 @@ export class LandPageHomeComponent implements OnInit {
     nav: false,
   };
 
+  isArabic(): boolean {
+   return localStorage.getItem('lang') === 'ar'; 
+}
+
  
+explore(formData:FormGroup){
+  let Dates = formData.value
+  if(!Dates){
+    return;
+  }
+  const startDate =Dates.start.toISOString().split('T')[0];
+  const endDate = Dates.end.toISOString().split('T')[0];
+  this._Router.navigate(['/explore'], { queryParams: {'startDate': startDate, 'endDate': endDate } });  
+}
 }
