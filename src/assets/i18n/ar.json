@@ -7,5 +7,20 @@
     "Register": "تسجيل",
     "Login Now": "تسجيل الدخول",
     "Lang": "اللغة"
+  },
+  "Home-welcome-section": {
+      "Header" : "ودّع عناء العمل",
+      "Header_Two" : "واستعد لعطلتك القادمة من الآن",
+      "paragraph_one": "نوفّر لك كل ما تحتاجه للاستمتاع بعطلتك مع العائلة.",
+      "paragraph_Two": "حان الوقت لصناعة لحظات لا تُنسى من جديد"
+  },
+  "home_Most_popular_ads":{
+         "title": "الإعلانات الأكثر مشاهدة وتأثيرًا"
+  },
+     "Houses with beauty backyard":{
+         "title": "منازل بهدوء الطبيعة وسحر الحدائق"
+  }  ,
+    "Ads":{
+         "title": "الخصومات"
   }
 }

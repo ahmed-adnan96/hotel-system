@@ -24,10 +24,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -61,6 +61,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CarouselModule,
     MatSort,
     TranslateModule,
+    MatFormFieldModule,
+   MatDatepickerModule
   ],
   exports: [
     CommonModule,
@@ -86,6 +88,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CarouselModule,
     MatSort,
     TranslateModule,
+    MatDatepickerModule
   ],
 })
 export class SharedModule {}
