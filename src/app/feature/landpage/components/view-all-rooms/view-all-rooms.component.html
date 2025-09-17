@@ -18,12 +18,12 @@
   </nav>
 
 
-<div class="grid grid-cols-4 gap-7 my-10">
+<div class="grid grid-cols-4 gap-7 py-10">
   <div *ngFor="let room of roomList">
-          <div class="room-description relative ad-card card">
+          <div class="room-description relative ad-card mb-3 card">
             <img
               [src]="room.images[0]||'assets/images/Hotel Booking.gif'"
-              alt="Room image"
+              alt="Room image" class=" h-64 object-cover w-full rounded-lg"
             />
             <span class="ad-card-badge"
               >{{ room.discount | currency
