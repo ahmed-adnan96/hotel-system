@@ -105,6 +105,7 @@ export class RoomDetailsComponent implements OnInit {
       complete: () => {
         this.getRoomComment(this.roomId)
         this.comment = ''
+        this.editId=''
         this._toastrService.success('Comment updated successfully')
       },
     })
@@ -131,7 +132,7 @@ export class RoomDetailsComponent implements OnInit {
       },
       animateOut: 'fadeOut',
       animateIn: 'fadeIn',
-      rtl: true
+      rtl: false
     };
 
     manualCarouselOptions:OwlOptions = {
@@ -149,6 +150,6 @@ export class RoomDetailsComponent implements OnInit {
         600: { items: 1 },
         1000: { items: 1 },
       },
-      rtl: true
+      rtl: false
     }
 }
