@@ -18,7 +18,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'landPageHome', pathMatch: 'full' },
       { path: 'landPageHome', component: LandPageHomeComponent },
-      { path: 'RoomDetails', component: RoomDetailsComponent },
+      { path: 'RoomDetails/:id', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
       { path: '**', component: NotFoundComponent },
     ],

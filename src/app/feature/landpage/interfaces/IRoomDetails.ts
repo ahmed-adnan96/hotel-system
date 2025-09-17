@@ -62,3 +62,50 @@ interface IRoomR {
   _id: string;
   roomNumber: string;
 }
+
+
+
+
+
+export interface IRoomCommentRes {
+  success: boolean;
+  message: string;
+  data: IData;
+}
+
+export interface IData {
+  roomComments: IRoomComment[];
+  totalCount: number;
+}
+
+export interface IRoomComment {
+  _id: string;
+  room: IRoom;
+  user: IUser;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IUser {
+  _id: string;
+  userName: string;
+  profileImage: string;
+}
+
+export interface IRoom {
+  _id: string;
+  roomNumber: string;
+}
+
+export interface IReviewReq {
+  roomId: string;
+  rating: number;
+  review: string;
+}
+
+
+export interface ICommentReq {
+  roomId: string;
+  comment: string;
+}
