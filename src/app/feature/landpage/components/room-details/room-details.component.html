@@ -145,7 +145,7 @@
             </mat-icon>
           </span>
         </div>
-        <owl-carousel-o  *ngIf="roomReview.length >0  && languageLoaded" [options]="autoplayCarouselOptions "
+        <owl-carousel-o  *ngIf="roomReview.length >0  " [options]="autoplayCarouselOptions "
           class="rounded-xl overflow-hidden w-full flex items-center relative ">
           <ng-template carouselSlide *ngFor="let room of roomReview">
             <div class="md:mx-10 ">
@@ -194,7 +194,7 @@
     <div class="py-10 mx-10">
       <h3 class="text-[#152C5B] font-semibold text-2xl mb-10">Comment</h3>
       <div class="mb-10">
-        <owl-carousel-o *ngIf="roomComments.length >0 && languageLoaded " [options]="manualCarouselOptions"
+        <owl-carousel-o *ngIf="roomComments.length >0  " [options]="manualCarouselOptions"
           class="flex justify-start items-start relative ">
           <ng-template carouselSlide *ngFor="let room of roomComments">
             <div class="md:mx-10 ">

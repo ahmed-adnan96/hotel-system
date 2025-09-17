@@ -27,26 +27,14 @@ export class RoomDetailsComponent implements OnInit {
   editComment!: string;
   rating = 0;
   languageLoaded = true;
-  manualCarouselOptions !: OwlOptions;
-  autoplayCarouselOptions !: OwlOptions;
-  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService, private translateService: TranslateService) { }
+  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService) { }
 
   token = localStorage.getItem('userToken')
   ngOnInit(): void {
     this.roomId=this._route.snapshot.paramMap.get('id')as string;
-
     this.getRoomDetails(this.roomId)
     this.getRoomReview(this.roomId)
     this.getRoomComment(this.roomId)
-    this.setCarouselOptions(this.translateService.currentLang);
-
-    this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.languageLoaded = false;
-
-      this.setCarouselOptions(event.lang);
-
-      setTimeout(() => this.languageLoaded = true, 0);
-    });
   }
 
   getRoomDetails(id: string) {
@@ -124,8 +112,7 @@ export class RoomDetailsComponent implements OnInit {
   setRating(value: number) {
     this.rating = value;
   }
-  setCarouselOptions(lang: string) {
-    this.autoplayCarouselOptions = {
+    autoplayCarouselOptions:OwlOptions = {
       loop: true,
       autoplay: true,
       autoplayTimeout: 3000,
@@ -144,10 +131,10 @@ export class RoomDetailsComponent implements OnInit {
       },
       animateOut: 'fadeOut',
       animateIn: 'fadeIn',
-      rtl: lang === 'ar'
+      rtl: true
     };
 
-    this.manualCarouselOptions = {
+    manualCarouselOptions:OwlOptions = {
       loop: false,
       autoplay: false,
       mouseDrag: false,
@@ -162,7 +149,6 @@ export class RoomDetailsComponent implements OnInit {
         600: { items: 1 },
         1000: { items: 1 },
       },
-      rtl: lang === 'ar'
+      rtl: true
     }
-  }
 }
