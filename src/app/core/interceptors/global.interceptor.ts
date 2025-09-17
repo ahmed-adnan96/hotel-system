@@ -20,11 +20,6 @@ export const globalInterceptor: HttpInterceptorFn = (req, next) => {
 
   const myReq = req.clone({
     url: environment.ServerUrl + req.url,
-
-    // setHeaders: {
-    //   Authorization: `${localStorage.getItem('userToken')}`,
-    // },
-=======
     setHeaders: {
       Authorization: `${userToken}`,
     },

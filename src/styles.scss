@@ -75,6 +75,10 @@ body {
 .mat-mdc-paginator-page-size-label {
   display: none !important;
 }
+.mat-mdc-paginator-touch-target{
+    border:1px #e5e7eb solid;
+    border-radius: 5px;
+}
 
 // input
 .mat-mdc-text-field-wrapper.mdc-text-field--outlined {

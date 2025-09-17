@@ -70,6 +70,8 @@
                 }}<span class="text-xs font-thin"> per night </span></span
               >
               <div class="icons">
+                <span [routerLink]="['/landPage/layoutRoom/RoomDetails',roomList[0]._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
+                ><span><mat-icon>favorite</mat-icon></span>
                 <span class="mx-2"><mat-icon>visibility</mat-icon></span
                 ><span><mat-icon >favorite</mat-icon></span>
               </div>
@@ -97,7 +99,7 @@
                   }}<span class="text-xs font-thin"> per night </span></span
                 >
                 <div class="icons">
-                  <span class="mx-2"><mat-icon>visibility</mat-icon></span
+                  <span [routerLink]="['/landPage/layoutRoom/RoomDetails',room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
                   ><span><mat-icon>favorite</mat-icon></span>
                 </div>
                 <div class="room-content">
@@ -130,7 +132,7 @@
               }}<span class="text-xs font-thin"> per night </span></span
             >
             <div class="icons">
-              <span class="mx-2"><mat-icon>visibility</mat-icon></span
+              <span [routerLink]="['/landPage/layoutRoom/RoomDetails',room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
               ><span><mat-icon>favorite</mat-icon></span>
             </div>
               <div class="section-content mt-2">
@@ -162,7 +164,7 @@
               }}<span class="text-xs font-thin"> Off </span></span
             >
             <div class="icons">
-              <span class="mx-2"><mat-icon>visibility</mat-icon></span
+              <span [routerLink]="['/landPage/layoutRoom/RoomDetails',ads.room._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
               ><span><mat-icon>favorite</mat-icon></span>
             </div>
             <div class="section-content mt-2">
@@ -197,6 +199,9 @@
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
+                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
+                  I should try again next time soon ...</p>
+                <span class="text-sm text-gray-400">Angga, Product Designer</span>
                 <p class="my-4 text-3xl font-light">
                   What a great trip with my family and <br />
                   I should try again next time soon ...
@@ -227,6 +232,9 @@
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
+                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
+                  I should try again next time soon ...</p>
+                <span class="text-sm text-gray-400">Angga, Product Designer</span>
                 <p class="my-4 text-3xl font-light">
                   What a great trip with my family and <br />
                   I should try again next time soon ...
@@ -257,6 +265,9 @@
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
+                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
+                  I should try again next time soon ...</p>
+                <span class="text-sm text-gray-400">Angga, Product Designer</span>
                 <p class="my-4 text-3xl font-light">
                   What a great trip with my family and <br />
                   I should try again next time soon ...

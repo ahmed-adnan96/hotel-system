@@ -3,18 +3,18 @@
     <div class="text-xl  font-medium">
       <ol class="flex items-center space-x-2">
         <li>
-          <a class="text-gray-400 hover:text-[#B0B0B0]">Home</a>
+          <a routerLink="/landPage/layoutRoom/landPageHome" class="text-gray-400 hover:text-[#B0B0B0]">{{'roomDetails.Home'|translate}}</a>
         </li>
         <li>
           <span class="text-gray-400">/</span>
         </li>
         <li>
-          <span class="text-[#152c5B]">Room Details</span>
+          <span class="text-[#152c5B]">{{'roomDetails.Room Details'|translate}}</span>
         </li>
       </ol>
     </div>
-    <div class="flex flex-col items-center mx-auto">
-      <h1 class="text-[#152C5B] font-semibold  text-4xl">Village Angga</h1>
+    <div class="flex flex-col items-center mx-auto pe-44">
+      <h1 class="text-[#152C5B] font-semibold  text-4xl">{{roomDetails.roomNumber}}</h1>
       <p class="text-[#B0B0B0] text-lg font-light ">Bogor, Indonesia</p>
     </div>
   </nav>
@@ -23,7 +23,7 @@
   <!-- image grid -->
   <ng-container *ngIf="roomDetails && roomDetails.images">
     <ng-container *ngFor="let imageGroup of roomDetails.images | Chunk:3">
-      <div class="grid grid-cols-2 grid-rows-2 gap-3 h-[600px] pt-5">
+      <div class="grid grid-cols-2 grid-rows-2 gap-3 h-[400px] pt-5">
         <div *ngIf="imageGroup[0]" class="col-start-1 row-start-1 row-end-3">
           <img [src]="imageGroup[0]" class="w-full h-full object-cover rounded-2xl" alt="Room image">
         </div>
@@ -99,14 +99,14 @@
     <div class="max-w-[470px] mx-auto" *ngIf="roomDetails">
       <div class="border border-gray-200 rounded-2xl  py-10 px-20 shadow-lg">
         <div class="flex flex-col justify-between gap-4 items-start mb-20">
-          <h3 class="text-[#152C5B] font-medium text-xl">Start Booking</h3>
+          <h3 class="text-[#152C5B] font-medium text-xl">{{'roomDetails.Start Booking'|translate}}</h3>
           <h4 class="text-[#1ABC9C] font-medium text-4xl">${{roomDetails.price}} <span class=" text-gray-500">per
               night</span></h4>
           <p class=" text-[#FF1612] font-normal">Discount {{roomDetails.discount}}% Off </p>
         </div>
         <br class="my-4">
         <div class="flex flex-col items-start w-full">
-          <h5 class="text-[#152C5B] font-medium text-xl mb-3">Pick a Date</h5>
+          <h5 class="text-[#152C5B] font-medium text-xl mb-3">{{'roomDetails.Pick a Date'|translate}}</h5>
           <mat-form-field appearance="outline" class="w-full">
             <mat-date-range-input [rangePicker]="picker" class="w-full flex justify-center">
               <input matStartDate placeholder="20 Jan"
@@ -124,7 +124,7 @@
         </div>
         <div class="text-center">
           <br class="my-4">
-          <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Continue Book </button>
+          <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">{{'roomDetails.Continue Book'|translate}} </button>
         </div>
       </div>
     </div>
@@ -136,8 +136,16 @@
     <!-- rate -->
     <div class="col-span-1 col-start-1 col-end-2 py-10 md:border-e-2 md:border-e-primary">
       <div>
-        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">Rate</h3>
-        <owl-carousel-o *ngIf="roomReview.length >0 " [options]="carouselOptions"
+        <div class="flex items-center mb-10">
+          <h3 class="text-[#152C5B] font-semibold text-2xl me-3">{{'roomDetails.Rate'|translate}}</h3>
+
+          <span *ngFor="let star of stars" class="cursor-pointer">
+            <mat-icon (click)="setRating(star)" [ngClass]="star <= rating ? 'text-yellow-400' : 'text-gray-400'">
+              star
+            </mat-icon>
+          </span>
+        </div>
+        <owl-carousel-o  *ngIf="roomReview.length >0  " [options]="autoplayCarouselOptions "
           class="rounded-xl overflow-hidden w-full flex items-center relative ">
           <ng-template carouselSlide *ngFor="let room of roomReview">
             <div class="md:mx-10 ">
@@ -174,23 +182,61 @@
       </div>
       <!-- message -->
       <div>
-        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">Message</h3>
+        <h3 class="text-[#152C5B] font-semibold text-2xl mb-5">{{'roomDetails.Message'|translate}}</h3>
         <mat-form-field appearance="outline" class="w-full message-input  md:pe-20">
-          <textarea type="text" rows="4" matInput placeholder="Type your message"
+          <textarea type="text" rows="4" matInput placeholder="{{'roomDetails.placeholder-message'|translate}}"
             class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="message"></textarea>
         </mat-form-field>
-        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Rate</button>
+        <button type="button" (click)="addReview()" class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">{{'roomDetails.Rate'|translate}}</button>
       </div>
     </div>
     <!-- comment -->
-    <div class="py-10">
-      <h3 class="text-[#152C5B] font-semibold text-2xl mb-10">Comment</h3>
-      <mat-form-field appearance="outline" class="w-full message-input  xl:pe-20">
-        <textarea type="text" rows="10" matInput placeholder="Type your message"
+    <div class="py-10 mx-10">
+      <h3 class="text-[#152C5B] font-semibold text-2xl mb-10">{{'roomDetails.Comment'|translate}}</h3>
+      <div class="mb-10">
+        <owl-carousel-o *ngIf="roomComments.length >0  " [options]="manualCarouselOptions"
+          class="flex justify-start items-start relative ">
+          <ng-template carouselSlide *ngFor="let room of roomComments">
+            <div class="md:mx-10 ">
+              <div
+                class="flex items-start gap-2 px-3 py-2 border border-gray-200  bg-[#ffffff] rounded-2xl shadow-sm mb-3">
+                <!-- User Avatar -->
+                <img [src]="room.user.profileImage" class="w-14 h-14 rounded-full border shadow-sm" alt="user">
+                <!-- User Info -->
+                <div class="flex-1">
+                  <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-800">{{room.user.userName}}</h3>
+                    <button type="button" matIconButton class="bg-transparent border-0 p-0 shadow-none"
+                      [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon class="text-primary">more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" class="px-5 mx-auto bg-white">
+                      <button mat-menu-item type="button" (click)="startEdit(room._id,room.comment)"
+                        class="bg-transparent border-0 p-0 shadow-none">
+                        <mat-icon class="text-primary">edit</mat-icon>
+                        <span>{{'roomDetails.Edit'|translate}}</span>
+                      </button>
+                      <button mat-menu-item type="button" (click)="deleteComment(room._id)"
+                        class="bg-transparent border-0 p-0 shadow-none">
+                        <mat-icon class="text-red-500">delete</mat-icon>
+                        <span>{{'roomDetails.Delete'|translate}}</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <p class="text-sm text-gray-500 overflow-y-auto max-h-16 break-words">“ {{room.comment}} ”</p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <mat-form-field appearance="outline" class="w-full message-input">
+        <textarea type="text" rows="10" matInput placeholder="{{'roomDetails.placeholder-message'|translate}}"
           class="text-[#152C5B] font-medium placeholder:text-[#152C5B] w-full" [(ngModel)]="comment"></textarea>
       </mat-form-field>
       <div class="text-center">
-        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg">Send</button>
+        <button class="bg-primary text-white font-semibold px-20 py-3 rounded-lg" type="button"
+          (click)="editId?updateComment(editId):addComment()">{{ editId ? ('roomDetails.Update' | translate) : ('roomDetails.Send' | translate) }}</button>
       </div>
     </div>
   </div>
