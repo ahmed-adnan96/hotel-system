@@ -123,7 +123,7 @@ export class RoomDetailsComponent implements OnInit {
       },
     })
   }
-  setRating(value: number) {
+  addRating(value: number) {
     this.rating = value;
   }
   changeOptions(flag: boolean) {

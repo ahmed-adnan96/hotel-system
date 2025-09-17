@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewAllRoomsComponent implements OnInit {
   startDate: any
   endDate: any
-  roomList:any
+  roomList: any
   constructor(private _route: ActivatedRoute, private _homeService: HomeService) { }
 
   ngOnInit(): void {
@@ -21,6 +21,7 @@ export class ViewAllRoomsComponent implements OnInit {
     this.getExploreRooms()
   }
 
+
   getExploreRooms() {
     const data = {
       page: 3,
@@ -28,11 +29,20 @@ export class ViewAllRoomsComponent implements OnInit {
       startDate: this.startDate,
       endDate: this.endDate
     }
-    this._homeService.getAllRooms(data).subscribe({
-      next: (res) => {
-        console.log(res.data.rooms)
-        this.roomList=res.data.rooms
-      }
-    })
+    if (this.endDate) {
+      this._homeService.getAllRooms(data).subscribe({
+        next: (res) => {
+          this.roomList = res.data.rooms
+        }
+      })
+    }
+    else {
+      this._homeService.getAllRooms({ page: 1, size: 40 }).subscribe({
+        next: (res) => {
+          this.roomList = res.data.rooms
+
+        },
+      })
+    }
   }
 }
