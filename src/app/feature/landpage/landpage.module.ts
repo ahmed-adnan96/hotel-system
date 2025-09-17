@@ -9,6 +9,7 @@ import { RoomNavbarComponent } from './components/room-navbar/room-navbar.compon
 import { Routes, RouterModule } from '@angular/router';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { ProfileComponent } from '../shared/components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'layoutRoom', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'landPageHome', component: LandPageHomeComponent },
       { path: 'RoomDetails/:id', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
+      { path: 'myProfile', component: ProfileComponent },
       { path: '**', component: NotFoundComponent },
     ],
   },

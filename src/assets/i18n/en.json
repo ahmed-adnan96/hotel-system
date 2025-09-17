@@ -35,6 +35,21 @@
     },
     "copy": "All rights reserved • Staycation"
 
-  }
+  },
 
+  "roomDetails":{
+    "Home":"Home",
+    "Room Details":"Room Details",
+    "Rate":"Rate",
+    "Send":"Send",
+    "Message":"Message",
+    "Comment":"Comment",
+    "Update":"Update",
+    "Edit":"Edit",
+    "Delete":"Delete",
+    "placeholder-message": "Type your message",
+    "Continue Book":"Continue Book",
+    "Pick a Date":"Pick a Date",
+    "Start Booking":"Start Booking"
+  }
 }

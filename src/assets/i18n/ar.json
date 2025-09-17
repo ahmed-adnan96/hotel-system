@@ -26,5 +26,20 @@
       "title": "تواصل معنا"
     },
     "copy": "جميع الحقوق محفوظة • Staycation"
-  }
+  },
+  "roomDetails": {
+    "Home": "الرئيسية",
+    "Room Details": "تفاصيل الغرفة",
+    "Rate": "السعر",
+    "Send": "إرسال",
+    "Message": "رسالة",
+    "Update":"تعديل",
+    "Edit":"تعديل",
+    "Delete":"حذف",
+    "placeholder-message": "اكتب رسالتك",
+    "Comment": "تعليق",
+    "Continue Book": "متابعة الحجز",
+    "Pick a Date": "اختر تاريخ",
+    "Start Booking": "ابدأ الحجز"
+}
 }
