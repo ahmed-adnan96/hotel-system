@@ -78,10 +78,10 @@ export class LandPageHomeComponent implements OnInit {
   };
 
   isArabic(): boolean {
-   return localStorage.getItem('lang') === 'ar'; 
+   return localStorage.getItem('lang') === 'ar';
 }
 
- 
+
 explore(formData:FormGroup){
   let Dates = formData.value
   if(!Dates){
@@ -89,6 +89,6 @@ explore(formData:FormGroup){
   }
   const startDate =Dates.start.toISOString().split('T')[0];
   const endDate = Dates.end.toISOString().split('T')[0];
-  this._Router.navigate(['/explore'], { queryParams: {'startDate': startDate, 'endDate': endDate } });  
+  this._Router.navigate(['/landPage/layoutRoom/ViewAllRooms'], { queryParams: {'startDate': startDate, 'endDate': endDate } });
 }
 }
