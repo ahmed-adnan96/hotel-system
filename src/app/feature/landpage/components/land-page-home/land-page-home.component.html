@@ -40,7 +40,7 @@
           </form>
 
         </div>
-        <label for="Capacity" class="block my-3">Capacity</label>
+        <label for="Capacity" class="block my-3 text-blue-900 font-medium">Capacity</label>
         <div class="input-wrapper bg-blue-400 w-96">
           <button class="bg-red-700 px-4 py-1 rounded-s minus"> - </button>
           <input type="text" class="bg-gray-200 text-center w-full py-1 " value="person" id="Capacity">
@@ -72,8 +72,6 @@
               <div class="icons">
                 <span [routerLink]="['/landPage/layoutRoom/RoomDetails',roomList[0]._id]" class="mx-2"><mat-icon>visibility</mat-icon></span
                 ><span><mat-icon>favorite</mat-icon></span>
-                <span class="mx-2"><mat-icon>visibility</mat-icon></span
-                ><span><mat-icon >favorite</mat-icon></span>
               </div>
               <div class="room-content">
                 <h1>{{ roomList[0].roomNumber}}</h1>
