@@ -22,7 +22,7 @@ export class LandPageHomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllRooms();
     this.getAllAds();
-     this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.lang = event.lang;
       if(this.lang === 'ar'){
         this.CarousalDirection = true;
@@ -34,7 +34,7 @@ export class LandPageHomeComponent implements OnInit {
       }
       console.log(this.CarousalDirection)
     });
-    
+
   }
 
  readonly range = new FormGroup({
@@ -104,6 +104,6 @@ explore(formData:FormGroup){
   }
   const startDate =Dates.start.toISOString().split('T')[0];
   const endDate = Dates.end.toISOString().split('T')[0];
-  this._Router.navigate(['/explore'], { queryParams: {'startDate': startDate, 'endDate': endDate } });  
+  this._Router.navigate(['/landPage/layoutRoom/ViewAllRooms'], { queryParams: {'startDate': startDate, 'endDate': endDate } });
 }
 }

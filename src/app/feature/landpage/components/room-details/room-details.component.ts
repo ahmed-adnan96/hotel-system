@@ -26,15 +26,28 @@ export class RoomDetailsComponent implements OnInit {
   editId!: string;
   editComment!: string;
   rating = 0;
-  languageLoaded = true;
-  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService) { }
+  lang: string = '';
+  CarousalDirection: boolean = false;
+
+  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService, private _translate: TranslateService) { }
 
   token = localStorage.getItem('userToken')
   ngOnInit(): void {
-    this.roomId=this._route.snapshot.paramMap.get('id')as string;
+    this.roomId = this._route.snapshot.paramMap.get('id') as string;
     this.getRoomDetails(this.roomId)
     this.getRoomReview(this.roomId)
     this.getRoomComment(this.roomId)
+    this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.lang = event.lang;
+      if (this.lang === 'ar') {
+        this.CarousalDirection = true;
+        this.changeOptions(true)
+      }
+      else {
+        this.CarousalDirection = false
+        this.changeOptions(false)
+      }
+    });
   }
 
   getRoomDetails(id: string) {
@@ -105,6 +118,7 @@ export class RoomDetailsComponent implements OnInit {
       complete: () => {
         this.getRoomComment(this.roomId)
         this.comment = ''
+        this.editId = ''
         this._toastrService.success('Comment updated successfully')
       },
     })
@@ -112,43 +126,47 @@ export class RoomDetailsComponent implements OnInit {
   setRating(value: number) {
     this.rating = value;
   }
-    autoplayCarouselOptions:OwlOptions = {
-      loop: true,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true,
-      navSpeed: 700,
-      dots: true,
-      nav: false,
-      navText: ['<', '>'],
-      responsive: {
-        0: { items: 1 },
-        600: { items: 1 },
-        1000: { items: 1 },
-      },
-      animateOut: 'fadeOut',
-      animateIn: 'fadeIn',
-      rtl: true
-    };
+  changeOptions(flag: boolean) {
+    this.autoplayCarouselOptions = { ...this.autoplayCarouselOptions, rtl: flag }
+    this.manualCarouselOptions = { ...this.manualCarouselOptions, rtl: flag }
+  }
+  autoplayCarouselOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    navSpeed: 700,
+    dots: true,
+    nav: false,
+    navText: ['<', '>'],
+    responsive: {
+      0: { items: 1 },
+      600: { items: 1 },
+      1000: { items: 1 },
+    },
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    rtl: false
+  };
 
-    manualCarouselOptions:OwlOptions = {
-      loop: false,
-      autoplay: false,
-      mouseDrag: false,
-      touchDrag: false,
-      pullDrag: false,
-      navSpeed: 700,
-      dots: false,
-      nav: true,
-      navText: ['<', '>'],
-      responsive: {
-        0: { items: 1 },
-        600: { items: 1 },
-        1000: { items: 1 },
-      },
-      rtl: true
-    }
+  manualCarouselOptions: OwlOptions = {
+    loop: false,
+    autoplay: false,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    navSpeed: 700,
+    dots: false,
+    nav: true,
+    navText: ['<', '>'],
+    responsive: {
+      0: { items: 1 },
+      600: { items: 1 },
+      1000: { items: 1 },
+    },
+    rtl: false
+  }
 }
