@@ -22,7 +22,7 @@ export class LandPageHomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllRooms();
     this.getAllAds();
-     this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.lang = event.lang;
       if(this.lang === 'ar'){
         this.CarousalDirection = true;

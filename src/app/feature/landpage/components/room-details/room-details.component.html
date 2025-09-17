@@ -14,7 +14,7 @@
       </ol>
     </div>
     <div class="flex flex-col items-center mx-auto pe-44">
-      <h1 class="text-[#152C5B] font-semibold  text-4xl">{{roomDetails.roomNumber}}</h1>
+      <h1 class="text-[#152C5B] font-semibold  text-4xl" *ngIf="roomDetails">{{roomDetails.roomNumber}}</h1>
       <p class="text-[#B0B0B0] text-lg font-light ">Bogor, Indonesia</p>
     </div>
   </nav>
