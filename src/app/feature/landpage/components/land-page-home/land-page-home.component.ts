@@ -88,7 +88,7 @@ explore(formData:FormGroup){
     return;
   }
   const startDate =Dates.start.toISOString().split('T')[0];
-  const endDate   = Dates.end.toISOString().split('T')[0];
+  const endDate = Dates.end.toISOString().split('T')[0];
   this._Router.navigate(['/explore'], { queryParams: {'startDate': startDate, 'endDate': endDate } });  
 }
 }
