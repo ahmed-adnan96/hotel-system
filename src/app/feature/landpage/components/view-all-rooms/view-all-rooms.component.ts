@@ -12,9 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewAllRoomsComponent implements OnInit {
   startDate: any
   endDate: any
-
+  roomList:any
   constructor(private _route: ActivatedRoute, private _homeService: HomeService) { }
-  
+
   ngOnInit(): void {
     this.startDate = this._route.snapshot.queryParamMap.get('startDate');
     this.endDate = this._route.snapshot.queryParamMap.get('endDate');
@@ -30,7 +30,8 @@ export class ViewAllRoomsComponent implements OnInit {
     }
     this._homeService.getAllRooms(data).subscribe({
       next: (res) => {
-        console.log(res)
+        console.log(res.data.rooms)
+        this.roomList=res.data.rooms
       }
     })
   }
