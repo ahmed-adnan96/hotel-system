@@ -10,8 +10,10 @@
   },
 
   "Home-welcome-section": {
-      "Header" : "Forget Busy Work , Start Next Vacation",
-      "paragraph": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments."
+      "Header" : "Forget Busy Work ,",
+      "Header_Two" : "Start Next Vacation",
+      "paragraph_one": "We provide what you need to enjoy your holiday with family.",
+      "paragraph_Two": "Time to make another memorable moments."
   },
   "home_Most_popular_ads":{
         "title": "Most popular ads"

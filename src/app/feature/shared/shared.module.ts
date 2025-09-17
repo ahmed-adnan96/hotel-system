@@ -69,6 +69,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTimepickerModule,
     MatDatepickerModule,
     TranslateModule,
+    MatFormFieldModule,
+   MatDatepickerModule
   ],
   exports: [
     CommonModule,
@@ -97,6 +99,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTimepickerModule,
     MatDatepickerModule,
     TranslateModule,
+    MatDatepickerModule
   ],
 })
 export class SharedModule { }
