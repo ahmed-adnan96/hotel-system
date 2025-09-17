@@ -15,7 +15,8 @@
           {{ "Home-welcome-section.paragraph_Two" | translate }}
         </p>
         <div class="form-wrapper mt-4 w-96">
-          <p class="text-blue-900 font-medium">Start Booking</p>
+          <p class="text-blue-900 font-medium">{{ "Home-welcome-section.booking" | translate }}
+</p>
           <form [formGroup]="range">
             <mat-form-field class="w-full">
               <mat-label>Pick a Date</mat-label>
@@ -40,7 +41,7 @@
           </form>
 
         </div>
-        <label for="Capacity" class="block my-3 text-blue-900 font-medium">Capacity</label>
+        <label for="Capacity" class="block my-3 text-blue-900 font-medium">{{ "Home-welcome-section.capacity" | translate }}</label>
         <div class="input-wrapper bg-blue-400 w-96">
           <button class="bg-red-700 px-4 py-1 rounded-s minus"> - </button>
           <input type="text" class="bg-gray-200 text-center w-full py-1 " value="person" id="Capacity">
@@ -177,7 +178,7 @@
 
     <!-- start carousal -->
     <div class="home-carousal my-24">
-      <owl-carousel-o [options]="customOptions">
+      <owl-carousel-o #owlCarousel [options]="customOptions">
         <ng-template carouselSlide>
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-4">
@@ -191,22 +192,15 @@
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
               <div class="carousal-description">
-                <h5 class="text-xl font-medium my-5">Happy Family</h5>
+                <h5 class="text-xl font-medium my-5">{{"carousal.title" | translate}}</h5>
                 <p class="carousal-icons text-yellow-400 text-lg">
                   <mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
-                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
-                  I should try again next time soon ...</p>
-                <span class="text-sm text-gray-400">Angga, Product Designer</span>
-                <p class="my-4 text-3xl font-light">
-                  What a great trip with my family and <br />
-                  I should try again next time soon ...
-                </p>
-                <span class="text-sm text-gray-400"
-                  >Angga, Product Designer</span
-                >
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion" | translate}} </p>
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion_two" | translate}} </p>
+                <span class="text-sm text-gray-400">{{"carousal.user" | translate}}</span>
               </div>
             </div>
           </div>
@@ -223,23 +217,16 @@
               </div>
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
-              <div class="carousal-description">
-                <h5 class="text-xl font-medium my-5">Happy Family</h5>
+                <div class="carousal-description">
+                <h5 class="text-xl font-medium my-5">{{"carousal.title" | translate}}</h5>
                 <p class="carousal-icons text-yellow-400 text-lg">
                   <mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
-                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
-                  I should try again next time soon ...</p>
-                <span class="text-sm text-gray-400">Angga, Product Designer</span>
-                <p class="my-4 text-3xl font-light">
-                  What a great trip with my family and <br />
-                  I should try again next time soon ...
-                </p>
-                <span class="text-sm text-gray-400"
-                  >Angga, Product Designer</span
-                >
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion" | translate}} </p>
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion_two" | translate}} </p>
+                <span class="text-sm text-gray-400">{{"carousal.user" | translate}}</span>
               </div>
             </div>
           </div>
@@ -256,23 +243,16 @@
               </div>
             </div>
             <div class="col-span-12 lg:col-span-8 py-14 px-5">
-              <div class="carousal-description">
-                <h5 class="text-xl font-medium my-5">Happy Family</h5>
+                <div class="carousal-description">
+                <h5 class="text-xl font-medium my-5">{{"carousal.title" | translate}}</h5>
                 <p class="carousal-icons text-yellow-400 text-lg">
                   <mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon><mat-icon>star</mat-icon
                   ><mat-icon>star</mat-icon>
                 </p>
-                <p class="my-4 text-3xl font-light" >What a great trip with my family and <br>
-                  I should try again next time soon ...</p>
-                <span class="text-sm text-gray-400">Angga, Product Designer</span>
-                <p class="my-4 text-3xl font-light">
-                  What a great trip with my family and <br />
-                  I should try again next time soon ...
-                </p>
-                <span class="text-sm text-gray-400"
-                  >Angga, Product Designer</span
-                >
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion" | translate}} </p>
+                <p class="my-4 text-3xl font-light" >{{"carousal.descriprion_two" | translate}} </p>
+                <span class="text-sm text-gray-400">{{"carousal.user" | translate}}</span>
               </div>
             </div>
           </div>
