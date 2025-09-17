@@ -14,7 +14,8 @@
     "Header_Two": "Start Next Vacation",
     "paragraph_one": "We provide what you need to enjoy your holiday with family.",
     "paragraph_Two": "Time to make another memorable moments.",
-    "booking": "Start Booking"
+    "booking": "Start Booking",
+    "capacity": "capacity"
   },
   "home_Most_popular_ads": {
     "title": "Most popular ads"
@@ -22,6 +23,7 @@
   "Houses with beauty backyard": {
     "title": "Houses with beauty backyard"
   },
+
   "Ads": {
     "title": "Ads"
   },
@@ -44,7 +46,13 @@
     },
     "copy": "All rights reserved • Staycation"
   },
-
+   
+  "carousal":{
+   "title":"Happy Family",
+   "descriprion":"What a great trip with my family and",
+   "descriprion_two":" I should try again next time soon ...",
+   "user":"Angga, Product Designer"
+  },
   "roomDetails": {
     "Home": "Home",
     "Room Details": "Room Details",

@@ -1,10 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { Iroom } from '../../interfaces/iroom';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-land-page-home',
   templateUrl: './land-page-home.component.html',
@@ -13,12 +13,28 @@ import { Router } from '@angular/router';
 })
 export class LandPageHomeComponent implements OnInit {
   roomList: Iroom[] = [];
-  AdsList:any[] = []
-  constructor(private _HomeService: HomeService , private _Router:Router) {}
+  AdsList:any[] = [];
+  lang :string = '';
+  CarousalDirection:boolean = false;
+
+  constructor(private _HomeService: HomeService , private _Router:Router , private _translate: TranslateService) {}
 
   ngOnInit(): void {
     this.getAllRooms();
     this.getAllAds();
+     this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.lang = event.lang;
+      if(this.lang === 'ar'){
+        this.CarousalDirection = true;
+        this.changeOptions(true)
+      }
+      else{
+        this.CarousalDirection = false
+        this.changeOptions(false)
+      }
+      console.log(this.CarousalDirection)
+    });
+    
   }
 
  readonly range = new FormGroup({
@@ -50,10 +66,14 @@ export class LandPageHomeComponent implements OnInit {
       },
     })
   }
+
+  changeOptions(flag :boolean) {
+    this.customOptions = { ...this.customOptions, rtl: flag}
+  }
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
-    rtl: this.isArabic(),
+    rtl: this.CarousalDirection,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -77,11 +97,6 @@ export class LandPageHomeComponent implements OnInit {
     nav: false,
   };
 
-  isArabic(): boolean {
-   return localStorage.getItem('lang') === 'ar'; 
-}
-
- 
 explore(formData:FormGroup){
   let Dates = formData.value
   if(!Dates){
