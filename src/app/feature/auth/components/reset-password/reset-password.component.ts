@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../../../shared/shared.module';
 
 @Component({
   selector: 'app-reset-password',

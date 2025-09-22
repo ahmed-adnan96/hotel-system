@@ -4,11 +4,11 @@ import { AddEditAdsComponent } from '../add-edit-ads/add-edit-ads.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { IAd } from '../../interfaces/IAds';
-import { DeleteComponent } from '../../../shared/components/delete/delete.component';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ViewAdsComponent } from '../view-ads/view-ads.component';
 import { AdsService } from '../../Services/ads.service';
+import { DeleteComponent } from '../../../../shared/components/delete/delete.component';
 
 @Component({
   selector: 'app-list-ads',

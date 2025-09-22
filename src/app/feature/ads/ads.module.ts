@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { ListAdsComponent } from './components/list-ads/list-ads.component';
 import { AddEditAdsComponent } from './components/add-edit-ads/add-edit-ads.component';
-import { SharedModule } from '../shared/shared.module';
 import { ViewAdsComponent } from './components/view-ads/view-ads.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 const routes: Routes = [

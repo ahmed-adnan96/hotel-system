@@ -46,7 +46,7 @@
     },
     "copy": "All rights reserved • Staycation"
   },
-   
+
   "carousal":{
    "title":"Happy Family",
    "descriprion":"What a great trip with my family and",
@@ -58,12 +58,13 @@
     "Room Details": "Room Details",
     "Rate": "Rate",
     "Send": "Send",
-    "Message": "Message",
+    "review": "Review",
     "Comment": "Comment",
     "Update": "Update",
     "Edit": "Edit",
     "Delete": "Delete",
-    "placeholder-message": "Type your message",
+    "placeholder-review": "Type your Review",
+    "placeholder-comment": "Type your Comment",
     "Continue Book": "Continue Book",
     "Pick a Date": "Pick a Date",
     "Start Booking": "Start Booking"

@@ -6,9 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IRootObject } from '../../interfaces/IRoomDetailes';
 
 import { ViewRoomComponent } from '../view-room/view-room.component';
-import { DeleteComponent } from '../../../shared/components/delete/delete.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from '../../../../shared/components/delete/delete.component';
 
 @Component({
   selector: 'app-list-room',
