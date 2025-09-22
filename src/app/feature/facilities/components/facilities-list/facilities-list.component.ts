@@ -1,14 +1,13 @@
 import { FacilitiesService } from './../../services/facilities.service';
-import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Facility } from '../../interfaces/ifacilities';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditFacilitiesComponent } from '../add-edit-facilities/add-edit-facilities.component';
-import { DeleteComponent } from '../../../shared/components/delete/delete.component';
 import { ToastrService } from 'ngx-toastr';
-import { MatSort, Sort, } from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { DeleteComponent } from '../../../../shared/components/delete/delete.component';
 
 
 @Component({

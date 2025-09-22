@@ -5,8 +5,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { OtpCodeComponent } from './components/otp-code/otp-code.component';
+import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,11 +1,9 @@
-import { User } from './../../../../core/interfaces/IBooking';
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import {  Component, inject} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../shared/services/shared.service';
-import { IProfile } from '../../../shared/interfaces/IProfile';
+import { SharedService } from '../../../../shared/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -56,7 +54,7 @@ export class LoginComponent {
         localStorage.setItem('role', res.data.user.role);
         localStorage.setItem('userName', res.data.user.userName);
         localStorage.setItem('id', res.data.user._id);
-        this._Router.navigate(['/landPage']);
+        this._Router.navigate(['/Home']);
         this._AuthService.email = this.loginForm.value.email;
       },
     });

@@ -1,23 +1,22 @@
-import { LandPageHomeComponent } from './feature/landpage/components/land-page-home/land-page-home.component';
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './feature/shared/components/layout/layout.component';
-import { HomeComponent } from './feature/shared/components/home/home.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { HomeComponent } from './shared/components/home/home.component';
 import { authGuard } from './core/guards/auth.guard';
-import { ProfileComponent } from './feature/shared/components/profile/profile.component';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'landPage', pathMatch: 'full' },
-  {
-    path: 'landPage',
-    loadChildren: () =>
-      import('./feature/landpage/landpage.module').then(
-        (m) => m.LandpageModule
-      ),
-  },
+  {path:'',redirectTo:'Home', pathMatch:'full'},
   {
     path: 'auth',
     loadChildren: () =>
       import('./feature/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./feature/landingPage/landingPage.module').then(
+        (m) => m.LandingPageModule
+      ),
   },
   {
     path: 'dashboard',
@@ -48,14 +47,14 @@ export const routes: Routes = [
         path: 'booking',
         loadComponent: () =>
           import(
-            './feature/stanaloneComponents/booking/booking.component'
+            './feature/booking/booking/booking.component'
           ).then((m) => m.BookingComponent),
       },
       {
         path: 'userList',
         loadComponent: () =>
           import(
-            './feature/stanaloneComponents/user-list/user-list.component'
+            './feature/booking/user-list/user-list.component'
           ).then((m) => m.UserListComponent),
       },
     ],
@@ -64,7 +63,7 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: () =>
-      import('./feature/shared/components/not-found/not-found.component').then(
+      import('./shared/components/not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
   },
