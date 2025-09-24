@@ -55,7 +55,7 @@ export class RoomNavbarComponent implements OnInit {
     },
     {
       title: 'navbar.Favorites',
-      // menuLink: 'test',
+      menuLink: '/favourite',
       isActive: this.isLoggedIn(),
     },
   ];
@@ -82,6 +82,4 @@ export class RoomNavbarComponent implements OnInit {
     this.getCurrentUser();
   }
   //#endregion
-
-  
 }

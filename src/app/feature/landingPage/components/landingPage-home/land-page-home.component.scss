@@ -1,7 +1,7 @@
 .container {
   width: 80%;
   margin: auto;
-  .welcome-section-img {
+  .welcome-section-img-english{
     position: relative;
     img {
       border-radius: 100px 20px 20px 20px;
@@ -18,6 +18,26 @@
       z-index: -1;
     }
   }
+
+  .welcome-section-img-arabic{
+    position: relative;
+    img {
+      border-radius: 20px 100px 20px 20px;
+      height: 100%;
+    }
+    .layer {
+      position: absolute;
+      height: 100%;
+      width: 90%;
+      left: -25px;
+      top: 25px;
+      border: 2px solid rgb(228, 228, 228);
+      border-radius: 20px;
+      z-index: -1;
+    }
+  }
+
+
   .Most-popular-ads {
     .Most-popular-ads-content {
       position: relative;
@@ -66,15 +86,24 @@
 }
 
 .icons:hover{
-  color: #ff498b;
   cursor: pointer;
   transition: all 1s;
 }
+
 
 .card:hover .icons{
     opacity: 1;
 }
 
+.eye:hover{
+  color: rgb(61, 61, 238);
+  transition: all 1s;
+}
+
+.heart:hover{
+  color: #ff498b;
+  transition: all 1s;
+}
 
 .room-content {
   position: absolute;

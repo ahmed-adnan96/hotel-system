@@ -29,6 +29,8 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+
 import { NgxStripeModule, StripePaymentElementComponent } from 'ngx-stripe';
 import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
@@ -69,6 +71,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     TranslateModule,
     MatFormFieldModule,
+   MatDatepickerModule,
+   ToastrModule.forRoot(),
     ReactiveFormsModule,
     StripePaymentElementComponent,
   ],
@@ -99,6 +103,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTimepickerModule,
     TranslateModule,
     MatDatepickerModule,
+    TranslateModule,
+    MatDatepickerModule,
+    ToastrModule,
     MatNativeDateModule,
     ReactiveFormsModule,
     StripePaymentElementComponent,

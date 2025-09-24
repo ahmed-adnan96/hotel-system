@@ -5,6 +5,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-land-page-home',
   templateUrl: './land-page-home.component.html',
@@ -17,7 +19,7 @@ export class LandPageHomeComponent implements OnInit {
   lang :string = '';
   CarousalDirection:boolean = false;
 
-  constructor(private _HomeService: HomeService , private _Router:Router , private _translate: TranslateService) {}
+  constructor(private _HomeService: HomeService , private _Router:Router , private _translate: TranslateService ,private _toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.getAllRooms();
@@ -36,12 +38,13 @@ export class LandPageHomeComponent implements OnInit {
     });
 
   }
-
+//assgin range date
  readonly range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
 
+  //display all rooms
   getAllRooms() {
     let params = {
       page: 3,
@@ -58,6 +61,7 @@ export class LandPageHomeComponent implements OnInit {
     });
   }
 
+  //display adds list
   getAllAds(){
     this._HomeService.getAllAds().subscribe({
       next:(res)=>{
@@ -67,9 +71,11 @@ export class LandPageHomeComponent implements OnInit {
     })
   }
 
+  //recall carousal
   changeOptions(flag :boolean) {
     this.customOptions = { ...this.customOptions, rtl: flag}
   }
+
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -97,6 +103,7 @@ export class LandPageHomeComponent implements OnInit {
     nav: false,
   };
 
+ //check if dates valid and route to the explore 
 explore(formData:FormGroup){
   let Dates = formData.value
   if(!Dates){
@@ -106,4 +113,14 @@ explore(formData:FormGroup){
   const endDate = Dates.end.toISOString().split('T')[0];
   this._Router.navigate(['/ViewAllRooms'], { queryParams: {'startDate': startDate, 'endDate': endDate } });
 }
+
+addToFavourite(id:any){
+  this._HomeService.AddToFavourite(id).subscribe({
+    next:(res)=>{
+      this._toastrService.success('room added successfully to your favourite list')
+    },
+  })
+}
+
+
 }
