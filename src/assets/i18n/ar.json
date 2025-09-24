@@ -67,5 +67,47 @@
     "Continue Book": "متابعة الحجز",
     "Pick a Date": "اختر تاريخ",
     "Start Booking": "ابدأ الحجز"
-  }
+  },
+  "viewAll":{
+    "Explore-ALL":"استكشف جميع الغرف"
+  },
+
+  "register":{
+  "signIn": "تسجيل الدخول",
+  "noAccount": "إذا لم يكن لديك حساب، قم بالتسجيل",
+  "register": "تسجيل",
+  "registerHere": "التسجيل من هنا!",
+  "emailAddress": "البريد الإلكتروني",
+  "enterEmail": "أدخل بريدك الإلكتروني",
+  "password": "كلمة المرور",
+  "enterPassword": "أدخل كلمة المرور",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "login": "دخول",
+  "signUp": "إنشاء حساب",
+  "alreadyAccount": "إذا كان لديك حساب بالفعل، قم بتسجيل الدخول",
+  "loginHere": "تسجيل الدخول من هنا!",
+  "youCan":"يمكنك",
+  "profileImage": "صورة الملف الشخصي",
+  "noFileChosen": "لم يتم اختيار ملف",
+  "userName": "اسم المستخدم",
+  "typeHere": "الرجاء الكتابة هنا ...",
+  "phoneNumber": "رقم الهاتف",
+  "country": "الدولة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
+  "signupBtn": "إنشاء حساب",
+      "errors": {
+      "userNameRequired": "اسم المستخدم مطلوب",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "phonePattern": "الرقم يجب أن يتكون من 11 رقمًا ويبدأ بـ 01",
+      "countryRequired": "الدولة مطلوبة",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "صيغة البريد الإلكتروني غير صحيحة",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMin": "كلمة المرور يجب أن تكون 3 أحرف على الأقل",
+      "passwordMax": "الحد الأقصى للطول هو 20 حرفًا",
+      "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
+      "confirmPasswordMismatch": "تأكيد كلمة المرور يجب أن يطابق كلمة المرور"
+    }
+}
 }

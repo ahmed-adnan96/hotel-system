@@ -3,120 +3,124 @@
     <img src="assets/images/logo.svg" class="ps-5 pt-6" alt="logo">
     <div class="flex justify-center items-center flex-col">
       <div class=" w-3/4 m-auto  my-10">
-        <h2 class="text-4xl font-medium my-5">Sign Up</h2>
-        <p>If you already have an account register</p>
-        <p>You can <a routerLink="/auth/login" class="text-[#EB5148] font-bold"> Login here !</a></p>
+        <h2 class="text-4xl font-medium my-5">{{'register.signUp'|translate}}</h2>
+        <p>{{'register.noAccount'|translate}}</p>
+        <p>{{'register.youCan'|translate}} <a routerLink="/auth/login" class="text-[#EB5148] font-bold"> {{'register.loginHere'|translate}}</a></p>
       </div>
       <div class="w-3/4 m-auto ">
-        <form class="w-full" [formGroup]="registerForm" (ngSubmit)="register()">
-          <div>
-            <div class="profile-image-wrapper mb-3">
-              <img [src]="previewImg" alt="Profile Image" class="rounded-circle border profile-img shadow-sm">
-              <button type="button" aria-label="Remove image" (click)="onRemove()" class="delete-btn">
-                <mat-icon>close</mat-icon>
-              </button>
-              <ngx-dropzone (change)="onSelect($event)" class="upload-btn border-0 shadow-sm">
-                <ngx-dropzone-label>
-                  <mat-icon>camera_alt</mat-icon>
-                </ngx-dropzone-label>
-              </ngx-dropzone>
-            </div>
-          </div>
-          <div>
-            <mat-label class="text-[#152C5B]">User Name</mat-label>
-            <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
-              <input type="text" matInput placeholder="Please type here ..." formControlName="userName" />
-              <mat-error
-                *ngIf="registerForm.get('userName')?.errors?.['required'] && registerForm.get('userName')?.touched">
-                username is required
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <mat-label class="text-[#152C5B]">Phone Number</mat-label>
-              <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
-                <input type="text" matInput placeholder="Please type here ..." formControlName="phoneNumber" />
-                <mat-error
-                  *ngIf="registerForm.get('phoneNumber')?.errors?.['required'] && registerForm.get('phoneNumber')?.touched">
-                  phone number is required
-                </mat-error>
-                <mat-error
-                  *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern'] && registerForm.get('phoneNumber')?.touched">
-                  11-digit number starting with 01
-                </mat-error>
-              </mat-form-field>
-            </div>
+<form class="w-full" [formGroup]="registerForm" (ngSubmit)="register()">
+  <div>
+    <div class="profile-image-wrapper mb-3">
+      <img [src]="previewImg" alt="Profile Image" class="rounded-circle border profile-img shadow-sm">
+      <button type="button" aria-label="Remove image" (click)="onRemove()" class="delete-btn">
+        <mat-icon>close</mat-icon>
+      </button>
+      <ngx-dropzone (change)="onSelect($event)" class="upload-btn border-0 shadow-sm">
+        <ngx-dropzone-label>
+          <mat-icon>camera_alt</mat-icon>
+        </ngx-dropzone-label>
+      </ngx-dropzone>
+    </div>
+  </div>
 
-            <div>
-              <mat-label class="text-[#152C5B]">Country</mat-label>
-              <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
-                <input type="text" matInput placeholder="Please type here ..." formControlName="country" />
-                <mat-error
-                  *ngIf="registerForm.get('country')?.hasError('required') && registerForm.get('country')?.touched">
-                  Country is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-          <div>
-            <mat-label class="text-[#152C5B]">Email Address</mat-label>
-            <mat-form-field  appearance="outline" class="w-full transparent-input mt-4">
-              <input type="email" matInput placeholder="Enter your E-mail" formControlName="email" />
-              <mat-error
-                *ngIf="(registerForm.get('email')?.errors?.['required'] || registerForm.get('email')?.errors?.['email']) && registerForm.get('email')?.touched">
-                E-mail is required or incorrect
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-label class="text-[#152C5B]">Password</mat-label>
-            <mat-form-field  appearance="outline" class="w-full mt-4">
-              <input matInput placeholder="Enter your Password" [type]="hidePassword ? 'password' : 'text'"
-                formControlName="password" />
-              <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-                [attr.aria-label]="'hidePassword password'" [attr.aria-pressed]="hidePassword">
-                <mat-icon class="custom-icon">{{
-                  hidePassword ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-              </button>
-              <mat-error
-                *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched">
-                Password is required
-              </mat-error>
-              <mat-error
-                *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
-                Password must be at least 3 characters
-              </mat-error>
-              <mat-error
-                *ngIf="registerForm.get('password')?.errors?.['maxlength'] && registerForm.get('password')?.touched">
-                Maximum length is 20 characters
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-label class="text-[#152C5B]">Confirm Password</mat-label>
-            <mat-form-field  appearance="outline" class="w-full mt-4">
-              <input matInput placeholder="Enter Confirm Password" [type]="hideConfirmPassword ? 'password' : 'text'"
-                formControlName="confirmPassword" />
-              <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
-                [attr.aria-label]="'HideConfirmPassword password'" [attr.aria-pressed]="hideConfirmPassword">
-                <mat-icon class="custom-icon">{{
-                  hideConfirmPassword ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-              </button>
-            </mat-form-field>
-            <mat-error
-              *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
-              Confirm Password is required
-            </mat-error>
-            <mat-error *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
-              Confirm Password must match Password
-            </mat-error>
-          </div>
-          <button type="submit" [disabled]="registerForm.invalid" [class.btn-disabled]="registerForm.invalid"
-            class="btn my-5 w-full" color="primary">Sign up</button>
-        </form>
+  <!-- User Name -->
+  <div>
+    <mat-label class="text-[#152C5B]">{{ 'register.userName' | translate }}</mat-label>
+    <mat-form-field appearance="outline" class="w-full transparent-input mt-4">
+      <input type="text" matInput placeholder="{{ 'register.typeHere' | translate }}" formControlName="userName" />
+      <mat-error *ngIf="registerForm.get('userName')?.errors?.['required'] && registerForm.get('userName')?.touched">
+        {{ 'register.errors.userNameRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div>
+      <mat-label class="text-[#152C5B]">{{ 'register.phoneNumber' | translate }}</mat-label>
+      <mat-form-field appearance="outline" class="w-full transparent-input mt-4">
+        <input type="text" matInput placeholder="{{ 'register.typeHere' | translate }}" formControlName="phoneNumber" />
+        <mat-error *ngIf="registerForm.get('phoneNumber')?.errors?.['required'] && registerForm.get('phoneNumber')?.touched">
+          {{ 'register.errors.phoneRequired' | translate }}
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern'] && registerForm.get('phoneNumber')?.touched">
+          {{ 'register.errors.phonePattern' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Country -->
+    <div>
+      <mat-label class="text-[#152C5B]">{{ 'register.country' | translate }}</mat-label>
+      <mat-form-field appearance="outline" class="w-full transparent-input mt-4">
+        <input type="text" matInput placeholder="{{ 'register.typeHere' | translate }}" formControlName="country" />
+        <mat-error *ngIf="registerForm.get('country')?.hasError('required') && registerForm.get('country')?.touched">
+          {{ 'register.errors.countryRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <mat-label class="text-[#152C5B]">{{ 'register.emailAddress' | translate }}</mat-label>
+    <mat-form-field appearance="outline" class="w-full transparent-input mt-4">
+      <input type="email" matInput placeholder="{{ 'register.enterEmail' | translate }}" formControlName="email" />
+      <mat-error *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched">
+        {{ 'register.errors.emailRequired' | translate }}
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched">
+        {{ 'register.errors.emailInvalid' | translate }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <mat-label class="text-[#152C5B]">{{ 'register.password' | translate }}</mat-label>
+    <mat-form-field appearance="outline" class="w-full mt-4">
+      <input matInput placeholder="{{ 'register.enterPassword' | translate }}" [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'hidePassword password'" [attr.aria-pressed]="hidePassword">
+        <mat-icon class="custom-icon">{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched">
+        {{ 'register.errors.passwordRequired' | translate }}
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
+        {{ 'register.errors.passwordMin' | translate }}
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.errors?.['maxlength'] && registerForm.get('password')?.touched">
+        {{ 'register.errors.passwordMax' | translate }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Confirm Password -->
+  <div>
+    <mat-label class="text-[#152C5B]">{{ 'register.confirmPassword' | translate }}</mat-label>
+    <mat-form-field appearance="outline" class="w-full mt-4">
+      <input matInput placeholder="{{ 'register.enterConfirmPassword' | translate }}" [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" />
+      <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
+        [attr.aria-label]="'HideConfirmPassword password'" [attr.aria-pressed]="hideConfirmPassword">
+        <mat-icon class="custom-icon">{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+      {{ 'register.errors.confirmPasswordRequired' | translate }}
+    </mat-error>
+    <mat-error *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+      {{ 'register.errors.confirmPasswordMismatch' | translate }}
+    </mat-error>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="registerForm.invalid" [class.btn-disabled]="registerForm.invalid"
+    class="btn my-5 w-full" color="primary">
+    {{ 'register.signupBtn' | translate }}
+  </button>
+</form>
+
       </div>
     </div>
   </div>
