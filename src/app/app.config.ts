@@ -17,7 +17,7 @@ import { provideToastr } from 'ngx-toastr';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
-
+import { provideNgxStripe } from 'ngx-stripe';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -26,6 +26,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([globalInterceptor, errorInterceptor])
     ),
+    provideNgxStripe(),
     provideClientHydration(withEventReplay()),
     provideToastr(),
     provideAnimations(),
@@ -37,6 +38,6 @@ export const appConfig: ApplicationConfig = {
       fallbackLang: 'en',
       lang: 'en',
     }),
-    provideNativeDateAdapter()  
+    provideNativeDateAdapter()
   ],
 };
