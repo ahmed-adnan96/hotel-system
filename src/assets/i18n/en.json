@@ -69,5 +69,46 @@
     "Continue Book": "Continue Book",
     "Pick a Date": "Pick a Date",
     "Start Booking": "Start Booking"
-  }
+  },
+  "viewAll":{
+    "Explore-ALL":"Explore ALL Rooms"
+  },
+  "register":{
+  "signIn": "Sign in",
+  "noAccount": "If you don’t have an account, register",
+  "register": "Register",
+  "registerHere": "register here!",
+  "emailAddress": "Email Address",
+  "enterEmail": "Enter your E-mail",
+  "password": "Password",
+  "enterPassword": "Enter your Password",
+  "forgotPassword": "Forgot Password?",
+  "login": "Login",
+  "signUp": "Sign Up",
+  "alreadyAccount": "If you already have an account, register",
+  "youCan":"You can",
+  "loginHere": "Login here!",
+  "profileImage": "Profile Image",
+  "noFileChosen": "No file chosen",
+  "userName": "User Name",
+  "typeHere": "Please type here ...",
+  "phoneNumber": "Phone Number",
+  "country": "Country",
+  "confirmPassword": "Confirm Password",
+  "enterConfirmPassword": "Enter Confirm Password",
+  "signupBtn": "Sign up",
+   "errors": {
+      "userNameRequired": "Username is required",
+      "phoneRequired": "Phone number is required",
+      "phonePattern": "11-digit number starting with 01",
+      "countryRequired": "Country is required",
+      "emailRequired": "E-mail is required",
+      "emailInvalid": "E-mail format is incorrect",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 3 characters",
+      "passwordMax": "Maximum length is 20 characters",
+      "confirmPasswordRequired": "Confirm Password is required",
+      "confirmPasswordMismatch": "Confirm Password must match Password"
+    }
+}
 }
