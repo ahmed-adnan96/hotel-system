@@ -58,7 +58,7 @@ export interface IUser {
   profileImage: string;
 }
 
-interface IRoomR {
+export interface IRoomR {
   _id: string;
   roomNumber: string;
 }
@@ -67,13 +67,13 @@ interface IRoomR {
 
 
 
-export interface IRoomCommentRes {
+export  interface IRoomCommentRes {
   success: boolean;
   message: string;
   data: IData;
 }
 
-export interface IData {
+export  interface IData {
   roomComments: IRoomComment[];
   totalCount: number;
 }
@@ -108,4 +108,58 @@ export interface IReviewReq {
 export interface ICommentReq {
   roomId: string;
   comment: string;
+}
+// booking
+export interface IBookingReq{
+  startDate: string;
+  endDate: string;
+  room: string;
+  totalPrice: number;
+}
+
+
+export interface IBookingRes{
+  success: boolean;
+  message: string;
+  data: IDataBooking;
+}
+
+export interface IDataBooking {
+  booking: IBooking;
+}
+
+export interface IBooking {
+  startDate: string;
+  endDate: string;
+  totalPrice: number;
+  user: string;
+  room: string;
+  status: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// payment
+export interface IPaymentRes {
+  success: boolean;
+  message: string;
+  data: IDataPayment;
+}
+
+export interface IDataPayment {
+  booking: IBooking;
+}
+
+export interface IBooking {
+  _id: string;
+  startDate: string;
+  endDate: string;
+  totalPrice: number;
+  user: string;
+  room: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  stripeChargeId: string;
 }

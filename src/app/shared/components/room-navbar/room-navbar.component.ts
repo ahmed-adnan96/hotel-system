@@ -82,4 +82,6 @@ export class RoomNavbarComponent implements OnInit {
     this.getCurrentUser();
   }
   //#endregion
+
+  
 }

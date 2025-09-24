@@ -28,9 +28,9 @@ import { ChunkPipe } from '../feature/landingPage/pipes/chunk.pipe';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatTableDataSource } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { NgxStripeModule, StripePaymentElementComponent } from 'ngx-stripe';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -66,9 +66,11 @@ import { TranslateModule } from '@ngx-translate/core';
     ChunkPipe,
     MatTimepickerModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule,
     MatFormFieldModule,
-   MatDatepickerModule
+    ReactiveFormsModule,
+    StripePaymentElementComponent,
   ],
   exports: [
     CommonModule,
@@ -95,9 +97,11 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSort,
     ChunkPipe,
     MatTimepickerModule,
-    MatDatepickerModule,
     TranslateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    StripePaymentElementComponent,
   ],
 })
 export class SharedModule { }
