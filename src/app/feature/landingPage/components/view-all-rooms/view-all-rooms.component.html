@@ -27,7 +27,7 @@
         }}<span class="text-xs font-thin"> Off </span></span>
       <div class="icons">
         <span [routerLink]="['/RoomDetails',room._id]"
-          class="mx-2"><mat-icon>visibility</mat-icon></span><span><mat-icon>favorite</mat-icon></span>
+          class="mx-2 eye"><mat-icon>visibility</mat-icon></span><button (click)="addToFavourite(room._id)"><mat-icon class="heart">favorite</mat-icon></button>
       </div>
       <div class="section-content mt-2">
         <h6 class="font-medium text-blue-950">{{ room.roomNumber }}</h6>

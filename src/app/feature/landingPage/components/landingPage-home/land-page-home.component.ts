@@ -47,13 +47,15 @@ export class LandPageHomeComponent implements OnInit {
   //display all rooms
   getAllRooms() {
     let params = {
-      page: 3,
-      size: 7,
+      page: 1,
+      size: 10000000000,
     };
     this._HomeService.getAllRooms(params).subscribe({
       next: (res) => {
-        this.roomList = res.data?.rooms ?? [];
-        console.log(this.roomList);
+      this.roomList = res.data?.rooms ?? [];
+      let roomsWithImages = this.roomList.filter(room => room.images && room.images.length > 0);
+      this.roomList = roomsWithImages.slice(-10);
+
       },
       error: (err) => {
         console.log(err);

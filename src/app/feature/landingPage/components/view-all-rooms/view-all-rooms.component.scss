@@ -9,15 +9,27 @@
 
 }
 
-.icons:hover {
-  color: #ff498b;
+.icons:hover{
   cursor: pointer;
   transition: all 1s;
 }
 
-.card:hover .icons {
-  opacity: 1;
+
+.card:hover .icons{
+    opacity: 1;
 }
+
+.eye:hover{
+  color: rgb(61, 61, 238);
+  transition: all 1s;
+}
+
+.heart:hover{
+  color: #ff498b;
+  transition: all 1s;
+}
+
+
 .ad-card-badge {
   position: absolute;
   right: 0;

@@ -52,7 +52,7 @@
         {{ "home_Most_popular_ads.title" | translate }}
       </h3>
       <div class="grid grid-cols-12 gap-12">
-        <div class="col-span-12 lg:col-span-3">
+        <div class="col-span-12 md:col-span-3">
           <div *ngIf="roomList.length > 0" class="Most-popular-ads-content">
             <div class="room-description relative card">
               <img [src]="roomList[2].images[0]" alt="" />
@@ -95,7 +95,7 @@
     <div class="Houses with beauty backyard my-20">
       <h1 class="text-2xl font-medium">{{"Houses with beauty backyard.title" | translate}}</h1>
       <div class="grid grid-cols-12 gap-12">
-        <div *ngFor="let room of roomList | slice : 2 : 6" class="col-span-3 sm:grid-cols-12 mt-5">
+        <div *ngFor="let room of roomList | slice : 2 : 6" class="col-span-12 md:col-span-3 mt-5">
           <div class="room-description relative ad-card card">
             <img *ngIf="room.images.length > 0" [src]="room.images[0]" alt="Room image" />
             <span class="ad-card-badge">{{ room?.discount | currency
@@ -118,7 +118,7 @@
     <div class="AdsWrapper my-20">
       <h1 class="text-2xl font-medium">{{"Ads.title" | translate}}</h1>
       <div class="grid grid-cols-12 gap-5">
-        <div *ngFor="let ads of AdsList | slice : 4 : 8" class="col-span-3 sm:grid-cols-12 mt-5">
+        <div *ngFor="let ads of AdsList | slice : 4 : 8" class="col-span-12 md:col-span-3 mt-12">
           <div class="room-description relative ad-card card">
             <img *ngIf="ads.room.images.length > 0" [src]="ads.room.images[0]" alt="Room image" />
             <span class="ad-card-badge">{{ ads?.room.discount | currency

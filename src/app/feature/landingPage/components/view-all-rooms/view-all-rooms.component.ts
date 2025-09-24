@@ -1,7 +1,9 @@
+import { ToastrService } from 'ngx-toastr';
 import { Data } from './../../../room/interfaces/iroom';
 import { HomeService } from './../../services/home.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-all-rooms',
@@ -13,7 +15,7 @@ export class ViewAllRoomsComponent implements OnInit {
   startDate: any
   endDate: any
   roomList: any
-  constructor(private _route: ActivatedRoute, private _homeService: HomeService) { }
+  constructor(private _route: ActivatedRoute, private _homeService: HomeService , private _ToastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.startDate = this._route.snapshot.queryParamMap.get('startDate');
@@ -45,4 +47,13 @@ export class ViewAllRoomsComponent implements OnInit {
       })
     }
   }
+
+  addToFavourite(id:any){
+  this._homeService.AddToFavourite(id).subscribe({
+    next:(res)=>{
+      this._ToastrService.success('room added successfully to your favourite list')
+    },
+  })
+}
+
 }
