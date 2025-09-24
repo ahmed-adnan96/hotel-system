@@ -5,6 +5,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-land-page-home',
   templateUrl: './land-page-home.component.html',
@@ -17,7 +19,7 @@ export class LandPageHomeComponent implements OnInit {
   lang :string = '';
   CarousalDirection:boolean = false;
 
-  constructor(private _HomeService: HomeService , private _Router:Router , private _translate: TranslateService) {}
+  constructor(private _HomeService: HomeService , private _Router:Router , private _translate: TranslateService ,private _toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.getAllRooms();
@@ -111,4 +113,14 @@ explore(formData:FormGroup){
   const endDate = Dates.end.toISOString().split('T')[0];
   this._Router.navigate(['/landPage/layoutRoom/ViewAllRooms'], { queryParams: {'startDate': startDate, 'endDate': endDate } });
 }
+
+addToFavourite(id:any){
+  this._HomeService.AddToFavourite(id).subscribe({
+    next:(res)=>{
+      this._toastrService.success('room added successfully to your favourite list')
+    },
+  })
+}
+
+
 }

@@ -1,0 +1,39 @@
+  <nav class="items-center">
+     <div class="text-center mx-auto">
+      <h1 class="text-[#152C5B] font-semibold  text-4xl">Favourite Rooms </h1>
+     </div>
+      <ol class="flex items-center space-x-2">
+           <li>
+          <span class="text-[#152c5B]">Explore</span>
+        </li>
+          <li>
+          <span class="text-gray-400">/</span>
+        </li>
+        <li>
+          <a routerLink="/Home" class="text-gray-400 hover:text-[#B0B0B0]">favourite</a>
+        </li> 
+      </ol>
+  </nav>
+
+<div class="grid grid-cols-4 gap-7 py-10">
+  <div *ngFor="let room of roomList">
+          <div class="room-description relative ad-card mb-3 card">
+            <img
+              [src]="room.images[0]||'assets/images/Hotel Booking.gif'"
+              alt="Room image" class=" h-64 object-cover w-full rounded-lg"
+            />
+            <span class="ad-card-badge"
+              >{{ room.discount | currency
+              }}<span class="text-xs font-thin"> Off </span></span
+            >
+            <div class="icons">
+              <span [routerLink]="['/RoomDetails',room._id]" class="mx-2" class="eye"><mat-icon>visibility</mat-icon></span
+              ><button class="delete mx-1" (click)="deleteFromFavourite(room._id)"><mat-icon>delete</mat-icon></button>
+            </div>
+            <div class="section-content mt-2">
+              <h6 class="font-medium text-blue-950" >{{ room.roomNumber }}</h6>
+              <p class="font-light text-sm text-gray-500">Lorem ipsum mollitia</p>
+            </div>
+          </div>
+        </div>
+      </div>
