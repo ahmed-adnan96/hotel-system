@@ -10,6 +10,7 @@ import { NotFoundComponent } from '../../shared/components/not-found/not-found.c
 import { RoomFooterComponent } from '../../shared/components/room-footer/room-footer.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RoomNavbarComponent } from "../../shared/components/room-navbar/room-navbar.component";
+import { FavouriteRoomsComponent } from './components/favourite-rooms/favourite-rooms.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'RoomDetails/:id', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
       { path: 'myProfile', component: ProfileComponent },
+      { path: 'favourite', component: FavouriteRoomsComponent },
       { path: '**', component: NotFoundComponent },
     ],
   },
@@ -32,6 +34,7 @@ const routes: Routes = [
     RoomFooterComponent,
     RoomDetailsComponent,
     ViewAllRoomsComponent,
+    FavouriteRoomsComponent
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes), RoomNavbarComponent],
 })

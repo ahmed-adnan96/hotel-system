@@ -55,7 +55,7 @@ export class RoomNavbarComponent implements OnInit {
     },
     {
       title: 'navbar.Favorites',
-      menuLink: '/ViewAllRooms',
+      menuLink: '/favourite',
       isActive: this.isLoggedIn(),
     },
   ];

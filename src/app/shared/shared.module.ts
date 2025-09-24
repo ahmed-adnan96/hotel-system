@@ -30,6 +30,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableDataSource } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDatepickerModule,
     TranslateModule,
     MatFormFieldModule,
-   MatDatepickerModule
+   MatDatepickerModule,
+   ToastrModule.forRoot(),
   ],
   exports: [
     CommonModule,
@@ -97,7 +99,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTimepickerModule,
     MatDatepickerModule,
     TranslateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ToastrModule
   ],
 })
 export class SharedModule { }
