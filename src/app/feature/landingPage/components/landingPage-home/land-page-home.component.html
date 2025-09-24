@@ -19,7 +19,7 @@
           </p>
           <form [formGroup]="range">
             <mat-form-field class="w-full">
-              <mat-label>Pick a Date</mat-label>
+              <mat-label class="my-6">Pick a Date</mat-label>
               <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate formControlName="start" placeholder="Start date" />
                 <input matEndDate formControlName="end" placeholder="End date" />
@@ -30,18 +30,18 @@
           </form>
 
         </div>
-        <label for="Capacity" class="block my-3 text-blue-900 font-medium">{{ "Home-welcome-section.capacity" |
+        <label for="Capacity" class="block my-3 text-blue-900 font-medium">{{"Home-welcome-section.capacity" |
           translate }}</label>
         <div class="input-wrapper bg-blue-400 w-96">
-          <button class="bg-red-700 px-4 py-1 rounded-s minus"> - </button>
+          <button class="bg-red-600 px-5 py-1 rounded-s minus text-white"> - </button>
           <input type="text" class="bg-gray-200 text-center w-full py-1 " value="person" id="Capacity">
-          <button class="bg-green-700 px-4 py-1 rounded-e plus">+</button>
+          <button class="bg-green-600 px-5 py-1 rounded-e plus text-white">+</button>
         </div>
         <div class="w-96">
-          <button class="bg-blue-600 w-64 py-2 rounded-md my-10" (click)="explore(range)">Explor</button>
+          <button class="bg-blue-600 w-44 py-2 rounded-md my-8 text-white" (click)="explore(range)">{{'Home-welcome-section.explore' |translate}}</button>
         </div>
       </div>
-      <div class="welcome-section-img">
+      <div class="welcome-section-img"   [ngClass]="lang === 'en' ? 'welcome-section-img-english' : 'welcome-section-img-arabic'">
         <img src="/assets/images/image 3.png" alt="" />
         <div class="layer"></div>
       </div>
@@ -55,15 +55,15 @@
         <div class="col-span-12 lg:col-span-3">
           <div *ngIf="roomList.length > 0" class="Most-popular-ads-content">
             <div class="room-description relative card">
-              <img [src]="roomList[0].images[0]" alt="" />
-              <span class="ad-card-badge">{{ roomList[0].discount | currency
+              <img [src]="roomList[2].images[0]" alt="" />
+              <span class="ad-card-badge">{{ roomList[2].discount | currency
                 }}<span class="text-xs font-thin"> per night </span></span>
               <div class="icons">
-                <span [routerLink]="['/RoomDetails',roomList[0]._id]"
-                  class="mx-2"><mat-icon>visibility</mat-icon></span><span><mat-icon>favorite</mat-icon></span>
+                <span [routerLink]="['/RoomDetails',roomList[3]._id]"
+                  class="mx-2"><mat-icon class="eye">visibility</mat-icon></span><span><mat-icon class="heart">favorite</mat-icon></span>
               </div>
               <div class="room-content">
-                <h1>{{ roomList[0].roomNumber}}</h1>
+                <h1>{{ roomList[2].roomNumber}}</h1>
                 <h1>Lorem ipsum mollitia</h1>
               </div>
             </div>
@@ -71,18 +71,18 @@
         </div>
         <div class="col-span-12 lg:col-span-9">
           <div class="grid grid-cols-12 gap-5">
-            <div *ngFor="let room of roomList | slice : 0 : 4" class="col-span-6">
+            <div *ngFor="let room of roomList | slice : 2 : 6" class="col-span-6">
               <div class="room-description relative ad-card card">
                 <img *ngIf="room.images.length > 0" [src]="room.images[0]" alt="Room image" />
                 <span class="ad-card-badge ">{{ room?.discount | currency
                   }}<span class="text-xs font-thin"> per night </span></span>
                 <div class="icons">
                   <span [routerLink]="['/RoomDetails',room._id]"
-                    class="mx-2"><mat-icon>visibility</mat-icon></span><span><mat-icon>favorite</mat-icon></span>
+                    class="mx-2"><mat-icon class="eye">visibility</mat-icon></span><span><mat-icon class="heart">favorite</mat-icon></span>
                 </div>
                 <div class="room-content">
-                  <h1>{{ room?.roomNumber }}</h1>
-                  <h1>Lorem ipsum mollitia</h1>
+                  <p>{{ room?.roomNumber }}</p>
+                  <p>Lorem ipsum mollitia</p>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@
               }}<span class="text-xs font-thin"> per night </span></span>
             <div class="icons">
               <span [routerLink]="['/RoomDetails',room._id]"
-                class="mx-2"><mat-icon>visibility</mat-icon></span><span><mat-icon>favorite</mat-icon></span>
+                class="mx-2"><mat-icon class="eye">visibility</mat-icon></span><span><mat-icon class="heart">favorite</mat-icon></span>
             </div>
             <div class="section-content mt-2">
               <h6 class="font-medium text-blue-950">{{ room?.roomNumber }}</h6>
@@ -125,7 +125,7 @@
               }}<span class="text-xs font-thin"> Off </span></span>
             <div class="icons">
               <span [routerLink]="['/RoomDetails',ads.room._id]"
-                class="mx-2"><mat-icon>visibility</mat-icon></span><span><mat-icon>favorite</mat-icon></span>
+                class="mx-2"><mat-icon class="eye">visibility</mat-icon></span><span><mat-icon class="heart">favorite</mat-icon></span>
             </div>
             <div class="section-content mt-2">
               <h6 class="font-medium text-blue-950">{{ ads?.room.roomNumber }}</h6>

@@ -36,12 +36,13 @@ export class LandPageHomeComponent implements OnInit {
     });
 
   }
-
+//assgin range date
  readonly range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
 
+  //display all rooms
   getAllRooms() {
     let params = {
       page: 3,
@@ -58,6 +59,7 @@ export class LandPageHomeComponent implements OnInit {
     });
   }
 
+  //display adds list
   getAllAds(){
     this._HomeService.getAllAds().subscribe({
       next:(res)=>{
@@ -67,9 +69,11 @@ export class LandPageHomeComponent implements OnInit {
     })
   }
 
+  //recall carousal
   changeOptions(flag :boolean) {
     this.customOptions = { ...this.customOptions, rtl: flag}
   }
+
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -97,6 +101,7 @@ export class LandPageHomeComponent implements OnInit {
     nav: false,
   };
 
+ //check if dates valid and route to the explore 
 explore(formData:FormGroup){
   let Dates = formData.value
   if(!Dates){
