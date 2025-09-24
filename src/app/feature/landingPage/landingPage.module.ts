@@ -11,6 +11,9 @@ import { RoomFooterComponent } from '../../shared/components/room-footer/room-fo
 import { SharedModule } from '../../shared/shared.module';
 import { RoomNavbarComponent } from "../../shared/components/room-navbar/room-navbar.component";
 import { FavouriteRoomsComponent } from './components/favourite-rooms/favourite-rooms.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { CompletedPaymentComponent } from './components/completed-payment/completed-payment.component';
 
 const routes: Routes = [
   {
@@ -20,6 +23,8 @@ const routes: Routes = [
       { path: 'Home', component: LandPageHomeComponent },
       { path: 'RoomDetails/:id', component: RoomDetailsComponent },
       { path: 'ViewAllRooms', component: ViewAllRoomsComponent },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'completedPayment', component: CompletedPaymentComponent },
       { path: 'myProfile', component: ProfileComponent },
       { path: 'favourite', component: FavouriteRoomsComponent },
       { path: '**', component: NotFoundComponent },
@@ -34,8 +39,11 @@ const routes: Routes = [
     RoomFooterComponent,
     RoomDetailsComponent,
     ViewAllRoomsComponent,
-    FavouriteRoomsComponent
+    FavouriteRoomsComponent,
+    PaymentComponent,
+    CompletedPaymentComponent
   ],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes), RoomNavbarComponent],
+
+  imports: [CommonModule,NgxStripeModule.forRoot(), SharedModule, RouterModule.forChild(routes), RoomNavbarComponent],
 })
 export class LandingPageModule { }

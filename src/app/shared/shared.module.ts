@@ -28,10 +28,11 @@ import { ChunkPipe } from '../feature/landingPage/pipes/chunk.pipe';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatTableDataSource } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
+import { NgxStripeModule, StripePaymentElementComponent } from 'ngx-stripe';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -67,10 +68,13 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     ChunkPipe,
     MatTimepickerModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule,
     MatFormFieldModule,
    MatDatepickerModule,
    ToastrModule.forRoot(),
+    ReactiveFormsModule,
+    StripePaymentElementComponent,
   ],
   exports: [
     CommonModule,
@@ -97,10 +101,14 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     MatSort,
     ChunkPipe,
     MatTimepickerModule,
+    TranslateModule,
     MatDatepickerModule,
     TranslateModule,
     MatDatepickerModule,
-    ToastrModule
+    ToastrModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    StripePaymentElementComponent,
   ],
 })
 export class SharedModule { }

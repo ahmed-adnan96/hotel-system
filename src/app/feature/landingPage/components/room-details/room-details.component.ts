@@ -1,8 +1,8 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { RoomDetailsService } from '../../services/room-details.service';
-import { ActivatedRoute } from '@angular/router';
-import { IRoom, IRoomComment, IRoomDetailsResponse, IRoomReview } from '../../interfaces/IRoomDetails';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IBookingReq, IRoom, IRoomComment, IRoomDetailsResponse, IRoomReview } from '../../interfaces/IRoomDetails';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
@@ -13,23 +13,24 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   standalone: false,
 })
 export class RoomDetailsComponent implements OnInit {
-
   roomId: string = ''
   roomDetails!: IRoom
   roomReview: IRoomReview[] = [];
   stars: number[] = [1, 2, 3, 4, 5];
   roomComments: IRoomComment[] = [];
-  endDate!: Date;
-  startDate!: Date;
+  endDate!: string;
+  startDate!: string;
   message!: string;
   comment!: string;
   editId!: string;
   editComment!: string;
   rating = 0;
+  discount = 0;
+  roomPrice = 0;
   lang: string = '';
   CarousalDirection: boolean = false;
 
-  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService, private _translate: TranslateService) { }
+  constructor(private _RoomDetailsService: RoomDetailsService, private _route: ActivatedRoute, private _toastrService: ToastrService, private _translate: TranslateService, private _router: Router) { }
 
   token = localStorage.getItem('userToken')
   ngOnInit(): void {
@@ -54,6 +55,8 @@ export class RoomDetailsComponent implements OnInit {
     this._RoomDetailsService.getRoomDetails(id).subscribe({
       next: (res: IRoomDetailsResponse) => {
         this.roomDetails = res.data.room;
+        this.roomPrice = res.data.room.price
+        this.discount = res.data.room.discount
       },
     })
   }
@@ -77,6 +80,7 @@ export class RoomDetailsComponent implements OnInit {
       complete: () => {
         this.getRoomReview(this.roomId)
         this.message = ''
+        this.rating = 0
         this._toastrService.success('Your rating and review have been added successfully')
       },
     })
@@ -113,8 +117,8 @@ export class RoomDetailsComponent implements OnInit {
     this.comment = comment
     this.editId = id
   }
-  updateComment(id: string) {
-    this._RoomDetailsService.updateComment(id, { "comment": this.comment }).subscribe({
+  updateComment() {
+    this._RoomDetailsService.updateComment(this.editId, { "comment": this.comment }).subscribe({
       complete: () => {
         this.getRoomComment(this.roomId)
         this.comment = ''
@@ -133,7 +137,7 @@ export class RoomDetailsComponent implements OnInit {
   autoplayCarouselOptions: OwlOptions = {
     loop: true,
     autoplay: true,
-    autoplayTimeout: 3000,
+    autoplayTimeout: 8000,
     autoplayHoverPause: true,
     mouseDrag: true,
     touchDrag: true,
@@ -168,5 +172,56 @@ export class RoomDetailsComponent implements OnInit {
       1000: { items: 1 },
     },
     rtl: false
+  }
+
+  imagesCarouselOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 10000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    navSpeed: 700,
+    dots: true,
+    nav: false,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      }
+    },
+    rtl: false
+  }
+
+  getDays(startDate: string, endDate: string): number {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    start.setHours(0, 0, 0, 0);
+    end.setHours(0, 0, 0, 0);
+
+    const diffDays = ((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+    return diffDays;
+  }
+      
+
+  booking() {
+    const days = this.getDays(this.startDate, this.endDate)
+    const data: IBookingReq = {
+      startDate: this.startDate,
+      endDate: this.endDate,
+      room: this.roomId,
+      totalPrice: (this.roomPrice * days) - ((this.roomPrice * days) * (this.discount / 100))
+    };
+    this._RoomDetailsService.booking(data).subscribe({
+      next: (res) => {
+        this._router.navigate(['/payment'], { queryParams: { 'bookingId': res.data.booking._id, 'totalPrice': res.data.booking.totalPrice } })
+      }
+    })
   }
 }
